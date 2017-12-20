@@ -1,0 +1,12 @@
+<h2>My stories</h2>
+<ul class="stories">
+  <li *ngFor="let story of stories"
+    [class.selected]="story === selectedstory"
+    (click)="onSelect(story)">
+    <span class="badge">{{story.id}}</span> {{story.name}}
+  </li>
+</ul>
+
+
+
+<app-story-detail [story]="selectedStory"></app-story-detail>
