@@ -1,9 +1,22 @@
-<h2>My stories</h2>
+
+
+<h2>Mes histoires</h2>
+
+<div>
+  <label>Titre de l'histoire:
+    <input #storyName />
+  </label>
+  <button (click)="add(storyName.value); storyName.value=''">
+    Créer
+  </button>
+</div>
+
 <ul class="stories">
-  <a *ngFor="let story of stories" class="col-1-4"
-  routerLink="/detail/{{story.id}}">test </a>
+  <li *ngFor="let story of stories">
+    <a routerLink="/detail/{{story.id}}">
+      <span class="badge">{{story.id}}</span> {{story.name}}
+    </a>
+    <button class="delete" title="delete story"
+    (click)="delete(story)">x</button>
+  </li>
 </ul>
-
-<button (click)="goBack()">go back</button>
-
-<app-story-detail [story]="selectedStory"></app-story-detail>
