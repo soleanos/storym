@@ -11,6 +11,11 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
+import { CovalentLayoutModule, CovalentStepsModule } from '@covalent/core';
+import { CovalentHttpModule } from '@covalent/http';
+import { CovalentHighlightModule } from '@covalent/highlight';
+import { CovalentMarkdownModule } from '@covalent/markdown';
+import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,13 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    CovalentHttpModule.forRoot(),
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentDynamicFormsModule
   ],
   providers: [StoryService, MessageService],
   bootstrap: [AppComponent]
