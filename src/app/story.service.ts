@@ -12,4 +12,9 @@ export class StoryService {
   getStories(): Observable<Story[]> {
     return of(STORIES);
   }
+
+  getStory(id: number): Observable<Story> {
+    return of(STORIES.find(story => story.id === id));
+  }
+
 }

@@ -6,6 +6,8 @@ import {StoryService} from './story.service';
 import { AppComponent } from './app.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
+import { AppRoutingModule } from './app-routing.module';
+
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { StoryDetailComponent } from './story-detail/story-detail.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [StoryService],
   bootstrap: [AppComponent]

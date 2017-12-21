@@ -1,12 +1,9 @@
 <h2>My stories</h2>
 <ul class="stories">
-  <li *ngFor="let story of stories"
-    [class.selected]="story === selectedstory"
-    (click)="onSelect(story)">
-    <span class="badge">{{story.id}}</span> {{story.name}}
-  </li>
+  <a *ngFor="let story of stories" class="col-1-4"
+  routerLink="/detail/{{story.id}}">test </a>
 </ul>
 
-
+<button (click)="goBack()">go back</button>
 
 <app-story-detail [story]="selectedStory"></app-story-detail>
