@@ -1,0 +1,1 @@
+Editeur pour les slices : Ng2 CKEditor / https://www.npmjs.com/package/ng2-ckeditor (http://www.discoversdk.com/blog/10-angular-2-modules-and-tools-you-need-to-learn-in-2017)

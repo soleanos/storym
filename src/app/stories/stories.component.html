@@ -11,12 +11,18 @@
   </button>
 </div>
 
-<ul class="stories">
-  <li *ngFor="let story of stories">
+<div layout="row" layout-padding>
+  <mat-card   *ngFor="let story of stories" flex="100">
     <a routerLink="/detail/{{story.id}}">
       <span class="badge">{{story.id}}</span> {{story.name}}
     </a>
     <button class="delete" title="delete story"
     (click)="delete(story)">x</button>
-  </li>
-</ul>
+  </mat-card>
+</div>
+
+
+
+
+
+  
