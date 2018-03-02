@@ -14,6 +14,11 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { AngularDraggableModule } from 'angular2-draggable';
+import {MatDialogModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 import { AppComponent } from './app.component';
 import { StoriesHeaderComponent } from './stories-header/stories-header.component';
@@ -27,6 +32,7 @@ import { StoriesComponent } from './stories/stories.component';
 import {StoryService} from './story.service';
 import {SliceService} from './slice.service';
 import { SlicesComponent } from './slices/slices.component';
+import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,8 @@ import { SlicesComponent } from './slices/slices.component';
     StoryComponent,
     SliceComponent,
     SliceEditorComponent,
-    SlicesComponent
+    SlicesComponent,
+    StoryCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,10 @@ import { SlicesComponent } from './slices/slices.component';
     CovalentHighlightModule,
     CovalentMarkdownModule,
     CovalentDynamicFormsModule,
-    AngularDraggableModule
+    AngularDraggableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
   ],
   providers: [StoryService, MessageService, SliceService],
   bootstrap: [AppComponent]

@@ -5,16 +5,16 @@ import { Slice } from './Slice';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const stories: Story[] = [
-        { id: 11, name: 'Mr. Nice' },
-        { id: 12, name: 'Narcopppp' },
-        { id: 13, name: 'Bombasto' },
-        { id: 14, name: 'Celeritas' },
-        { id: 15, name: 'Magneta' },
-        { id: 16, name: 'RubberMan' },
-        { id: 17, name: 'Dynama' },
-        { id: 18, name: 'Dr IQ' },
-        { id: 19, name: 'Magma' },
-        { id: 20, name: 'Tornado' }
+        { id: 11, title: 'Mr. Nice' },
+        { id: 12, title: 'Narcopppp' },
+        { id: 13, title: 'Bombasto' },
+        { id: 14, title: 'Celeritas' },
+        { id: 15, title: 'Magneta' },
+        { id: 16, title: 'RubberMan' },
+        { id: 17, title: 'Dynama' },
+        { id: 18, title: 'Dr IQ' },
+        { id: 19, title: 'Magma' },
+        { id: 20, title: 'Tornado' }
       ];
       const slices: Slice[] = [
         { title: 'etoile', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 13 },

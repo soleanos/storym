@@ -59,7 +59,7 @@ searchStories(term: string): Observable<Story[]> {
     // if not search term, return empty hero array.
     return of([]);
   }
-  return this.http.get<Story[]>(`api/stories/?name=${term}`).pipe(
+  return this.http.get<Story[]>(`api/stories/?title=${term}`).pipe(
     tap(_ => this.log(`found stories matching "${term}"`)),
     catchError(this.handleError<Story[]>('searchStories', []))
   );

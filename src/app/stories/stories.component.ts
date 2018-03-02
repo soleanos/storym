@@ -3,6 +3,8 @@ import { Story } from '../story';
 import { STORIES } from '../mock-stories';
 import {StoryService} from '../story.service';
 
+
+
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
@@ -12,7 +14,7 @@ export class StoriesComponent implements OnInit {
 
   story: Story = {
     id: 1,
-    name: 'Windstorm'
+    title: 'Windstorm'
   };
 
   stories: Story[];
@@ -29,10 +31,10 @@ export class StoriesComponent implements OnInit {
     .subscribe(stories => this.stories = stories);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.storyService.addStory({ name } as Story)
+  add(title: string): void {
+    title = title.trim();
+    if (!title) { return; }
+    this.storyService.addStory({ title } as Story)
       .subscribe(story => {
         this.stories.push(story);
       });
