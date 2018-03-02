@@ -10,5 +10,14 @@
     <button (click)="save()">save</button> 
 </div>
 
+<app-slices [slices] = slices ></app-slices>
 
-<app-slice></app-slice>
+<!-- <div layout="row" layout-padding>
+  <mat-card   *ngFor="let slice of slices" flex="100">
+    <a routerLink="/detail/{{story.id}}">
+      <span class="badge">{{slice.title}}</span> {{story.text}}
+    </a>
+    <button class="delete" title="delete slice"
+    (click)="delete(slice)">x</button>
+  </mat-card>
+</div> -->

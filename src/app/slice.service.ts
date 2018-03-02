@@ -20,11 +20,11 @@ export class SliceService {
     ) { }
 
   /** GET slices from the server */
-  getStories (): Observable<Slice[]> {
+  getSlices (): Observable<Slice[]> {
     return this.http.get<Slice[]>(this.slicesUrl)
       .pipe(
         tap(slices => this.log(`fetched slices`)),
-        catchError(this.handleError('getStories', []))
+        catchError(this.handleError('getSlices', []))
       );
   }
 
@@ -38,7 +38,7 @@ export class SliceService {
           const outcome = h ? `fetched` : `dtitle not find`;
           this.log(`${outcome} slice title=${title}`);
         }),
-        catchError(this.handleError<Slice>(`getHero title=${title}`))
+        catchError(this.handleError<Slice>(`getSlice title=${title}`))
       );
   }
 
@@ -47,19 +47,19 @@ export class SliceService {
     const url = `${this.slicesUrl}/${title}`;
     return this.http.get<Slice>(url).pipe(
       tap(_ => this.log(`fetched hero title=${title}`)),
-      catchError(this.handleError<Slice>(`getHero title=${title}`))
+      catchError(this.handleError<Slice>(`getSlice title=${title}`))
     );
   }
 
   /* GET slices whose name contains search term */
-  searchStories(term: string): Observable<Slice[]> {
-    if (!term.trim()) {
+  searchSlices(term: number): Observable<Slice[]> {
+    if (!term) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Slice[]>(`api/slices/?name=${term}`).pipe(
+    return this.http.get<Slice[]>(`api/slices/?story=${term}`).pipe(
       tap(_ => this.log(`found slices matching "${term}"`)),
-      catchError(this.handleError<Slice[]>('searchStories', []))
+      catchError(this.handleError<Slice[]>('searchSlices', []))
     );
   }
 
@@ -69,7 +69,7 @@ export class SliceService {
   addSlice (slice: Slice): Observable<Slice> {
     return this.http.post<Slice>(this.slicesUrl, slice, httpOptions).pipe(
       tap((_: Slice) => this.log(`added slice w/ title=${slice.title}`)),
-      catchError(this.handleError<Slice>('addHero'))
+      catchError(this.handleError<Slice>('addSlice'))
     );
   }
 
@@ -80,7 +80,7 @@ export class SliceService {
 
     return this.http.delete<Slice>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted slice title=${title}`)),
-      catchError(this.handleError<Slice>('deleteHero'))
+      catchError(this.handleError<Slice>('deleteSlice'))
     );
   }
 
@@ -88,7 +88,7 @@ export class SliceService {
   updateSlice (slice: Slice): Observable<any> {
     return this.http.put(this.slicesUrl, slice, httpOptions).pipe(
       tap(_ => this.log(`updated hero title=${slice.title}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateSlice'))
     );
   }
 

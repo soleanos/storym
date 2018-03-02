@@ -1,11 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {StoryService} from './story.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { StoriesComponent } from './stories/stories.component';
-import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -17,13 +13,20 @@ import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { AngularDraggableModule } from 'angular2-draggable';
+
+import { AppComponent } from './app.component';
 import { StoriesHeaderComponent } from './stories-header/stories-header.component';
 import { StoriesPanelComponent } from './stories-panel/stories-panel.component';
-import { AngularDraggableModule } from 'angular2-draggable';
+import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { StoryHeaderComponent } from './story-header/story-header.component';
 import { StoryComponent } from './story/story.component';
 import { SliceComponent } from './slice/slice.component';
 import { SliceEditorComponent } from './slice-editor/slice-editor.component';
+import { StoriesComponent } from './stories/stories.component';
+import {StoryService} from './story.service';
+import {SliceService} from './slice.service';
+import { SlicesComponent } from './slices/slices.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { SliceEditorComponent } from './slice-editor/slice-editor.component';
     StoryHeaderComponent,
     StoryComponent,
     SliceComponent,
-    SliceEditorComponent
+    SliceEditorComponent,
+    SlicesComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,7 @@ import { SliceEditorComponent } from './slice-editor/slice-editor.component';
     CovalentDynamicFormsModule,
     AngularDraggableModule
   ],
-  providers: [StoryService, MessageService],
+  providers: [StoryService, MessageService, SliceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

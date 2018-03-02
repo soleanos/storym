@@ -17,10 +17,10 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 20, name: 'Tornado' }
       ];
       const slices: Slice[] = [
-        { title: 'laRentree', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdfqsdfqsdfqsdfqsdfsdfsdfsdfqsdfqsdf' },
-        { title: 'nuit', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdfqsdfqsdfqsdfqsdfsdfsdfsdfqsdfqsdf' },
-        { title: 'matin', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdfqsdfqsdfqsdfqsdfsdfsdfsdfqsdfqsdf' },
-        { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdfqsdfqsdfqsdfqsdfsdfsdfsdfqsdfqsdf' },
+        { title: 'etoile', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 13 },
+        { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 13 },
+        { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 13 },
+        { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 14 },
       ];
     return {stories, slices};
   }
