@@ -3,14 +3,7 @@
 
 <div *ngIf="story">
     <h2>{{ story.title | uppercase }} </h2>
-    <!-- <div><span>id: </span>{{story.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="story.name" placeholder="name"/>
-      </label>
-    </div>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>  -->
+    <app-slices [slices] = slices ></app-slices>
 </div>
 
-<app-slices [slices] = slices ></app-slices>
+

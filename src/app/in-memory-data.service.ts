@@ -7,8 +7,8 @@ export class InMemoryDataService implements InMemoryDbService {
     const stories: Story[] = [
         { id: 11, title: 'Mr. Nice' },
         { id: 12, title: 'Narcopppp' },
-        // { id: 13, title: 'Bombasto' },
-        // { id: 14, title: 'Celeritas' },
+        { id: 13, title: 'Bombasto' },
+        { id: 14, title: 'Celeritas' },
         // { id: 15, title: 'Magneta' },
         // { id: 16, title: 'RubberMan' },
         // { id: 17, title: 'Dynama' },

@@ -1,0 +1,7 @@
+<mat-card  >
+    <a routerLink="/story/{{story.id}}">
+    <span class="badge">{{story.id}}</span> {{story.title}}
+    </a>
+    <button class="delete" title="delete story"
+    (click)="delete(story)">x</button>
+</mat-card>

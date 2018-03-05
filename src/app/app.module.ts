@@ -26,7 +26,7 @@ import {SliceService} from './slice.service';
 import { SlicesComponent } from './slices/slices.component';
 import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './stories/stories.component';
-
+import { StoryComponent } from './story/story.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { StoriesComponent } from './stories/stories.component';
     SliceEditorComponent,
     SlicesComponent,
     StoryCreationDialogComponent,
-    StoriesComponent
+    StoriesComponent,
+    StoryComponent
   ],
   imports: [
     CustomAngularMaterialModule,

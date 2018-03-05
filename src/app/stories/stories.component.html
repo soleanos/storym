@@ -3,13 +3,7 @@
 </div>  -->
 
 <mat-grid-list   flex="100" cols="4" rowHeight="100px">
-    <mat-grid-tile *ngFor="let story of stories">
-        <mat-card  >
-                <a routerLink="/story/{{story.id}}">
-                <span class="badge">{{story.id}}</span> {{story.title}}
-                </a>
-                <button class="delete" title="delete story"
-                (click)="delete(story)">x</button>
-        </mat-card>
+    <mat-grid-tile *ngFor="let story of stories">     
+        <app-story [story] = story ></app-story>
     </mat-grid-tile>
 </mat-grid-list>
