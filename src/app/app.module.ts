@@ -6,19 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageService } from './message.service';
-import { MatCardModule} from '@angular/material';
 import { MessagesComponent } from './messages/messages.component';
-import { CovalentLayoutModule, CovalentStepsModule } from '@covalent/core';
-import { CovalentHttpModule } from '@covalent/http';
-import { CovalentHighlightModule } from '@covalent/highlight';
-import { CovalentMarkdownModule } from '@covalent/markdown';
-import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { AngularDraggableModule } from 'angular2-draggable';
-import {MatDialogModule} from '@angular/material';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import {CustomAngularMaterialModule} from './custom-angular-material.module';
+import {CustomCovalentModule} from './custom-covalent.module';
 
 import { AppComponent } from './app.component';
 import { StoriesHeaderComponent } from './stories-header/stories-header.component';
@@ -50,6 +42,7 @@ import { StoryCreationDialogComponent } from './story-creation-dialog/story-crea
     StoryCreationDialogComponent
   ],
   imports: [
+    CustomAngularMaterialModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -57,17 +50,9 @@ import { StoryCreationDialogComponent } from './story-creation-dialog/story-crea
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    MatCardModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
-    CovalentHttpModule.forRoot(),
-    CovalentHighlightModule,
-    CovalentMarkdownModule,
-    CovalentDynamicFormsModule,
+    CustomCovalentModule,
     AngularDraggableModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [StoryService, MessageService, SliceService],
   bootstrap: [AppComponent]

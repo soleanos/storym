@@ -1,7 +1,7 @@
 
 
-<h2>Mes histoires</h2>
 
+<!-- 
 <div>
   <label>Titre de l'histoire:
     <input #storyName />
@@ -9,20 +9,24 @@
   <button (click)="add(storyName.value); storyName.value=''">
     Créer
   </button>
-</div>
+</div> -->
 
-<div layout="row" layout-padding>
-  <mat-card   *ngFor="let story of stories" flex="100">
-    <a routerLink="/story/{{story.id}}">
-      <span class="badge">{{story.id}}</span> {{story.title}}
-    </a>
-    <button class="delete" title="delete story"
-    (click)="delete(story)">x</button>
-  </mat-card>
-</div>
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode="side" opened><app-stories-panel>lolz</app-stories-panel></mat-sidenav>
+  <mat-sidenav-content>
+    <app-stories-header></app-stories-header>
+    <div layout="row" layout-padding>
+      <mat-card   *ngFor="let story of stories" flex="100">
+        <a routerLink="/story/{{story.id}}">
+          <span class="badge">{{story.id}}</span> {{story.title}}
+        </a>
+        <button class="delete" title="delete story"
+        (click)="delete(story)">x</button>
+      </mat-card>
+    </div>
 
-
-<app-stories-panel>lolz</app-stories-panel>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
   
