@@ -22,11 +22,6 @@ export class HomeComponent implements OnInit {
     .subscribe(stories => this.stories = stories);
   }
 
-  delete(story: Story): void {
-    this.stories = this.stories.filter(h => h !== story);
-    this.storyService.deleteStory(story).subscribe();
-  }
-
   ngOnInit() {
     this.getStories();
   }

@@ -1,9 +1,5 @@
-<!-- <div  *ngFor="let story of stories" flex="100" >
-    <app-slice  [story]=story></app-slice > 
-</div>  -->
-
 <mat-grid-list   flex="100" cols="4" rowHeight="100px">
     <mat-grid-tile *ngFor="let story of stories">     
-        <app-story [story] = story ></app-story>
+        <app-story [stories] = stories [story] = story ></app-story>
     </mat-grid-tile>
 </mat-grid-list>
