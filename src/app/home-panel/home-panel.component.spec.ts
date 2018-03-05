@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoriesHeaderComponent } from './stories-header.component';
+import { HomePanelComponent } from './home-panel.component';
 
-describe('StoriesHeaderComponent', () => {
-  let component: StoriesHeaderComponent;
-  let fixture: ComponentFixture<StoriesHeaderComponent>;
+describe('HomePanelComponent', () => {
+  let component: HomePanelComponent;
+  let fixture: ComponentFixture<HomePanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoriesHeaderComponent ]
+      declarations: [ HomePanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoriesHeaderComponent);
+    fixture = TestBed.createComponent(HomePanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

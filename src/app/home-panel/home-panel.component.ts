@@ -5,11 +5,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {StoryService} from '../story.service';
 
 @Component({
-  selector: 'app-stories-panel',
-  templateUrl: './stories-panel.component.html',
-  styleUrls: ['./stories-panel.component.css']
+  selector: 'app-home-panel',
+  templateUrl: './home-panel.component.html',
+  styleUrls: ['./home-panel.component.css']
 })
-export class StoriesPanelComponent implements OnInit {
+export class HomePanelComponent implements OnInit {
   story: Story;
   title: string;
   @Input() stories: Story[];

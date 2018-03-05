@@ -1,8 +1,8 @@
 
 <mat-sidenav-container class="example-container" >
-  <mat-sidenav mode="side" opened><app-stories-panel [stories] = stories >lolz</app-stories-panel></mat-sidenav>
+  <mat-sidenav mode="side" opened><app-home-panel [stories] = stories >lolz</app-home-panel></mat-sidenav>
   <mat-sidenav-content>
-    <app-stories-header></app-stories-header>
+    <app-home-header></app-home-header>
     <div layout="row" layout-padding>
       <mat-card   *ngFor="let story of stories" flex="100">
         <a routerLink="/story/{{story.id}}">

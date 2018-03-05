@@ -3,11 +3,11 @@ import { Story } from '../story';
 import {StoryService} from '../story.service';
 
 @Component({
-  selector: 'app-stories',
-  templateUrl: './stories.component.html',
-  styleUrls: ['./stories.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class StoriesComponent implements OnInit {
+export class HomeComponent implements OnInit {
   stories: Story[];
   selectedStory: Story;
 

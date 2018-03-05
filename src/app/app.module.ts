@@ -13,14 +13,14 @@ import {CustomAngularMaterialModule} from './custom-angular-material.module';
 import {CustomCovalentModule} from './custom-covalent.module';
 
 import { AppComponent } from './app.component';
-import { StoriesHeaderComponent } from './stories-header/stories-header.component';
-import { StoriesPanelComponent } from './stories-panel/stories-panel.component';
+import { HomeHeaderComponent } from './home-header/home-header.component';
+import { HomePanelComponent } from './home-panel/home-panel.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
 import { StoryHeaderComponent } from './story-header/story-header.component';
 import { StoryComponent } from './story/story.component';
 import { SliceComponent } from './slice/slice.component';
 import { SliceEditorComponent } from './slice-editor/slice-editor.component';
-import { StoriesComponent } from './stories/stories.component';
+import { HomeComponent } from './home/home.component';
 import {StoryService} from './story.service';
 import {SliceService} from './slice.service';
 import { SlicesComponent } from './slices/slices.component';
@@ -29,11 +29,11 @@ import { StoryCreationDialogComponent } from './story-creation-dialog/story-crea
 @NgModule({
   declarations: [
     AppComponent,
-    StoriesComponent,
+    HomeComponent,
     StoryDetailComponent,
     MessagesComponent,
-    StoriesHeaderComponent,
-    StoriesPanelComponent,
+    HomeHeaderComponent,
+    HomePanelComponent,
     StoryHeaderComponent,
     StoryComponent,
     SliceComponent,
