@@ -1,12 +1,12 @@
 
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title>Rédiger une nouvelle histoire </h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+  <p>Quel titre souhaitez-vous choisir pour votre histoire ? </p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.title">
+    <input matInput [(ngModel)]="title">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Retour</button>
+  <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
 </div>

@@ -55,6 +55,7 @@ import { StoryCreationDialogComponent } from './story-creation-dialog/story-crea
     BrowserAnimationsModule,
   ],
   providers: [StoryService, MessageService, SliceService],
+  entryComponents: [StoryCreationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

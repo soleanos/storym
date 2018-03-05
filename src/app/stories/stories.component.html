@@ -1,18 +1,6 @@
 
-
-
-<!-- 
-<div>
-  <label>Titre de l'histoire:
-    <input #storyName />
-  </label>
-  <button (click)="add(storyName.value); storyName.value=''">
-    Créer
-  </button>
-</div> -->
-
 <mat-sidenav-container class="example-container" >
-  <mat-sidenav mode="side" opened><app-stories-panel>lolz</app-stories-panel></mat-sidenav>
+  <mat-sidenav mode="side" opened><app-stories-panel [stories] = stories >lolz</app-stories-panel></mat-sidenav>
   <mat-sidenav-content>
     <app-stories-header></app-stories-header>
     <div layout="row" layout-padding>
