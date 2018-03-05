@@ -16,8 +16,8 @@ import { AppComponent } from './app.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 import { HomePanelComponent } from './home-panel/home-panel.component';
 import { StoryDetailComponent } from './story-detail/story-detail.component';
-import { StoryHeaderComponent } from './story-header/story-header.component';
-import { StoryComponent } from './story/story.component';
+import { StoryEditionHeaderComponent } from './story-edition-header/story-edition-header.component';
+import { StoryEditionComponent } from './story-edition/story-edition.component';
 import { SliceComponent } from './slice/slice.component';
 import { SliceEditorComponent } from './slice-editor/slice-editor.component';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +25,8 @@ import {StoryService} from './story.service';
 import {SliceService} from './slice.service';
 import { SlicesComponent } from './slices/slices.component';
 import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
+import { StoriesComponent } from './stories/stories.component';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +36,13 @@ import { StoryCreationDialogComponent } from './story-creation-dialog/story-crea
     MessagesComponent,
     HomeHeaderComponent,
     HomePanelComponent,
-    StoryHeaderComponent,
-    StoryComponent,
+    StoryEditionHeaderComponent,
+    StoryEditionComponent,
     SliceComponent,
     SliceEditorComponent,
     SlicesComponent,
-    StoryCreationDialogComponent
+    StoryCreationDialogComponent,
+    StoriesComponent
   ],
   imports: [
     CustomAngularMaterialModule,

@@ -8,11 +8,11 @@ import { SliceService } from '../slice.service';
 
 
 @Component({
-  selector: 'app-story',
-  templateUrl: './story.component.html',
-  styleUrls: ['./story.component.css']
+  selector: 'app-story-edition',
+  templateUrl: './story-edition.component.html',
+  styleUrls: ['./story-edition.component.css']
 })
-export class StoryComponent implements OnInit {
+export class StoryEditionComponent implements OnInit {
 
   @Input() story: Story;
   @Input() slices: Slice[];

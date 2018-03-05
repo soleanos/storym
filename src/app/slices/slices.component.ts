@@ -10,9 +10,6 @@ export class SlicesComponent implements OnInit {
 
   @Input() slices: Slice[];
 
-  // @ViewChild('myCanvas') myCanvas: ElementRef;
-  // public context: CanvasRenderingContext2D;
-
   constructor() { }
 
   ngOnInit() {
