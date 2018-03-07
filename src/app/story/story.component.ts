@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Story } from '../story';
 import {StoryService} from '../story.service';
 
@@ -11,16 +11,15 @@ export class StoryComponent implements OnInit {
 
   @Input() story: Story;
   @Input() stories: Story[];
-
+  @Output() storiesChange = new EventEmitter<Story[]>();
   constructor(private storyService: StoryService) { }
 
   ngOnInit() {
   }
 
   delete(story: Story): void {
-    console.log(this.stories);
     this.stories = this.stories.filter(h => h !== story);
     this.storyService.deleteStory(story).subscribe();
-    console.log(this.stories);
+    this.storiesChange.emit(this.stories);
   }
 }

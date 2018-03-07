@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Story } from '../story';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -13,6 +13,7 @@ export class HomePanelComponent implements OnInit {
   story: Story;
   title: string;
   @Input() stories: Story[];
+  @Output() storiesChange = new EventEmitter<Story[]>();
 
   constructor(public dialog: MatDialog, private storyService: StoryService) { }
 
@@ -38,6 +39,7 @@ export class HomePanelComponent implements OnInit {
     this.storyService.addStory({ title } as Story)
       .subscribe(story => {
         this.stories.push(story);
+        this.storiesChange.emit(this.stories);
       });
   }
 

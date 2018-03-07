@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
 import { Story } from '../story';
 import {StoryService} from '../story.service';
 
@@ -8,7 +8,7 @@ import {StoryService} from '../story.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  stories: Story[];
+  @Input() stories: Story[];
   selectedStory: Story;
 
   onSelect(story: Story): void {

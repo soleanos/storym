@@ -1,20 +1,13 @@
 
 <mat-sidenav-container class="example-container" >
-  <mat-sidenav mode="side" opened><app-home-panel [stories] = stories >lolz</app-home-panel></mat-sidenav>
+  <mat-sidenav mode="side" color="red" opened>
+    <app-home-panel [(stories)] = stories ></app-home-panel>
+  </mat-sidenav>
   <mat-sidenav-content>
-    <app-home-header></app-home-header>
-    <!-- <div layout="row" layout-padding>
-      <mat-card   *ngFor="let story of stories" flex="100">
-        <a routerLink="/story/{{story.id}}">
-          <span class="badge">{{story.id}}</span> {{story.title}}
-        </a>
-        <button class="delete" title="delete story"
-        (click)="delete(story)">x</button>
-      </mat-card>
-    </div> -->
-    <app-stories [stories] = stories ></app-stories>
+    <app-home-header [stories] = stories></app-home-header>
+    <app-stories [(stories)] = stories ></app-stories>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-
+<app-messages></app-messages>
   

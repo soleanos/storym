@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Story } from '../story';
 
 @Component({
   selector: 'app-home-header',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-header.component.css']
 })
 export class HomeHeaderComponent implements OnInit {
-
+  @Input() stories: Story[];
+  
   constructor() { }
 
   ngOnInit() {

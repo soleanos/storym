@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Story } from '../story';
 
 @Component({
@@ -9,10 +9,18 @@ import { Story } from '../story';
 export class StoriesComponent implements OnInit {
 
   @Input() stories: Story[];
+  @Output() storiesChange = new EventEmitter<Story[]>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changed(newValue) {
+    console.log('newValue', newValue);
+    if ( newValue) {
+      this.storiesChange.emit(newValue);
+    }
   }
 
 }
