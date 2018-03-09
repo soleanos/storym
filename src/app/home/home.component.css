@@ -1,5 +1,5 @@
 /* HeroesComponent's private CSS styles */
-.stories {
+/* .stories {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
@@ -71,11 +71,14 @@
     background-color: gray !important;
     color: white;
   }
+   */
   
   
+  .mat-sidenav {
+    background: rgb(60, 59, 65);
+  }
+
+  .mat-sidenav-content {
+    background: rgb(92, 92, 92);
+  }
   
-  /*
-  Copyright 2017 Google Inc. All Rights Reserved.
-  Use of this source code is governed by an MIT-style license that
-  can be found in the LICENSE file at http://angular.io/license
-  */

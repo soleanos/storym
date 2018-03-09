@@ -27,7 +27,7 @@
     "@covalent/highlight": "^1.0.0-rc.1",
     "@covalent/http": "^1.0.0-rc.1",
     "@covalent/markdown": "^1.0.0-rc.1",
-    "angular-in-memory-web-api": "^0.5.2",
+    "angular-in-memory-web-api": "latest",
     "angular2-draggable": "^1.2.1",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",

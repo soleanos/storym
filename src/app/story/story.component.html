@@ -1,4 +1,4 @@
-<mat-card  >
+<mat-card  *ngIf="story" >
     <a routerLink="/story/{{story.id}}">
     <span class="badge">{{story.id}}</span> {{story.title}}
     </a>

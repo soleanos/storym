@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Router } from '@angular/router/src/router';
+
 
 @Component({
   selector: 'app-story-edition-header',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoryEditionHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+  goToHome= function () {
+    this.router.navigateByUrl('/home');
+  };
 
 }
