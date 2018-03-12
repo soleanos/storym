@@ -59,7 +59,7 @@ import { StoryComponent } from './story/story.component';
     BrowserAnimationsModule,
   ],
   providers: [StoryService, MessageService, SliceService],
-  entryComponents: [StoryCreationDialogComponent],
+  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

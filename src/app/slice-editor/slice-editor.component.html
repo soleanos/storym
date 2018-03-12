@@ -1,3 +1,17 @@
-<p>
-  slice-editor works!
-</p>
+<h1 mat-dialog-title>Rédiger un nouveau passage de l'histoire </h1>
+<div mat-dialog-content>
+  <p>Titre du passage : </p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="title" placeholder="Titre">
+  </mat-form-field>
+ 
+  <p>Texte du passage : </p>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="text" placeholder="texte"></textarea>
+    <input matInput >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Retour</button>
+  <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
+</div>

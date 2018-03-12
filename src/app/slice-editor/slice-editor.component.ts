@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Slice } from '../Slice';
 
 @Component({
   selector: 'app-slice-editor',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliceEditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<SliceEditorComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: Slice
+   ) {}
 
   ngOnInit() {
   }
