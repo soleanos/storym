@@ -9,7 +9,9 @@ import { Story } from '../story';
 export class HomeHeaderComponent implements OnInit {
   @Input() stories: Story[];
   
-  constructor() { }
+  constructor(
+
+  ) { }
 
   ngOnInit() {
   }

@@ -15,4 +15,8 @@ export class SliceComponent implements OnInit {
   ngOnInit() {
   }
 
+  test(): void {
+   alert("omg");
+  }
+
 }
