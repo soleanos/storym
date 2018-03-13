@@ -17,12 +17,33 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 20, title: 'Tornado' }
       ];
       const slices: Slice[] = [
-        { title: 'etoile', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
+        { title: 'etoile', text: 'nous allons manger et puis [aller vagabonder ] test sqdqsdqs [mdr ] lol', story: 11 },
         { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
         { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 12 },
         { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
       ];
     return {stories, slices};
   }
+
+  guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  }
+
+  genId<T extends { id: any }>(collection: T[], collectionName: string): any {
+    if (collectionName === 'nobodies') {
+      console.log('genId override for \'nobodies\'');
+      return this.guid();
+    } else if (collection) {
+      console.log(`genId override for '${collectionName}'`);
+      return 1 + collection.reduce((prev, curr) => Math.max(prev, curr.id || 0), 1000);
+    }
+
+}
 }
 

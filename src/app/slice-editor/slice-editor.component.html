@@ -2,16 +2,16 @@
 <div mat-dialog-content>
   <p>Titre du passage : </p>
   <mat-form-field>
-    <input matInput [(ngModel)]="title" placeholder="Titre">
+    <input matInput [(ngModel)]="data.title" placeholder="Titre">
   </mat-form-field>
  
   <p>Texte du passage : </p>
   <mat-form-field>
-    <textarea matInput [(ngModel)]="text" placeholder="texte"></textarea>
-    <input matInput >
+    <textarea matInput [(ngModel)]="data.text" placeholder="texte" (keyup)="alert($event)"></textarea>
+
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Retour</button>
-  <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
+  <button mat-button >Retour</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

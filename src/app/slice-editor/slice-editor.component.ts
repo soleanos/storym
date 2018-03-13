@@ -17,4 +17,8 @@ export class SliceEditorComponent implements OnInit {
   ngOnInit() {
   }
 
+  saveText(event: any) { // without type info
+     console.log(event.target.value );
+  }
+
 }
