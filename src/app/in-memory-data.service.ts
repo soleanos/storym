@@ -5,22 +5,16 @@ import { Slice } from './Slice';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const stories: Story[] = [
-        { id: 11, title: 'Mr. Nice' },
-        { id: 12, title: 'Narcopppp' },
-        { id: 13, title: 'Bombasto' },
-        { id: 14, title: 'Celeritas' },
-        // { id: 15, title: 'Magneta' },
-        // { id: 16, title: 'RubberMan' },
-        // { id: 17, title: 'Dynama' },
-        // { id: 18, title: 'Dr IQ' },
-        // { id: 19, title: 'Magma' },
-        { id: 20, title: 'Tornado' }
+        { id: 1, title: 'Harry Potter' },
+        { id: 2, title: 'Le seigneur des anneaux' },
+        { id: 3, title: 'Las Vegas' },
+        { id: 4, title: 'Issou' },
       ];
       const slices: Slice[] = [
-        { title: 'etoile', text: 'nous allons manger et puis [aller vagabonder | la foret] test sqdqsdqs [mdr ] lol', story: 11 },
-        { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
-        { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 12 },
-        { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
+        { title: 'Chapitre I', text: "La nuit tombe sur Poudlard, que souhaitez vous faire ? [Aller dormir | dormir] ou [Explorer le chateau | exploration du chateau]", story: 1 },
+        { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2 },
+        { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3 },
+        { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4 },
       ];
     return {stories, slices};
   }

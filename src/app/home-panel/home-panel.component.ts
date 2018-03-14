@@ -49,16 +49,18 @@ export class HomePanelComponent implements OnInit {
   }
 
   /**
-   * Crée un nouveau passage et l'ajoute à la liste des passages 
+   * Crée un nouveau passage et l'ajoute à la liste des passages
    * @param title
    *
    */
   createSlice(idStory: number): void {
     const slice: Slice = new Slice();
-    slice.title = "Debut de l'histoire";
-    slice.text = 'Double-cliquer pour éditer ce passage';
-    slice.story = idStory;
-    this.sliceService.addSlice(slice).subscribe(newSlice => {
+    // slice.setTitle("Debut de l'histoire");
+    // slice.setText('Double-cliquer pour éditer ce passage');
+    // slice.setStory(idStory);
+    this.sliceService.addSlice(
+      { title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory }
+    ).subscribe(newSlice => {
     });
   }
 
