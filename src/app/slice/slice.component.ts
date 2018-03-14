@@ -43,6 +43,7 @@ export class SliceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(slice => {
       if (slice) {
         this.createNextSlicesFromText(slice.text);
+        //this.updateSlice(slice);
       }
     });
   }
@@ -62,6 +63,17 @@ export class SliceComponent implements OnInit {
       });
   }
 
+  updateSlice(slice: Slice): void {
+    console.log(slice);
+    if (slice) {
+    this.sliceService.updateSlice(slice)
+      .subscribe(sliceUpdated => {
+        this.slices.push(sliceUpdated);
+        this.slicesChange.emit(this.slices);
+      });
+    }
+  }
+
   /**
    * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
    * avec pour titre y
@@ -69,6 +81,7 @@ export class SliceComponent implements OnInit {
    */
   createNextSlicesFromText(sliceText: String) {
     this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
+    console.log(this.linkedSlicesUnformated);
     if (this.linkedSlicesUnformated) {
       this.linkedSlicesUnformated.forEach(element => {
         // On enleve les crochets
