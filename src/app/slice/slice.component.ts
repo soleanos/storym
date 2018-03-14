@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { Slice } from '../Slice';
 import { ViewChild, ElementRef } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
+import {SliceService} from '../slice.service';
 
 @Component({
   selector: 'app-slice',
@@ -12,9 +13,13 @@ import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
 export class SliceComponent implements OnInit {
   title: string;
   text: string;
-  results : String[];
+  linkedSlicesUnformated: String[];
+  sliceStringArray: String[];
   @Input() slice: Slice;
-  constructor(public dialog: MatDialog) { }
+  @Input() slices: Slice[];
+  @Output() slicesChange = new EventEmitter<Slice[]>();
+
+  constructor(public dialog: MatDialog, private sliceService: SliceService) { }
 
   ngOnInit() {
     this.text = this.slice.text;
@@ -33,12 +38,36 @@ export class SliceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(slice => {
       if ( slice) {
-        this.results =  slice.text.match(/#puis#/);
-        console.log(slice.text.match(/(\[([^\]]|\]\[)*\])/g));
-        //({([^}]|}{)*})
+        this.linkedSlicesUnformated =  slice.text.match(/(\[([^\]]|\]\[)*\])/g);
+        if (this.linkedSlicesUnformated) {
+          this.linkedSlicesUnformated.forEach(element => {
+            // On enleve les crochets
+            element = element.substr(1, element.length - 2);
+            // Si on a un pipe alors on coupe en deux
+            if (element.search(/[|]/g) !== -1) {
+              element.replace(/[\[]|[\]]/, '');
+              this.sliceStringArray = element.split('|');
+              this.sliceStringArray.forEach(sliceElement => {
+                sliceElement.trim();
+              });
+             // this.createSlice(this.sliceStringArray[1]);
+            }
+          });
+
+
+        }
       }
     });
   }
 
+  createSlice(title: String): void {
+    title = title.trim();
+    if (!title) { return; }
+    this.sliceService.addSlice({ title } as Slice)
+      .subscribe(slice => {
+        this.slices.push(slice);
+        this.slicesChange.emit(this.slices);
+      });
+  }
 
 }

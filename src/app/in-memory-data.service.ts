@@ -17,7 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 20, title: 'Tornado' }
       ];
       const slices: Slice[] = [
-        { title: 'etoile', text: 'nous allons manger et puis [aller vagabonder ] test sqdqsdqs [mdr ] lol', story: 11 },
+        { title: 'etoile', text: 'nous allons manger et puis [aller vagabonder | la foret] test sqdqsdqs [mdr ] lol', story: 11 },
         { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
         { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 12 },
         { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 11 },
