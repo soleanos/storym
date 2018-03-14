@@ -3,6 +3,8 @@ import { Story } from '../story';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {StoryService} from '../story.service';
+import {SliceService} from '../slice.service';
+import { Slice } from '../Slice';
 
 @Component({
   selector: 'app-home-panel',
@@ -11,11 +13,12 @@ import {StoryService} from '../story.service';
 })
 export class HomePanelComponent implements OnInit {
   story: Story;
+  slice: Slice;
   title: string;
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(public dialog: MatDialog, private storyService: StoryService) { }
+  constructor(public dialog: MatDialog, private storyService: StoryService,private sliceService: SliceService) { }
 
   ngOnInit() {
   }
@@ -40,7 +43,23 @@ export class HomePanelComponent implements OnInit {
       .subscribe(story => {
         this.stories.push(story);
         this.storiesChange.emit(this.stories);
+        console.log(story.id);
+        this.createSlice(story.id);
       });
+  }
+
+  /**
+   * Crée un nouveau passage et l'ajoute à la liste des passages 
+   * @param title
+   *
+   */
+  createSlice(idStory: number): void {
+    const slice: Slice = new Slice();
+    slice.title = "Debut de l'histoire";
+    slice.text = 'Double-cliquer pour éditer ce passage';
+    slice.story = idStory;
+    this.sliceService.addSlice(slice).subscribe(newSlice => {
+    });
   }
 
 }

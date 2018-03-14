@@ -1,6 +1,8 @@
-import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter, ViewChild} from '@angular/core';
 import { Story } from '../story';
 import {StoryService} from '../story.service';
+import {HomeHeaderComponent} from '../home-header/home-header.component';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import {StoryService} from '../story.service';
 export class HomeComponent implements OnInit {
   @Input() stories: Story[];
   selectedStory: Story;
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   onSelect(story: Story): void {
     this.selectedStory = story;
@@ -24,6 +27,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getStories();
+  }
+
+  close() {
+    this.sidenav.close();
   }
 
 }

@@ -1,10 +1,10 @@
 
-<mat-sidenav-container >
-  <mat-sidenav mode="side" opened>
+<mat-sidenav-container (backdropClick)="close()" >
+  <mat-sidenav  #sidenav mode="side" disableClose>
     <app-home-panel [(stories)] = stories ></app-home-panel>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <app-home-header [stories] = stories></app-home-header>
+  <mat-sidenav-content >
+    <app-home-header [sidenav] = sidenav [stories] = stories></app-home-header>
     <app-stories [(stories)] = stories ></app-stories>
   </mat-sidenav-content>
 </mat-sidenav-container>

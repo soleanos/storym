@@ -10,6 +10,10 @@ import {SliceService} from '../slice.service';
   templateUrl: './slice.component.html',
   styleUrls: ['./slice.component.css']
 })
+
+/**
+ * Classe liée à l'élément passage.
+ */
 export class SliceComponent implements OnInit {
   title: string;
   text: string;
@@ -26,10 +30,10 @@ export class SliceComponent implements OnInit {
     this.title = this.slice.title;
   }
 
-  test(): void {
-    this.openDialog();
-  }
-
+  /**
+   * Ouverture de la fenpetre modale avec paramètres
+   * et gestion des actions après sa fermeture
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorComponent, {
       width: '60%',
@@ -37,29 +41,17 @@ export class SliceComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(slice => {
-      if ( slice) {
-        this.linkedSlicesUnformated =  slice.text.match(/(\[([^\]]|\]\[)*\])/g);
-        if (this.linkedSlicesUnformated) {
-          this.linkedSlicesUnformated.forEach(element => {
-            // On enleve les crochets
-            element = element.substr(1, element.length - 2);
-            // Si on a un pipe alors on coupe en deux
-            if (element.search(/[|]/g) !== -1) {
-              element.replace(/[\[]|[\]]/, '');
-              this.sliceStringArray = element.split('|');
-              this.sliceStringArray.forEach(sliceElement => {
-                sliceElement.trim();
-              });
-             // this.createSlice(this.sliceStringArray[1]);
-            }
-          });
-
-
-        }
+      if (slice) {
+        this.createNextSlicesFromText(slice.text);
       }
     });
   }
 
+  /**
+   * Crée un nouveau passage et l'ajoute à la liste des passages 
+   * @param title
+   *
+   */
   createSlice(title: String): void {
     title = title.trim();
     if (!title) { return; }
@@ -68,6 +60,30 @@ export class SliceComponent implements OnInit {
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
       });
+  }
+
+  /**
+   * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
+   * avec pour titre y
+   * @param sliceText
+   */
+  createNextSlicesFromText(sliceText: String) {
+    this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
+    if (this.linkedSlicesUnformated) {
+      this.linkedSlicesUnformated.forEach(element => {
+        // On enleve les crochets
+        element = element.substr(1, element.length - 2);
+        // Si on a un pipe alors on coupe en deux
+        if (element.search(/[|]/g) !== -1) {
+          element.replace(/[\[]|[\]]/, '');
+          this.sliceStringArray = element.split('|');
+          this.sliceStringArray.forEach(sliceElement => {
+            sliceElement.trim();
+          });
+         this.createSlice(this.sliceStringArray[1]);
+        }
+      });
+    }
   }
 
 }

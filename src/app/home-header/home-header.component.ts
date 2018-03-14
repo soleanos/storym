@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output} from '@angular/core';
 import { Story } from '../story';
+import {MatSidenav} from '@angular/material/sidenav';
+import { viewParentEl } from '@angular/core/src/view/util';
+
 
 @Component({
   selector: 'app-home-header',
@@ -8,7 +11,9 @@ import { Story } from '../story';
 })
 export class HomeHeaderComponent implements OnInit {
   @Input() stories: Story[];
-  
+  @Input() sidenav: MatSidenav;
+  @Output() sidenavChange: MatSidenav;
+
   constructor(
 
   ) { }
