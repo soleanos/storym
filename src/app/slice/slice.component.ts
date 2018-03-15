@@ -19,6 +19,7 @@ export class SliceComponent implements OnInit {
   text: string;
   story: number;
   id: number;
+  level: number;
   rank: number;
 
   linkedSlicesUnformated: String[];
@@ -34,7 +35,9 @@ export class SliceComponent implements OnInit {
     this.title = this.slice.title;
     this.id = this.slice.id;
     this.story = this.slice.id;
+    this.level = this.slice.level;
     this.rank = this.slice.rank;
+    this.updateRank();
   }
 
   /**
@@ -44,7 +47,7 @@ export class SliceComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorComponent, {
       width: '100%',
-      data: {title : this.title, text : this.text, id : this.id, story : this.story, rank : this.rank}
+      data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level}
     });
 
     dialogRef.afterClosed().subscribe(slice => {
@@ -63,7 +66,7 @@ export class SliceComponent implements OnInit {
   createSlice(title: String): void {
     title = title.trim();
     if (!title) { return; }
-    this.sliceService.addSlice({ title, story: this.story, text : 'Double cliquez pour éditer', rank : this.rank + 1 } as Slice)
+    this.sliceService.addSlice({ rank : 0, title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1 } as Slice)
       .subscribe(slice => {
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
@@ -102,5 +105,26 @@ export class SliceComponent implements OnInit {
       });
     }
   }
+  /**
+   * Met a jour le rank
+   */
+  updateRank() {
+    this.calculRank(this.slice.level);
+    this.updateSlice(this.slice);
+  }
 
+  /**
+   * Calcul le rank en fonction du nombre de passage au niveau
+   * @param sliceLevel 
+   */
+  calculRank(sliceLevel: number) {
+    console.log("Recherche niveau : " +sliceLevel);
+    this.sliceService.searchSlicesByRank(sliceLevel)
+      .subscribe(slices => {
+        console.log(slices);
+        this.rank = slices.length;
+        console.log("rank" + this.rank);
+      });
+  }
 }
+

@@ -51,7 +51,7 @@ export class SliceService {
     );
   }
 
-  /* GET slices whose name contains search term */
+  /* GET slices whose story contains search term */
   searchSlices(term: number): Observable<Slice[]> {
     if (!term) {
       // if not search term, return empty hero array.
@@ -63,6 +63,17 @@ export class SliceService {
     );
   }
 
+  /* GET slices whose rank contains search term */
+  searchSlicesByRank(term: number): Observable<Slice[]> {
+    if (!term) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Slice[]>(`api/slices/?level=${term}`).pipe(
+      tap(_ => this.log(`found slices matching "${term}"`)),
+      catchError(this.handleError<Slice[]>('searchSlices', []))
+    );
+  }
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
