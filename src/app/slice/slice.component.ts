@@ -17,6 +17,8 @@ import {SliceService} from '../slice.service';
 export class SliceComponent implements OnInit {
   title: string;
   text: string;
+  story: number;
+  id: number;
   linkedSlicesUnformated: String[];
   sliceStringArray: String[];
   @Input() slice: Slice;
@@ -28,6 +30,8 @@ export class SliceComponent implements OnInit {
   ngOnInit() {
     this.text = this.slice.text;
     this.title = this.slice.title;
+    this.id = this.slice.id;
+    this.story = this.slice.id;
   }
 
   /**
@@ -37,13 +41,13 @@ export class SliceComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorComponent, {
       width: '100%',
-      data: {title : this.title, text : this.text}
+      data: {title : this.title, text : this.text, id : this.id, story : this.story}
     });
 
     dialogRef.afterClosed().subscribe(slice => {
       if (slice) {
+        this.updateSlice(slice);
         this.createNextSlicesFromText(slice.text);
-        //this.updateSlice(slice);
       }
     });
   }
@@ -64,12 +68,10 @@ export class SliceComponent implements OnInit {
   }
 
   updateSlice(slice: Slice): void {
-    console.log(slice);
     if (slice) {
     this.sliceService.updateSlice(slice)
       .subscribe(sliceUpdated => {
-        this.slices.push(sliceUpdated);
-        this.slicesChange.emit(this.slices);
+        this.slice = slice;
       });
     }
   }
@@ -81,7 +83,6 @@ export class SliceComponent implements OnInit {
    */
   createNextSlicesFromText(sliceText: String) {
     this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
-    console.log(this.linkedSlicesUnformated);
     if (this.linkedSlicesUnformated) {
       this.linkedSlicesUnformated.forEach(element => {
         // On enleve les crochets

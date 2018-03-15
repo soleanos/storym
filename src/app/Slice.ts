@@ -1,4 +1,5 @@
 export class Slice {
+    id?: number;
     title: string;
     text: string;
     story: number;

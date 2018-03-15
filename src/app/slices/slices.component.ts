@@ -9,7 +9,7 @@ import { Slice } from '../Slice';
 export class SlicesComponent implements OnInit {
 
   @Input() slices: Slice[];
-
+  
   constructor() { }
 
   ngOnInit() {

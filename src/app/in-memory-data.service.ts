@@ -11,10 +11,10 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 4, title: 'Issou' },
       ];
       const slices: Slice[] = [
-        { title: 'Chapitre I', text: "La nuit tombe sur Poudlard, que souhaitez vous faire ? [Aller dormir | dormir] ou [Explorer le chateau | exploration du chateau]", story: 1 },
-        { title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2 },
-        { title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3 },
-        { title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4 },
+        { id : 10, title: 'Chapitre I', text: "[Aller dormir | dormir] ou [Explorer le chateau | exploration du chateau]", story: 1 },
+        { id : 2, title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2 },
+        { id: 3, title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3 },
+        { id : 4, title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4 },
       ];
     return {stories, slices};
   }

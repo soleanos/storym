@@ -18,7 +18,7 @@ export class HomePanelComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(public dialog: MatDialog, private storyService: StoryService,private sliceService: SliceService) { }
+  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService) { }
 
   ngOnInit() {
   }
@@ -43,7 +43,6 @@ export class HomePanelComponent implements OnInit {
       .subscribe(story => {
         this.stories.push(story);
         this.storiesChange.emit(this.stories);
-        console.log(story.id);
         this.createSlice(story.id);
       });
   }
@@ -59,8 +58,9 @@ export class HomePanelComponent implements OnInit {
     // slice.setText('Double-cliquer pour éditer ce passage');
     // slice.setStory(idStory);
     this.sliceService.addSlice(
-      { title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory }
+      { title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory}
     ).subscribe(newSlice => {
+      console.log(newSlice.id);
     });
   }
 
