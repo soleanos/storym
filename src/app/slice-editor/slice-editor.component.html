@@ -4,6 +4,7 @@
     <input matInput [(ngModel)]="data.title" placeholder="Titre">
   </mat-form-field>
   <p></p>
+  <button color="primary" mat-button (click) = "addSliceTag()" >Ajouter un lien vers passage</button>
   <mat-form-field >
     <textarea rows = "10" matInput [(ngModel)]="data.text" placeholder="texte" ></textarea>
   </mat-form-field>

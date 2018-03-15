@@ -21,4 +21,8 @@ export class SliceEditorComponent implements OnInit {
      console.log(event.target.value );
   }
 
+  addSliceTag(event: any) { // without type info
+    this.data.text += ' [Texte de lien | Titre unique du prochain passage]';
+ }
+
 }

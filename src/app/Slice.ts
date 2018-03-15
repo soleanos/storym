@@ -3,6 +3,8 @@ export class Slice {
     title: string;
     text: string;
     story: number;
+    level?: number;
+    rank?: number;
     constructor() {
     }
 

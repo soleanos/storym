@@ -19,6 +19,8 @@ export class SliceComponent implements OnInit {
   text: string;
   story: number;
   id: number;
+  rank: number;
+
   linkedSlicesUnformated: String[];
   sliceStringArray: String[];
   @Input() slice: Slice;
@@ -32,6 +34,7 @@ export class SliceComponent implements OnInit {
     this.title = this.slice.title;
     this.id = this.slice.id;
     this.story = this.slice.id;
+    this.rank = this.slice.rank;
   }
 
   /**
@@ -41,7 +44,7 @@ export class SliceComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorComponent, {
       width: '100%',
-      data: {title : this.title, text : this.text, id : this.id, story : this.story}
+      data: {title : this.title, text : this.text, id : this.id, story : this.story, rank : this.rank}
     });
 
     dialogRef.afterClosed().subscribe(slice => {
@@ -60,7 +63,7 @@ export class SliceComponent implements OnInit {
   createSlice(title: String): void {
     title = title.trim();
     if (!title) { return; }
-    this.sliceService.addSlice({ title, story: this.story, text : 'Double cliquez pour éditer' } as Slice)
+    this.sliceService.addSlice({ title, story: this.story, text : 'Double cliquez pour éditer', rank : this.rank + 1 } as Slice)
       .subscribe(slice => {
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
