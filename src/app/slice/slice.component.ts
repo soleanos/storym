@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter, ChangeDetectionStrategy, } from '@angular/core';
 import { Slice } from '../Slice';
 import { ViewChild, ElementRef } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -8,7 +8,8 @@ import {SliceService} from '../slice.service';
 @Component({
   selector: 'app-slice',
   templateUrl: './slice.component.html',
-  styleUrls: ['./slice.component.css']
+  styleUrls: ['./slice.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 /**
@@ -37,7 +38,7 @@ export class SliceComponent implements OnInit {
     this.story = this.slice.id;
     this.level = this.slice.level;
     this.rank = this.slice.rank;
-    this.updateRank();
+    //this.updateRank();
   }
 
   /**
@@ -66,8 +67,9 @@ export class SliceComponent implements OnInit {
   createSlice(title: String): void {
     title = title.trim();
     if (!title) { return; }
-    this.sliceService.addSlice({ rank : 0, title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1 } as Slice)
+    this.sliceService.addSlice({title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1 } as Slice)
       .subscribe(slice => {
+        console.log(slice);
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
       });
@@ -118,12 +120,9 @@ export class SliceComponent implements OnInit {
    * @param sliceLevel 
    */
   calculRank(sliceLevel: number) {
-    console.log("Recherche niveau : " +sliceLevel);
     this.sliceService.searchSlicesByRank(sliceLevel)
       .subscribe(slices => {
-        console.log(slices);
-        this.rank = slices.length;
-        console.log("rank" + this.rank);
+        this.rank = slices.length + 1;
       });
   }
 }

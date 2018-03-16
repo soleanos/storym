@@ -1,4 +1,8 @@
 .slice{
     word-wrap:break-word;
     border-style: solid;
+    display:inline-block;
+    text-overflow: ellipsis;
+    height: 120px;
+    overflow: hidden;
 }

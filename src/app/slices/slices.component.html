@@ -1,5 +1,20 @@
-<div  *ngFor="let slice of slices" flex="100" >
+<!-- <div  *ngFor="let slice of slices" flex="100" >
   <app-slice [(slices)]=slices [slice]=slice></app-slice >
 </div>
 
-<app-messages></app-messages>
+
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let slice of slices"
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]="red">
+    {{slice.text}}
+  </mat-grid-tile>
+</mat-grid-list> -->
+
+
+<div flex = "100" *ngFor="let num of [0,1,2,3,4,5,6]">
+      <app-slice *ngFor="let slice of slices | sliceByLevel:num " [(slices)]=slices [slice]=slice></app-slice >
+  <br>
+</div>

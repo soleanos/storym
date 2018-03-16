@@ -12,9 +12,9 @@ export class InMemoryDataService implements InMemoryDbService {
       ];
       const slices: Slice[] = [
         { level : 0, id : 10, title: 'Chapitre I', text: "[Aller dormir | dormir] ou [Explorer le chateau | exploration du chateau]", story: 1 },
-        { id : 2, title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2 },
-        { id: 3, title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3 },
-        { id : 4, title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4 },
+        { level : 0, id : 2, title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2 },
+        { level : 0, id: 3, title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3 },
+        { level : 0, id : 4, title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4 },
       ];
     return {stories, slices};
   }

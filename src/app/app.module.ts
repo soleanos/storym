@@ -27,6 +27,8 @@ import { SlicesComponent } from './slices/slices.component';
 import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
+import { SliceByLevelPipe } from './slice-by-level.pipe';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { StoryComponent } from './story/story.component';
     SlicesComponent,
     StoryCreationDialogComponent,
     StoriesComponent,
-    StoryComponent
+    StoryComponent,
+    SliceByLevelPipe
   ],
   imports: [
     CustomAngularMaterialModule,
