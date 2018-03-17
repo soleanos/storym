@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Story } from '../story';
 
 
 @Component({
@@ -11,6 +12,8 @@ export class StoryEditionHeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  @Input() story: Story;
+
   ngOnInit() {
   }
 
@@ -18,4 +21,7 @@ export class StoryEditionHeaderComponent implements OnInit {
     this.router.navigateByUrl('/home');
   };
 
+  goToStoryTest = function () {
+    this.router.navigateByUrl('/test/'+this.story.id);
+  };
 }

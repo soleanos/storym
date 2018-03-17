@@ -1,5 +1,5 @@
 
-<app-story-edition-header></app-story-edition-header>
+<app-story-edition-header [story]=story ></app-story-edition-header>
 
 <div *ngIf="story">
     <h2>{{ story.title | uppercase }} </h2>

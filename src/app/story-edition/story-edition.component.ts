@@ -33,13 +33,11 @@ export class StoryEditionComponent implements OnInit {
   getStory(id: number): void {
     this.storyService.getStory(id)
       .subscribe(story => this.story = story);
-      console.log(this.story);
   }
 
   getSlices(id: number): void {
     this.sliceService.searchSlices(id)
       .subscribe(slices => this.slices = slices);
-      console.log(this.slices);
   }
 
   goBack(): void {

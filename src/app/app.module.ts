@@ -27,6 +27,7 @@ import { SlicesComponent } from './slices/slices.component';
 import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
+import { StoryTestComponent } from './story-test/story-test.component';
 import { SliceByLevelPipe } from './slice-by-level.pipe';
 
 
@@ -46,7 +47,8 @@ import { SliceByLevelPipe } from './slice-by-level.pipe';
     StoryCreationDialogComponent,
     StoriesComponent,
     StoryComponent,
-    SliceByLevelPipe
+    SliceByLevelPipe,
+    StoryTestComponent
   ],
   imports: [
     CustomAngularMaterialModule,
