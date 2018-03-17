@@ -26,6 +26,7 @@ export class SliceComponent implements OnInit {
   linkedSlicesUnformated: String[];
   sliceStringArray: String[];
   @Input() slice: Slice;
+
   @Input() slices: Slice[];
   @Output() slicesChange = new EventEmitter<Slice[]>();
 
@@ -35,7 +36,7 @@ export class SliceComponent implements OnInit {
     this.text = this.slice.text;
     this.title = this.slice.title;
     this.id = this.slice.id;
-    this.story = this.slice.id;
+    this.story = this.slice.story;
     this.level = this.slice.level;
     this.rank = this.slice.rank;
     //this.updateRank();
@@ -69,7 +70,6 @@ export class SliceComponent implements OnInit {
     if (!title) { return; }
     this.sliceService.addSlice({title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1 } as Slice)
       .subscribe(slice => {
-        console.log(slice);
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
       });
