@@ -75,6 +75,10 @@ export class SliceComponent implements OnInit {
       });
   }
 
+  /**
+   * Met à jour le passage
+   * @param slice 
+   */
   updateSlice(slice: Slice): void {
     if (slice) {
     this.sliceService.updateSlice(slice)
@@ -107,6 +111,7 @@ export class SliceComponent implements OnInit {
       });
     }
   }
+  
   /**
    * Met a jour le rank
    */
