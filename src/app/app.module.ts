@@ -29,7 +29,7 @@ import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
 import { StoryTestComponent } from './story-test/story-test.component';
 import { SliceByLevelPipe } from './slice-by-level.pipe';
-
+import { SliceLinkPipe } from './slice-link.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,8 @@ import { SliceByLevelPipe } from './slice-by-level.pipe';
     StoriesComponent,
     StoryComponent,
     SliceByLevelPipe,
-    StoryTestComponent
+    StoryTestComponent,
+    SliceLinkPipe
   ],
   imports: [
     CustomAngularMaterialModule,
