@@ -1,0 +1,23 @@
+
+<h1 mat-dialog-title>Ajouter un choix au passage</h1>
+<div mat-dialog-content>
+  <font color="red">Si le passage lié au choix n'existe pas déja, il sera crée automatiquement </font> 
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Titre unique du passage à lier au choix" aria-label="Titre unique du choix" [matAutocomplete]="auto" [formControl]="choiceCtrl" [(ngModel)]="data.title">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let choice of filteredChoices | async" [value]="choice.title">     
+        <span>{{ choice.title }}</span> | 
+        <small>Population: {{choice.text}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Texte du choix qui sera affiché à la fin du passage" matInput [(ngModel)]="data.text">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Retour</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

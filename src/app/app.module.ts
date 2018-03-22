@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -29,6 +29,8 @@ import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
 import { StoryTestComponent } from './story-test/story-test.component';
 import { SliceByLevelPipe } from './slice-by-level.pipe';
+import { SliceCreationDialogComponent } from './slice-creation-dialog/slice-creation-dialog.component';
+
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { SliceByLevelPipe } from './slice-by-level.pipe';
     StoriesComponent,
     StoryComponent,
     SliceByLevelPipe,
-    StoryTestComponent
+    StoryTestComponent,
+    SliceCreationDialogComponent
   ],
   imports: [
     CustomAngularMaterialModule,
@@ -62,9 +65,10 @@ import { SliceByLevelPipe } from './slice-by-level.pipe';
     CustomCovalentModule,
     AngularDraggableModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [StoryService, MessageService, SliceService],
-  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent],
+  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent, SliceCreationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

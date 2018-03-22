@@ -10,7 +10,19 @@
   </mat-form-field>
   <!-- (keyup)="saveText($event)" -->
 </div>
+
+<mat-chip-list #chipList>
+  <mat-chip *ngFor="let choice of choices" [selectable]="selectable"
+           [removable]="removable" (remove)="remove(choice)" color="accent" >
+    {{choice.title}}
+    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+  </mat-chip>
+  
+</mat-chip-list>
+
 <div mat-dialog-actions>
-  <button mat-button >Retour</button>
+  <button  mat-raised-button color="accent" (click) = "openP()" >Ajouter un choix</button>
+   <!-- <button mat-button >Retour</button> -->
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+
 </div>

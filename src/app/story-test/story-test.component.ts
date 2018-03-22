@@ -11,13 +11,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./story-test.component.css']
 })
 export class StoryTestComponent implements OnInit {
-  @Input() story: Story;
+  story: Story;
 
   constructor(   
     private route: ActivatedRoute,
     private storyService: StoryService,
     private location: Location,
-    private sliceService: SliceService,) { }
+    private sliceService: SliceService) { }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');

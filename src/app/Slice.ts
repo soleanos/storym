@@ -1,3 +1,6 @@
+
+import { Choice } from './Choice';
+
 export class Slice {
     id?: number;
     title: string;
@@ -5,6 +8,7 @@ export class Slice {
     story: number;
     level?: number;
     rank?: number;
+    choices? :Choice[];
     constructor() {
     }
 
