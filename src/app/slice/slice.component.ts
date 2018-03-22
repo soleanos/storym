@@ -4,6 +4,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
 import {SliceService} from '../slice.service';
+import { Choice } from '../Choice';
 
 @Component({
   selector: 'app-slice',
@@ -22,6 +23,7 @@ export class SliceComponent implements OnInit {
   id: number;
   level: number;
   rank: number;
+  choices: Choice[];
 
   linkedSlicesUnformated: String[];
   sliceStringArray: String[];
@@ -39,6 +41,7 @@ export class SliceComponent implements OnInit {
     this.story = this.slice.story;
     this.level = this.slice.level;
     this.rank = this.slice.rank;
+    this.choices = this.slice.choices;
     //this.updateRank();
   }
 
@@ -49,7 +52,7 @@ export class SliceComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorComponent, {
       width: '100%',
-      data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level}
+      data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level,choices:this.choices}
     });
 
     dialogRef.afterClosed().subscribe(slice => {

@@ -58,7 +58,7 @@ export class HomePanelComponent implements OnInit {
     // slice.setText('Double-cliquer pour éditer ce passage');
     // slice.setStory(idStory);
     this.sliceService.addSlice(
-      { level : 0, rank: 0,  title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory}
+      { level : 0, rank: 0,  title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory, choices : []}
     ).subscribe(newSlice => {
       console.log(newSlice.id);
     });

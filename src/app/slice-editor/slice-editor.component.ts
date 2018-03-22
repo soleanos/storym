@@ -20,13 +20,6 @@ export class SliceEditorComponent implements OnInit {
   addOnBlur: boolean = true;
   choices : Choice[];
 
-  separatorKeysCodes = [ENTER, COMMA];
-  fruits = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
-  ];
-
   remove(choice: Choice): void {
     let index = this.choices.indexOf(choice);
 
@@ -39,7 +32,7 @@ export class SliceEditorComponent implements OnInit {
     public dialog: MatDialog,public dialogRef: MatDialogRef<SliceEditorComponent>,
       @Inject(MAT_DIALOG_DATA) public data: Slice
    ) {
-     this.choices = new Array<Choice>();
+     this.choices = this.data.choices;
     }
 
   ngOnInit() {
@@ -62,6 +55,7 @@ export class SliceEditorComponent implements OnInit {
       width: '25%',
       data: {title : this.title, text : this.text}
     });
+    dialogRef.componentInstance.idStory = this.data.story;
 
     dialogRef.afterClosed().subscribe(choice => {
       if (choice) {

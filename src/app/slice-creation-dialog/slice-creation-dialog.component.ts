@@ -1,8 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit,Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Choice } from '../Choice';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormControl} from '@angular/forms';
+import {SliceService} from '../slice.service';
+import { Slice } from '../Slice';
 
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
@@ -14,55 +16,43 @@ import {map} from 'rxjs/operators/map';
   styleUrls: ['./slice-creation-dialog.component.css']
 })
 export class SliceCreationDialogComponent implements OnInit {
-  choiceCtrl: FormControl;
-  filteredChoices: Observable<any[]>;
+  sliceCtrl: FormControl;
+  filteredSlices: Observable<any[]>;
   choice : Choice;
+  slices: Slice[];
+  idStory : number;
+  
   constructor(
-    public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
+    private sliceService: SliceService, public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Choice
   ) {
-    this.choiceCtrl = new FormControl();
-    this.filteredChoices = this.choiceCtrl.valueChanges
+    this.slices = new Array<Slice>();
+    this.sliceCtrl = new FormControl();
+    this.filteredSlices = this.sliceCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(choice => choice ? this.filterChoices(choice) : this.choices.slice())
+        map(slice => slice ? this.filterSlices(slice) : this.slices.slice())
       );
    }
 
 
   ngOnInit() {
+    this.getSlices(this.idStory);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  choices: Choice[] = [
-    {
-      title: 'Arkansas',
-      text : 'pipou'
-    },
-    {
-      title: 'Lnsdqs',
-      text : 'zzz'
-    },
-    {
-      title: 'eeee',
-      text : 'rrr'
-    },
-    {
-      title: 'eeee',
-      text : 'rrr'
-    },
-    {
-      title: 'eezze',
-      text : 'rrr'
-    },
-  ];
-
-  filterChoices(title: string) {
-    return this.choices.filter(choice =>
-      choice.title.toLowerCase().indexOf(title.toLowerCase()) === 0);
+  filterSlices(title: string) {
+    return this.slices.filter(slice =>
+      slice.title.toLowerCase().indexOf(title.toLowerCase()) === 0);
   }
+
+  getSlices(id: number): void {
+    this.sliceService.searchSlices(id)
+      .subscribe(slices => this.slices = slices);
+  }
+
 
 }
