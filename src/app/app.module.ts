@@ -30,8 +30,7 @@ import { StoryComponent } from './story/story.component';
 import { StoryTestComponent } from './story-test/story-test.component';
 import { SliceByLevelPipe } from './slice-by-level.pipe';
 import { SliceCreationDialogComponent } from './slice-creation-dialog/slice-creation-dialog.component';
-
-
+import { SliceLinkPipe } from './slice-link.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +50,8 @@ import { SliceCreationDialogComponent } from './slice-creation-dialog/slice-crea
     StoryComponent,
     SliceByLevelPipe,
     StoryTestComponent,
-    SliceCreationDialogComponent
+    SliceCreationDialogComponent,
+    SliceLinkPipe
   ],
   imports: [
     CustomAngularMaterialModule,

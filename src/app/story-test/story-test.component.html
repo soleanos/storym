@@ -1,1 +1,7 @@
+<div *ngIf="story">
 <h2>{{ story.title | uppercase }} </h2>
+<span [innerHTML]="slice.text | sliceLink" *ngIf="slice">
+<!-- {{ slice.text}} -->
+
+</span>
+</div>
