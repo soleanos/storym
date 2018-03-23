@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 4, title: 'Issou' },
       ];
       const slices: Slice[] = [
-        { level : 0, id : 10, title: 'Chapitre I', text: "Une nouvelle année commence pour vous à Poudlard ! Qu'allez vous faire ? ", story: 1, choices : []},
+        { level : 0, id : 10, title: 'Chapitre I', text: "Une nouvelle année commence pour vous à Poudlard ! Qu'allez vous faire ? ", story: 1, choices : [{title:"Le rêve",text:"Aller dormir"},{title:"La visite",text:"Visiter poudlard"},]},
         { level : 0, id : 2, title: 'terre', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 2, choices : [] },
         { level : 0, id: 3, title: 'lune', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 3, choices : [] },
         { level : 0, id : 4, title: 'soleil', text: 'qsdfsdfqsdfqsdfqdfqsdfqsdfqsdfqsdfqdfsdf', story: 4, choices : [] },
