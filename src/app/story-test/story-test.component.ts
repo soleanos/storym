@@ -5,6 +5,8 @@ import { SliceService } from '../slice.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Slice } from '../Slice';
+import { Choice } from '../Choice';
+
 
 @Component({
   selector: 'app-story-test',
@@ -13,6 +15,7 @@ import { Slice } from '../Slice';
 })
 export class StoryTestComponent implements OnInit {
   story: Story;
+  storyText: string;
   slices: Slice[];
   slice: Slice;
   linkedSlicesUnformated: string[];
@@ -22,13 +25,12 @@ export class StoryTestComponent implements OnInit {
     private storyService: StoryService,
     private location: Location,
     private sliceService: SliceService) { }
- 
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.getFirstSlice(id);
     this.getStory(id);
-    // this.slice = this.getFirstSlice();
+    this.getSlices(id);
   }
 
   getStory(id: number): void {
@@ -40,7 +42,7 @@ export class StoryTestComponent implements OnInit {
     this.sliceService.searchSlices(id)
       .subscribe(
         slices => this.slice = slices.find(item => item.level === 0)
-        // ,error => console.error('Error: ' + error), () => this.formatSliceText(this.slice.text)
+        , error => console.error('Error: ' + error), () => this.storyText = this.slice.text
       );
   }
 
@@ -48,6 +50,11 @@ export class StoryTestComponent implements OnInit {
      return this.slices.filter(x => x.title === sliceName)[0];
   }
 
+  addNextSliceToStory(choice: Choice) {
+    const nextSlice: Slice = this.getnextLinkedSlice(choice.title);
+    this.storyText += nextSlice.text;
+    this.slice = nextSlice;
+  }
   /**
    * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
    * avec pour titre y
@@ -72,6 +79,11 @@ export class StoryTestComponent implements OnInit {
         }
       });
     }
+  }
+
+  getSlices(id: number): void {
+    this.sliceService.searchSlices(id)
+      .subscribe(slices => this.slices = slices);
   }
 
   escapeRegExp(text): string {

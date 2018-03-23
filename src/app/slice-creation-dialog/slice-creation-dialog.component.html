@@ -19,5 +19,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Retour</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button *ngIf="data.title && data.text" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>
