@@ -42,7 +42,6 @@ export class SliceComponent implements OnInit {
     this.level = this.slice.level;
     this.rank = this.slice.rank;
     this.choices = this.slice.choices;
-    //this.updateRank();
   }
 
   /**
@@ -58,7 +57,7 @@ export class SliceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(slice => {
       if (slice) {
         this.updateSlice(slice);
-        this.createNextSlicesFromText(slice.text);
+        this.createNextSlicesFromChoices(slice);
       }
     });
   }
@@ -114,7 +113,19 @@ export class SliceComponent implements OnInit {
       });
     }
   }
-  
+
+ /**
+   * Crée un passage pour chaque choix sur passage.
+   * avec pour titre y
+   * @param choices
+   */
+  createNextSlicesFromChoices(choices: Choice[]) {
+      this.choices.forEach(choice => {
+        this.createSlice(choice.title);
+      });
+  }
+
+
   /**
    * Met a jour le rank
    */
@@ -125,7 +136,7 @@ export class SliceComponent implements OnInit {
 
   /**
    * Calcul le rank en fonction du nombre de passage au niveau
-   * @param sliceLevel 
+   * @param sliceLevel
    */
   calculRank(sliceLevel: number) {
     this.sliceService.searchSlicesByRank(sliceLevel)

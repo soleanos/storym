@@ -18,8 +18,7 @@ export class SliceLinkPipe implements PipeTransform {
   }
 
   /**
-   * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
-   * avec pour titre y
+   * Transforme chaque lien en bouton.
    * @param sliceText
    */
   formatSliceText(sliceText: string) {
@@ -37,7 +36,7 @@ export class SliceLinkPipe implements PipeTransform {
             sliceElement.trim();
           });
           const re = new RegExp(this.escapeRegExp(elementNoFormat));
-          const final = "<button color='primary' mat-button (click) = 'alert()' >"+this.sliceStringArray[0] +"</button>";
+          const final = "<button color='primary' style ='mat-button' onClick = 'alert()' >"+this.sliceStringArray[0] +"</button>";
           this.finalText = this.finalText.replace(re, final);
         }
       });

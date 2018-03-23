@@ -4,7 +4,7 @@
     <input matInput [(ngModel)]="data.title" placeholder="Titre">
   </mat-form-field>
   <p></p>
-  <button color="primary" mat-button (click) = "addSliceTag()" >Ajouter un lien vers passage</button>
+  <!-- <button color="primary" mat-button (click) = "addSliceTag()" >Ajouter un lien vers passage</button> -->
   <mat-form-field >
     <textarea rows = "10" matInput [(ngModel)]="data.text" placeholder="texte" ></textarea>
   </mat-form-field>
@@ -14,7 +14,7 @@
 <mat-chip-list #chipList>
   <mat-chip *ngFor="let choice of choices" [selectable]="selectable"
            [removable]="removable" (remove)="remove(choice)" color="accent" >
-    {{choice.title}}
+    {{choice.text}}
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
   
