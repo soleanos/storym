@@ -70,7 +70,7 @@ export class SliceComponent implements OnInit {
   createSlice(title: String): void {
     title = title.trim();
     if (!title) { return; }
-    this.sliceService.addSlice({title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1 } as Slice)
+    this.sliceService.addSlice({title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1, choices: new Array<Choice>()} as Slice)
       .subscribe(slice => {
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
