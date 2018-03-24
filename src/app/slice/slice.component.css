@@ -5,4 +5,5 @@
     text-overflow: ellipsis;
     height: 120px;
     overflow: hidden;
+    background-image: url('../../assets/postit.png');
 }
