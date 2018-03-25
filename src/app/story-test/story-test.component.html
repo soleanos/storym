@@ -1,14 +1,14 @@
 <div *ngIf="story">
 <h2>{{ story.title | uppercase }} </h2>
 
-{{storyText}}
+<!-- {{storyText}} -->
+
+<div  *ngFor="let slice of slicesOfStory" >
+    {{slice.text}}    
+</div>
 
 <div  *ngFor="let choice of slice.choices" >
     <button mat-button (click)="addNextSliceToStory(choice)" >{{choice.text}}</button>     
 </div>
 
-<!-- 
-<span [innerHTML]="slice.text | sliceLink" *ngIf="slice">
-
-</span> -->
 </div>

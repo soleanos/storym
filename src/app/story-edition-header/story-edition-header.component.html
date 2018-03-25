@@ -1,14 +1,13 @@
 
 <mat-toolbar>
-    <span >            
-          <button mat-icon-button (click)="goToHome()">
-              <mat-icon aria-label="Example icon-button with a heart icon">home</mat-icon>
-          </button>
+    <span flex ="90">               
+        <button mat-icon-button (click)="goToHome()">
+            <mat-icon aria-label="Example icon-button with a heart icon">home</mat-icon>
+        </button>   
+        <button mat-icon-button (click)="goToStoryTest()">
+            <mat-icon aria-label="Example icon-button with a heart icon">play_circle_outline</mat-icon>
+        </button>
     </span>
-    <span>            
-            <button mat-icon-button (click)="goToStoryTest()">
-                <mat-icon aria-label="Example icon-button with a heart icon">play_circle_outline</mat-icon>
-            </button>
-    </span>
+    <h2>{{ story.title | uppercase }} </h2>
 </mat-toolbar>
 

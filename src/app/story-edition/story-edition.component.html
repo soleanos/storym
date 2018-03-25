@@ -1,9 +1,9 @@
 
-<app-story-edition-header [story]=story ></app-story-edition-header>
+<div class="page">
+    <app-story-edition-header [story]=story ></app-story-edition-header>
 
-<div *ngIf="story">
-    <h2>{{ story.title | uppercase }} </h2>
-    <app-slices [slices] = slices ></app-slices>
+    <div class="slices" *ngIf="story">
+        <app-slices [slices] = slices class="slices" ></app-slices>
+    </div>
+
 </div>
-
-

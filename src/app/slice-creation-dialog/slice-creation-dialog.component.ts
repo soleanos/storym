@@ -26,18 +26,17 @@ export class SliceCreationDialogComponent implements OnInit {
     private sliceService: SliceService, public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Choice
   ) {
-    this.slices = new Array<Slice>();
     this.sliceCtrl = new FormControl();
+   }
+
+  ngOnInit() {
+    this.slices = new Array<Slice>();
+    this.getSlices(this.idStory);
     this.filteredSlices = this.sliceCtrl.valueChanges
       .pipe(
         startWith(''),
         map(slice => slice ? this.filterSlices(slice) : this.slices.slice())
       );
-   }
-
-
-  ngOnInit() {
-    this.getSlices(this.idStory);
   }
 
   onNoClick(): void {

@@ -1,15 +1,12 @@
 .slice{
     word-wrap:break-word;
-    /* border-style: solid; */
     display:inline-block;
     text-overflow: ellipsis;
     height: 150px;
     overflow: hidden;
-    width:100px; /*width of your image*/
-    height:100px; /*height of your image*/
-   
+    padding: 1%;
+    padding-top:2%;
     margin:0; /* If you want no margin */
-    padding:0; /*if your want to padding */
     background: url('/assets/postit.jpg'); 
     background-repeat: no-repeat;
     background-size: 100%;

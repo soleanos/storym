@@ -13,18 +13,20 @@ import { Choice } from '../Choice';
   templateUrl: './story-test.component.html',
   styleUrls: ['./story-test.component.css']
 })
+
 export class StoryTestComponent implements OnInit {
   story: Story;
-  storyText: string;
   slices: Slice[];
+  slicesOfStory: Slice[];
   slice: Slice;
-  linkedSlicesUnformated: string[];
-  sliceStringArray: string[];
+ 
   constructor(
     private route: ActivatedRoute,
     private storyService: StoryService,
     private location: Location,
-    private sliceService: SliceService) { }
+    private sliceService: SliceService) { 
+      this.slicesOfStory = new Array<Slice>();
+    }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -33,59 +35,58 @@ export class StoryTestComponent implements OnInit {
     this.getSlices(id);
   }
 
+  /**
+   * Récupère l'histoire correspondant à l'id passé en paramètre
+   * @param id 
+   */
   getStory(id: number): void {
     this.storyService.getStory(id)
       .subscribe(story => this.story = story);
   }
 
+  /**
+   * Récupère le premier passage de l'histoire
+   * @param id 
+   */
   getFirstSlice(id: number): void {
     this.sliceService.searchSlices(id)
       .subscribe(
         slices => this.slice = slices.find(item => item.level === 0)
-        , error => console.error('Error: ' + error), () => this.storyText = this.slice.text
+        , error => console.error('Error: ' + error), () => this.slicesOfStory.push(this.slice)
       );
   }
 
+  /**
+   * Récupère le passage correspondant au choix sur lequel on a cliqué
+   * @param sliceName 
+   */
   getnextLinkedSlice(sliceName: String): any {
      return this.slices.filter(x => x.title === sliceName)[0];
   }
 
+  /**
+   * Ajoute le nouveau passage à la liste des passages
+   * @param choice 
+   */
   addNextSliceToStory(choice: Choice) {
     const nextSlice: Slice = this.getnextLinkedSlice(choice.title);
-    this.storyText += nextSlice.text;
+    this.slicesOfStory.push(nextSlice);
     this.slice = nextSlice;
   }
-  /**
-   * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
-   * avec pour titre y
-   * @param sliceText
-   */
-  formatSliceText(sliceText: String): any {
-    this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
-    if (this.linkedSlicesUnformated) {
-      this.linkedSlicesUnformated.forEach(element => {
-        const elementNoFormat = element;
-        element = element.substr(1, element.length - 2);
-        // Si on a un pipe alors on coupe en deux
-        if (element.search(/[|]/g) !== -1) {
-          element.replace(/[\[]|[\]]/, '');
-          this.sliceStringArray = element.split('|');
-          this.sliceStringArray.forEach(sliceElement => {
-            sliceElement.trim();
-          });
-          const re = new RegExp(this.escapeRegExp(elementNoFormat));
-          this.slice.text = this.slice.text.replace(re, this.sliceStringArray[0]);
-         // this.slice.text += "<button color='primary' mat-button (click) = 'addSliceTag()' >Ajouter un lien vers passage</button>";
-        }
-      });
-    }
-  }
 
+  /**
+   * Récupère tous les passages de l'histoire
+   * @param id 
+   */
   getSlices(id: number): void {
     this.sliceService.searchSlices(id)
       .subscribe(slices => this.slices = slices);
   }
 
+  /**
+   * Echappe tous les caractères spéciaux d'une chaine de caractère.
+   * @param text 
+   */
   escapeRegExp(text): string {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
   }
