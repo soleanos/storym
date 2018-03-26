@@ -18,7 +18,9 @@ export class HomePanelComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService) { }
+  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService) {
+    this.story = new Story();
+   }
 
   ngOnInit() {
   }

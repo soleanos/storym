@@ -90,4 +90,11 @@ export class StoryTestComponent implements OnInit {
   escapeRegExp(text): string {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
   }
+
+  scrollToBottom = () => {
+    // try {
+    //   this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
+    // } catch (err) {}
+  }
+
 }

@@ -1,14 +1,18 @@
-<div *ngIf="story">
-<h2>{{ story.title | uppercase }} </h2>
+
 
 <!-- {{storyText}} -->
 
-<div  *ngFor="let slice of slicesOfStory" >
-    {{slice.text}}    
-</div>
-
-<div  *ngFor="let choice of slice.choices" >
-    <button mat-button (click)="addNextSliceToStory(choice)" >{{choice.text}}</button>     
-</div>
-
+<div *ngIf="story" layout-fill layout="column" layout-align="center none">
+    <div *ngFor="let slice of slicesOfStory" layout="row" layout-align="center none" flex = "100">
+        <!-- <h2>{{ story.title | uppercase }} </h2> -->
+        <mat-card flex = "100"  >
+            <mat-card-title>{{slice.title}} </mat-card-title>
+            <mat-card-content>
+                    {{slice.text}}       
+            </mat-card-content>
+          </mat-card>      
+    </div>
+    <div  *ngFor="let choice of slice.choices" layout="row" layout-align="center none" flex = "100">
+        <button flex = "100" mat-button (click)="addNextSliceToStory(choice)" >{{choice.text}}</button>     
+    </div>  
 </div>
