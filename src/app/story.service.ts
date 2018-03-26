@@ -20,6 +20,17 @@ export class StoryService {
     private messageService: MessageService
    ) { }
 
+// /** GET stories from the server */
+// getStories (): Observable<Story[]> {
+//   return this.http.get<Story[]>(this.storiesUrl)
+//     .pipe(
+//       tap(stories => this.log(`fetched stories`)),
+//       catchError(this.handleError('getStories', []))
+//     );
+// }
+
+
+
 /** GET stories from the server */
 getStories (): Observable<Story[]> {
   return this.http.get<Story[]>(this.storiesUrl)
@@ -28,7 +39,6 @@ getStories (): Observable<Story[]> {
       catchError(this.handleError('getStories', []))
     );
 }
-
 /** GET story by id. Return `undefined` when id not found */
 getStoryNo404<Data>(id: number): Observable<Story> {
   const url = `${this.storiesUrl}/?id=${id}`;

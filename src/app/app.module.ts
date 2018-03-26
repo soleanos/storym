@@ -32,6 +32,10 @@ import { SliceByLevelPipe } from './slice-by-level.pipe';
 import { SliceCreationDialogComponent } from './slice-creation-dialog/slice-creation-dialog.component';
 import { SliceLinkPipe } from './slice-link.pipe';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,8 @@ import { SliceLinkPipe } from './slice-link.pipe';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     CustomCovalentModule,
     AngularDraggableModule,
     BrowserAnimationsModule,
