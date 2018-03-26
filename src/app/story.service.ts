@@ -1,7 +1,7 @@
 
 
 import { catchError, map, tap } from 'rxjs/operators';
-
+import 'rxjs/add/observable/fromPromise';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -13,6 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+
 @Injectable()
 export class StoryService {
   private storiesUrl = 'api/stories';
@@ -71,42 +72,44 @@ getStory(id: string): Observable<Story> {
   );
 }
 
-/* GET stories whose name contains search term */
-searchStories(term: string): Observable<Story[]> {
-  if (!term.trim()) {
-    // if not search term, return empty hero array.
-    return of([]);
-  }
-  return this.http.get<Story[]>(`api/stories/?title=${term}`).pipe(
-    tap(_ => this.log(`found stories matching "${term}"`)),
-    catchError(this.handleError<Story[]>('searchStories', []))
-  );
-}
+// /* GET stories whose name contains search term */
+// searchStories(term: string): Observable<Story[]> {
+//   if (!term.trim()) {
+//     // if not search term, return empty hero array.
+//     return of([]);
+//   }
+  
+//   return  Observable.fromPromise(this.db.collection('Story').where("title", "==", term))
+//     tap(_ => this.log(`found stories matching "${term}"`)),
+//     catchError(this.handleError<Story[]>('searchStories', []))
+//   );
+// }
 
 //////// Save methods //////////
 
 /** POST: add a new hero to the server */
-addStory (story: Story): Observable<Story> {
-  return this.http.post<Story>(this.storiesUrl, story, httpOptions).pipe(
-    tap((_: Story) => this.log(`added story w/ id=${story.id}`)),
+addStory (story: Story): Observable<any> {
+  story.id = this.db.createId();
+  return  Observable.fromPromise(this.storyCollection.add(story))
+  .pipe(
+    tap((_: any) => this.log(`added story w/ id=${story.id}`)),
     catchError(this.handleError<Story>('addHero'))
   );
 }
 
 /** DELETE: delete the hero from the server */
-deleteStory (story: Story | number): Observable<Story> {
-  const id = typeof story === 'number' ? story : story.id;
-  const url = `${this.storiesUrl}/${id}`;
-
-  return this.http.delete<Story>(url, httpOptions).pipe(
+deleteStory (story: Story | string): Observable<any> {
+  const id = typeof story === 'string' ? story : story.id;
+ 
+  return  Observable.fromPromise(this.storyCollection.doc(id).delete()).pipe(
     tap(_ => this.log(`deleted story id=${id}`)),
     catchError(this.handleError<Story>('deleteHero'))
   );
 }
 
 /** PUT: update the hero on the server */
-updateStory (story: Story): Observable<any> {
-  return this.http.put(this.storiesUrl, story, httpOptions).pipe(
+updateStory (story: Story ): Observable<any> {
+  return Observable.fromPromise(this.storyCollection.doc(story.id).update(story)).pipe(
     tap(_ => this.log(`updated hero id=${story.id}`)),
     catchError(this.handleError<any>('updateHero'))
   );

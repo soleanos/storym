@@ -29,7 +29,7 @@ export class StoryTestComponent implements OnInit {
     }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.getFirstSlice(id);
     this.getStory(id);
     this.getSlices(id);
@@ -39,7 +39,7 @@ export class StoryTestComponent implements OnInit {
    * Récupère l'histoire correspondant à l'id passé en paramètre
    * @param id 
    */
-  getStory(id: number): void {
+  getStory(id: string): void {
     this.storyService.getStory(id)
       .subscribe(story => this.story = story);
   }
@@ -48,7 +48,7 @@ export class StoryTestComponent implements OnInit {
    * Récupère le premier passage de l'histoire
    * @param id 
    */
-  getFirstSlice(id: number): void {
+  getFirstSlice(id: string): void {
     this.sliceService.searchSlices(id)
       .subscribe(
         slices => this.slice = slices.find(item => item.level === 0)
