@@ -1,5 +1,4 @@
 export class Story {
-    $key: string;
-    id: number;
+    id: String;
     title: string;
   }

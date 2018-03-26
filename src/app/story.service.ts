@@ -12,12 +12,14 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 @Injectable()
 export class StoryService {
   private storiesUrl = 'api/stories';
   stories: Observable<any[]>;
-  story: Observable<any[]>;
+
+  private storyCollection: AngularFirestoreCollection<Story>;
+  private story: AngularFirestoreDocument<Story>;
 
   constructor(
     private http: HttpClient,
@@ -25,8 +27,15 @@ export class StoryService {
     private firebase: AngularFireDatabase,
     private db: AngularFirestore
    ) {
-    this.stories = db.collection('Story').valueChanges();
-    
+      this.storyCollection = db.collection<Story>('Story');
+      this.stories = this.storyCollection.snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Story;
+            data.id = a.payload.doc.id;
+          return data;
+        });
+      });
+
     }
 
 
@@ -53,9 +62,10 @@ getStoryNo404<Data>(id: number): Observable<Story> {
 }
 
 /** GET hero by id. Will 404 if id not found */
-getStory(id: String): Observable<Story> {
-  const url = `${this.storiesUrl}/${id}`;
-  return this.http.get<Story>(url).pipe(
+getStory(id: string): Observable<Story> {
+  this.story = this.db.doc<Story>('Story/' + id);
+
+  return this.story.valueChanges().pipe(
     tap(_ => this.log(`fetched hero id=${id}`)),
     catchError(this.handleError<Story>(`getHero id=${id}`))
   );

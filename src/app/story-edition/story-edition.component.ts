@@ -25,17 +25,17 @@ export class StoryEditionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.getSlices(id);
     this.getStory(id);
   }
 
-  getStory(id: number): void {
+  getStory(id: string): void {
     this.storyService.getStory(id)
       .subscribe(story => this.story = story);
   }
 
-  getSlices(id: number): void {
+  getSlices(id: string): void {
     this.sliceService.searchSlices(id)
       .subscribe(slices => this.slices = slices);
   }
