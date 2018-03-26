@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   getStories(): void {
     this.storyService.getStories()
     .subscribe(stories => this.stories = stories);
+    
   }
 
   ngOnInit() {

@@ -11,29 +11,28 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 @Injectable()
 export class StoryService {
   private storiesUrl = 'api/stories';
+  stories: Observable<any[]>;
+  story: Observable<any[]>;
+
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
-   ) { }
-
-// /** GET stories from the server */
-// getStories (): Observable<Story[]> {
-//   return this.http.get<Story[]>(this.storiesUrl)
-//     .pipe(
-//       tap(stories => this.log(`fetched stories`)),
-//       catchError(this.handleError('getStories', []))
-//     );
-// }
-
+    private messageService: MessageService,
+    private firebase: AngularFireDatabase,
+    private db: AngularFirestore
+   ) {
+    this.stories = db.collection('Story').valueChanges();
+    
+    }
 
 
 /** GET stories from the server */
-getStories (): Observable<Story[]> {
-  return this.http.get<Story[]>(this.storiesUrl)
+getStories (): Observable<any[]> {
+  return this.stories
     .pipe(
       tap(stories => this.log(`fetched stories`)),
       catchError(this.handleError('getStories', []))
@@ -54,7 +53,7 @@ getStoryNo404<Data>(id: number): Observable<Story> {
 }
 
 /** GET hero by id. Will 404 if id not found */
-getStory(id: number): Observable<Story> {
+getStory(id: String): Observable<Story> {
   const url = `${this.storiesUrl}/${id}`;
   return this.http.get<Story>(url).pipe(
     tap(_ => this.log(`fetched hero id=${id}`)),

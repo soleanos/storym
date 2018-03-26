@@ -35,6 +35,7 @@ import { SliceLinkPipe } from './slice-link.pipe';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -72,8 +73,9 @@ import { environment } from '../environments/environment';
     AngularDraggableModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AngularFirestoreModule
   ],
-  providers: [StoryService, MessageService, SliceService],
+  providers: [StoryService, MessageService, SliceService, AngularFirestoreModule],
   entryComponents: [StoryCreationDialogComponent, SliceEditorComponent, SliceCreationDialogComponent],
   bootstrap: [AppComponent]
 })

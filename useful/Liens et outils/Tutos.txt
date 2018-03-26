@@ -1,1 +1,2 @@
 http://tphangout.com/angular-5-firebase-storage-with-angularfire-2/ => Upload photos avec firebase
+https://github.com/an-imp/Firebase2 => login firebase
