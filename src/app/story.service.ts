@@ -14,6 +14,10 @@ import { MessageService } from './message.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
+
+/**
+ * Ce service utilise FIREBASE.
+ */
 @Injectable()
 export class StoryService {
   private storiesUrl = 'api/stories';
@@ -40,7 +44,7 @@ export class StoryService {
     }
 
 
-/** GET stories from the server */
+/** Get all stories  */
 getStories (): Observable<any[]> {
   return this.stories
     .pipe(
@@ -48,21 +52,8 @@ getStories (): Observable<any[]> {
       catchError(this.handleError('getStories', []))
     );
 }
-/** GET story by id. Return `undefined` when id not found */
-getStoryNo404<Data>(id: number): Observable<Story> {
-  const url = `${this.storiesUrl}/?id=${id}`;
-  return this.http.get<Story[]>(url)
-    .pipe(
-      map(stories => stories[0]), // returns a {0|1} element array
-      tap(h => {
-        const outcome = h ? `fetched` : `did not find`;
-        this.log(`${outcome} story id=${id}`);
-      }),
-      catchError(this.handleError<Story>(`getHero id=${id}`))
-    );
-}
 
-/** GET hero by id. Will 404 if id not found */
+/** Get a story by ID  */
 getStory(id: string): Observable<Story> {
   this.story = this.db.doc<Story>('Story/' + id);
 
@@ -72,22 +63,9 @@ getStory(id: string): Observable<Story> {
   );
 }
 
-// /* GET stories whose name contains search term */
-// searchStories(term: string): Observable<Story[]> {
-//   if (!term.trim()) {
-//     // if not search term, return empty hero array.
-//     return of([]);
-//   }
-  
-//   return  Observable.fromPromise(this.db.collection('Story').where("title", "==", term))
-//     tap(_ => this.log(`found stories matching "${term}"`)),
-//     catchError(this.handleError<Story[]>('searchStories', []))
-//   );
-// }
-
 //////// Save methods //////////
 
-/** POST: add a new hero to the server */
+/** POST Add a new story */
 addStory (story: Story): Observable<any> {
   story.id = this.db.createId();
   return  Observable.fromPromise(this.storyCollection.add(story))
@@ -97,20 +75,19 @@ addStory (story: Story): Observable<any> {
   );
 }
 
-/** DELETE: delete the hero from the server */
+/** DELETE: delete the story from the server */
 deleteStory (story: Story | string): Observable<any> {
   const id = typeof story === 'string' ? story : story.id;
- 
   return  Observable.fromPromise(this.storyCollection.doc(id).delete()).pipe(
     tap(_ => this.log(`deleted story id=${id}`)),
     catchError(this.handleError<Story>('deleteHero'))
   );
 }
 
-/** PUT: update the hero on the server */
+/** PUT: update the story on the server */
 updateStory (story: Story ): Observable<any> {
   return Observable.fromPromise(this.storyCollection.doc(story.id).update(story)).pipe(
-    tap(_ => this.log(`updated hero id=${story.id}`)),
+    tap(_ => this.log(`updated story id=${story.id}`)),
     catchError(this.handleError<any>('updateHero'))
   );
 }
@@ -137,8 +114,34 @@ private handleError<T> (operation = 'operation', result?: T) {
 
  /** Log a HeroService message with the MessageService */
  private log(message: string) {
-  this.messageService.add('HeroService: ' + message);
+  this.messageService.add('StoryService: ' + message);
 }
+
+// /* GET stories whose name contains search term */
+// searchStories(term: string): Observable<Story[]> {
+//   if (!term.trim()) {
+//     // if not search term, return empty hero array.
+//     return of([]);
+//   }
+//   return  Observable.fromPromise(this.db.collection('Story').where("title", "==", term))
+//     tap(_ => this.log(`found stories matching "${term}"`)),
+//     catchError(this.handleError<Story[]>('searchStories', []))
+//   );
+// }
+
+// /** GET story by id. Return `undefined` when id not found */
+// getStoryNo404<Data>(id: number): Observable<Story> {
+//   const url = `${this.storiesUrl}/?id=${id}`;
+//   return this.http.get<Story[]>(url)
+//     .pipe(
+//       map(stories => stories[0]), // returns a {0|1} element array
+//       tap(h => {
+//         const outcome = h ? `fetched` : `did not find`;
+//         this.log(`${outcome} story id=${id}`);
+//       }),
+//       catchError(this.handleError<Story>(`getHero id=${id}`))
+//     );
+// }
 
 
 }
