@@ -19,8 +19,8 @@ import { Choice } from '../Choice';
 export class SliceComponent implements OnInit {
   title: string;
   text: string;
-  story: number;
-  id: number;
+  story: string;
+  id: string;
   level: number;
   rank: number;
   choices: Choice[];
@@ -126,23 +126,23 @@ export class SliceComponent implements OnInit {
   }
 
 
-  /**
-   * Met a jour le rank
-   */
-  updateRank() {
-    this.calculRank(this.slice.level);
-    this.updateSlice(this.slice);
-  }
+  // /**
+  //  * Met a jour le rank
+  //  */
+  // updateRank() {
+  //   this.calculRank(this.slice.level);
+  //   this.updateSlice(this.slice);
+  // }
 
-  /**
-   * Calcul le rank en fonction du nombre de passage au niveau
-   * @param sliceLevel
-   */
-  calculRank(sliceLevel: number) {
-    this.sliceService.searchSlicesByRank(sliceLevel)
-      .subscribe(slices => {
-        this.rank = slices.length + 1;
-      });
-  }
+  // /**
+  //  * Calcul le rank en fonction du nombre de passage au niveau
+  //  * @param sliceLevel
+  //  */
+  // calculRank(sliceLevel: number) {
+  //   this.sliceService.searchSlicesByRank(sliceLevel)
+  //     .subscribe(slices => {
+  //       this.rank = slices.length + 1;
+  //     });
+  // }
 }
 

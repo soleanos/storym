@@ -16,13 +16,17 @@ export class StoryEditionComponent implements OnInit {
 
   @Input() story: Story;
   @Input() slices: Slice[];
+  slicesTmp: Slice[];
 
   constructor(
     private route: ActivatedRoute,
     private storyService: StoryService,
     private location: Location,
     private sliceService: SliceService,
-  ) { }
+  ) {
+    this.slices = new Array<Slice>();
+    this.slicesTmp = new Array<Slice>();
+   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -36,7 +40,8 @@ export class StoryEditionComponent implements OnInit {
   }
 
   getSlices(id: string): void {
-    this.sliceService.searchSlices(id)
+    console.log(id);
+      this.sliceService.getSlicesByStoryID(id)
       .subscribe(slices => this.slices = slices);
   }
 

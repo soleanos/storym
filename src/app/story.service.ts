@@ -20,16 +20,14 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
  */
 @Injectable()
 export class StoryService {
-  private storiesUrl = 'api/stories';
-  stories: Observable<any[]>;
 
+  stories: Observable<any[]>;
   private storyCollection: AngularFirestoreCollection<Story>;
   private story: AngularFirestoreDocument<Story>;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private firebase: AngularFireDatabase,
     private db: AngularFirestore
    ) {
       this.storyCollection = db.collection<Story>('Story');
@@ -40,7 +38,6 @@ export class StoryService {
           return data;
         });
       });
-
     }
 
 

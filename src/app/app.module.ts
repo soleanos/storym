@@ -64,10 +64,10 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
     AngularFireDatabaseModule,
     CustomCovalentModule,
     AngularDraggableModule,

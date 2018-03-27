@@ -14,14 +14,14 @@ import { SliceCreationDialogComponent } from '../slice-creation-dialog/slice-cre
 export class SliceEditorComponent implements OnInit {
   title: string;
   text: string;
-  visible: boolean = true;
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
-  choices : Choice[];
+  visible = true;
+  selectable = true;
+  removable=  true;
+  addOnBlur = true;
+  choices: Choice[];
 
   remove(choice: Choice): void {
-    let index = this.choices.indexOf(choice);
+    const index = this.choices.indexOf(choice);
 
     if (index >= 0) {
       this.choices.splice(index, 1);
@@ -29,7 +29,7 @@ export class SliceEditorComponent implements OnInit {
   }
 
   constructor(
-    public dialog: MatDialog,public dialogRef: MatDialogRef<SliceEditorComponent>,
+    public dialog: MatDialog, public dialogRef: MatDialogRef<SliceEditorComponent>,
       @Inject(MAT_DIALOG_DATA) public data: Slice
    ) {
      this.choices = this.data.choices;

@@ -49,7 +49,7 @@ export class StoryTestComponent implements OnInit {
    * @param id 
    */
   getFirstSlice(id: string): void {
-    this.sliceService.searchSlices(id)
+    this.sliceService.getSlicesByStoryID(id)
       .subscribe(
         slices => this.slice = slices.find(item => item.level === 0)
         , error => console.error('Error: ' + error), () => this.slicesOfStory.push(this.slice)
@@ -78,8 +78,8 @@ export class StoryTestComponent implements OnInit {
    * Récupère tous les passages de l'histoire
    * @param id 
    */
-  getSlices(id: number): void {
-    this.sliceService.searchSlices(id)
+  getSlices(id: string): void {
+    this.sliceService.getSlicesByStoryID(id)
       .subscribe(slices => this.slices = slices);
   }
 

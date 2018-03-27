@@ -25,7 +25,7 @@ export class StoryDetailComponent implements OnInit {
   }
 
   getStory(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.storyService.getStory(id)
       .subscribe(story => this.story = story);
       console.log(this.story);

@@ -54,7 +54,7 @@ export class HomePanelComponent implements OnInit {
    * @param title
    *
    */
-  createSlice(idStory: number): void {
+  createSlice(idStory: string): void {
     const slice: Slice = new Slice();
     // slice.setTitle("Debut de l'histoire");
     // slice.setText('Double-cliquer pour éditer ce passage');

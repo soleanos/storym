@@ -18,9 +18,9 @@ import {map} from 'rxjs/operators/map';
 export class SliceCreationDialogComponent implements OnInit {
   sliceCtrl: FormControl;
   filteredSlices: Observable<any[]>;
-  choice : Choice;
+  choice: Choice;
   slices: Slice[];
-  idStory : number;
+  idStory: string;
   
   constructor(
     private sliceService: SliceService, public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
@@ -48,8 +48,8 @@ export class SliceCreationDialogComponent implements OnInit {
       slice.title.toLowerCase().indexOf(title.toLowerCase()) === 0);
   }
 
-  getSlices(id: number): void {
-    this.sliceService.searchSlices(id)
+  getSlices(id: string): void {
+    this.sliceService.getSlicesByStoryID(id)
       .subscribe(slices => this.slices = slices);
   }
 

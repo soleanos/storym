@@ -2,13 +2,13 @@
 import { Choice } from './Choice';
 
 export class Slice {
-    id?: string;
+    id?: number;
     title: string;
     text: string;
-    story: string;
+    story: number;
     level?: number;
     rank?: number;
-    choices?: Choice[];
+    choices? :Choice[];
     constructor() {
     }
 
