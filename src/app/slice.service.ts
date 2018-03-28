@@ -24,12 +24,15 @@ export class SliceService {
 
     storiesById: Observable<any[]>;
     slices: Observable<Slice[]>;
-    sliceCollection: AngularFirestoreCollection<Slice>;
-    sliceDoc: AngularFirestoreDocument<Slice>;
-    choiceCollection: AngularFirestoreCollection<Choice>;
+    choices: Observable<Choice[]>;
 
+
+    sliceCollection: AngularFirestoreCollection<Slice>;
+    choiceCollection: AngularFirestoreCollection<Choice>;
     storyCollection: AngularFirestoreCollection<Story>;
+
     storyDoc: AngularFirestoreDocument<Story>;
+    sliceDoc: AngularFirestoreDocument<any>;
 
     constructor(
       private http: HttpClient,
@@ -45,24 +48,56 @@ export class SliceService {
    */
   getSlicesOfStory(storyId: string): any {
     this.storyDoc = this.storyService.getStoryDoc(storyId);
-    this.sliceCollection =  this.storyDoc.collection<Slice>('Slice');
+    this.sliceCollection =  this.storyDoc.collection<Slice>('Slice/');
 
     this.slices = this.sliceCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Slice;
           data.id = a.payload.doc.id;
-          console.log(data);
           return data;
       });
     });
 
-    console.log(this.slices);
     return this.slices.pipe(
       tap(stories => this.log(`fetched stories`)),
       catchError(this.handleError('getStories', []))
     );
   }
 
+/**
+ * Get all choices of one story
+ * @param sliceId
+ */
+ getChoicesOfSlice(sliceId: string): any {
+
+  this.choiceCollection = this.getChoiceCollection(sliceId);
+
+  this.choices = this.choiceCollection.snapshotChanges().map(actions => {
+    return actions.map(a => {
+       const data = a.payload.doc.data() as Choice;
+         data.id = a.payload.doc.id;
+         return data;
+     });
+   });
+
+  
+ 
+   return this.choices.pipe(
+     tap(stories => this.log(`fetched stories`)),
+     catchError(this.handleError('getStories', []))
+   );
+ }
+
+  /** Get the firebase reference of the story  */
+  getSliceDoc(id: string): AngularFirestoreDocument<any> {
+    return this.storyDoc.collection<Slice>('/Slice/').doc(id);
+  }
+
+  /** Get the firebase reference of the story  */
+  getChoiceCollection(sliceId: string): AngularFirestoreCollection<Choice> {
+    const sliceDoc: AngularFirestoreDocument<any> = this.getSliceDoc(sliceId);
+    return sliceDoc.collection<Choice>('Choice/');
+  }
 
   // /**
   //  * Get all slices of one story

@@ -1,5 +1,5 @@
 export class Choice {
-    id?: number;
+    id?: string;
     title: string;
     text: string;
    

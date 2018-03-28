@@ -31,21 +31,21 @@ export class StoryService {
     private messageService: MessageService,
     private db: AngularFirestore
    ) {
-      this.storyCollection = db.collection<Story>('Story');
-      this.stories = this.storyCollection.snapshotChanges().map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as Story;
-            data.id = a.payload.doc.id;
-            console.log(a.payload.doc);
-          return data;
-        });
-      });
       this.story = new Observable<Story>();
     }
 
 
 /** Get all stories  */
 getStories (): Observable<any[]> {
+  this.storyCollection = this.db.collection<Story>('Story');
+  this.stories = this.storyCollection.snapshotChanges().map(actions => {
+    return actions.map(a => {
+      const data = a.payload.doc.data() as Story;
+        data.id = a.payload.doc.id;
+        console.log(a.payload.doc);
+      return data;
+    });
+  });
   return this.stories
     .pipe(
       tap(stories => this.log(`fetched stories`)),
@@ -63,8 +63,8 @@ getStory(id: string): Observable<Story> {
     }
   );
   return this.story.pipe(
-    tap(_ => this.log(`fetched hero id=${id}`)),
-    catchError(this.handleError<Story>(`Hero : id=${id}`))
+    tap(_ => this.log(`fetched story id=${id}`)),
+    catchError(this.handleError<Story>(`Story : id=${id}`))
   );
 }
 

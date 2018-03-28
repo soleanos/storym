@@ -32,7 +32,6 @@ export class StoryEditionComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getSlices(id);
     this.getStory(id);
-    console.log(this.story);
   }
 
   getStory(id: string): void {

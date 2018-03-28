@@ -14,7 +14,7 @@
 <mat-chip-list #chipList>
   <mat-chip *ngFor="let choice of choices" [selectable]="selectable"
            [removable]="removable" (remove)="remove(choice)" color="accent" >
-    {{choice.text}}
+    {{choice.label}}
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
   

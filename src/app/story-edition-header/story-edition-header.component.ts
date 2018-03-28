@@ -17,7 +17,7 @@ export class StoryEditionHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToHome= function () {
+  goToHome = function () {
     this.router.navigateByUrl('/home');
   };
 

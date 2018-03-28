@@ -42,6 +42,12 @@ export class SliceComponent implements OnInit {
     this.level = this.slice.level;
     this.rank = this.slice.rank;
     this.choices = this.slice.choices;
+    this.getChoiceCollection(this.slice.id);
+  }
+
+  getChoiceCollection(id: string): void {
+    this.sliceService.getChoicesOfSlice(id)
+      .subscribe(choices => this.choices = choices));
   }
 
   /**
