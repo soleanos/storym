@@ -19,25 +19,33 @@ export class StoryTestComponent implements OnInit {
   slices: Slice[];
   slicesOfStory: Slice[];
   slice: Slice;
- 
+  choices: Choice[];
+
   constructor(
     private route: ActivatedRoute,
     private storyService: StoryService,
     private location: Location,
-    private sliceService: SliceService) { 
+    private sliceService: SliceService) {
       this.slicesOfStory = new Array<Slice>();
+      this.choices = new Array<Choice>();
     }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.getFirstSlice(id);
     this.getStory(id);
+    this.getFirstSlice(id);
     this.getSlices(id);
+  }
+
+  getChoiceCollection(id: string): void {
+    console.log(id);
+    return this.sliceService.getChoicesOfSlice(id)
+      .subscribe(choices => this.choices = choices );
   }
 
   /**
    * Récupère l'histoire correspondant à l'id passé en paramètre
-   * @param id 
+   * @param id
    */
   getStory(id: string): void {
     this.storyService.getStory(id)
@@ -46,37 +54,46 @@ export class StoryTestComponent implements OnInit {
 
   /**
    * Récupère le premier passage de l'histoire
-   * @param id 
+   * @param id
    */
   getFirstSlice(id: string): void {
+    const slice = new Slice();
     this.sliceService.getSlicesOfStory(id)
       .subscribe(
-        slices => this.slice = slices.find(item => item.level === 0)
-        , error => console.error('Error: ' + error), () => this.slicesOfStory.push(this.slice)
+        slices => this.test(slices.find(item => item.level === 0)),
+        error => console.log("Error: ", error),
+        () => alert("Finit")
       );
+      // this.getChoiceCollection(slice.id);
   }
 
+
+  test(slice :  Slice){
+    this.slicesOfStory.push(slice);
+    this.getChoiceCollection(slice.id);
+  }
   /**
    * Récupère le passage correspondant au choix sur lequel on a cliqué
-   * @param sliceName 
+   * @param sliceName
    */
   getnextLinkedSlice(sliceName: String): any {
-     return this.slices.filter(x => x.title === sliceName)[0];
+     return this.slices.filter(x => x.id === sliceName)[0];
   }
 
   /**
    * Ajoute le nouveau passage à la liste des passages
-   * @param choice 
+   * @param choice
    */
   addNextSliceToStory(choice: Choice) {
-    const nextSlice: Slice = this.getnextLinkedSlice(choice.title);
+    const nextSlice: Slice = this.getnextLinkedSlice(choice.nextSlice);
     this.slicesOfStory.push(nextSlice);
     this.slice = nextSlice;
+    this.getChoiceCollection(this.slice.id);
   }
 
   /**
    * Récupère tous les passages de l'histoire
-   * @param id 
+   * @param id
    */
   getSlices(id: string): void {
     this.sliceService.getSlicesOfStory(id)

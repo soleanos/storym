@@ -46,7 +46,7 @@ export class SliceService {
    * Get all slices of one story
    * @param storyId
    */
-  getSlicesOfStory(storyId: string): any {
+  getSlicesOfStory(storyId: string): Observable<Slice[]> {
     this.storyDoc = this.storyService.getStoryDoc(storyId);
     this.sliceCollection =  this.storyDoc.collection<Slice>('Slice/');
 
@@ -54,6 +54,7 @@ export class SliceService {
       return actions.map(a => {
         const data = a.payload.doc.data() as Slice;
           data.id = a.payload.doc.id;
+          // console.log(data.id);
           return data;
       });
     });

@@ -1,8 +1,8 @@
 export class Choice {
     id?: string;
-    title: string;
-    text: string;
-   
+    nextSlice: string;
+    label: string;
+
     constructor() {
     }
 	

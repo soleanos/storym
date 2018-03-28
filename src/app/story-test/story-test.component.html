@@ -1,7 +1,4 @@
 
-
-<!-- {{storyText}} -->
-
 <div *ngIf="story" layout-fill layout="column" layout-align="center none">
     <div *ngFor="let slice of slicesOfStory" layout="row" layout-align="center none" flex = "100">
         <!-- <h2>{{ story.title | uppercase }} </h2> -->
@@ -12,7 +9,9 @@
             </mat-card-content>
           </mat-card>      
     </div>
-    <div  *ngFor="let choice of slice.choices" layout="row" layout-align="center none" flex = "100">
-        <button flex = "100" mat-button (click)="addNextSliceToStory(choice)" >{{choice.text}}</button>     
+    <div  *ngFor="let choice of choices" layout="row" layout-align="center none" flex = "100">
+        <button flex = "100" mat-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>     
     </div>  
 </div>
+
+<app-messages></app-messages>

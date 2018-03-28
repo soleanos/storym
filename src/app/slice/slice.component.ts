@@ -47,7 +47,7 @@ export class SliceComponent implements OnInit {
 
   getChoiceCollection(id: string): void {
     this.sliceService.getChoicesOfSlice(id)
-      .subscribe(choices => this.choices = choices));
+      .subscribe(choices => this.choices = choices);
   }
 
   /**
