@@ -32,6 +32,7 @@ export class StoryEditionComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.getSlices(id);
     this.getStory(id);
+    console.log(this.story);
   }
 
   getStory(id: string): void {
@@ -40,8 +41,7 @@ export class StoryEditionComponent implements OnInit {
   }
 
   getSlices(id: string): void {
-    console.log(id);
-      this.sliceService.getSlicesByStoryID(id)
+      this.sliceService.getSlicesOfStory(id)
       .subscribe(slices => this.slices = slices);
   }
 

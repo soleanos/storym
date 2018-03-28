@@ -22,8 +22,9 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 export class StoryService {
 
   stories: Observable<any[]>;
+  story: Observable<Story>;
   private storyCollection: AngularFirestoreCollection<Story>;
-  private story: AngularFirestoreDocument<Story>;
+  private storyDoc: AngularFirestoreDocument<Story>;
 
   constructor(
     private http: HttpClient,
@@ -35,9 +36,11 @@ export class StoryService {
         return actions.map(a => {
           const data = a.payload.doc.data() as Story;
             data.id = a.payload.doc.id;
+            console.log(a.payload.doc);
           return data;
         });
       });
+      this.story = new Observable<Story>();
     }
 
 
@@ -52,12 +55,22 @@ getStories (): Observable<any[]> {
 
 /** Get a story by ID  */
 getStory(id: string): Observable<Story> {
-  this.story = this.db.doc<Story>('Story/' + id);
-
-  return this.story.valueChanges().pipe(
-    tap(_ => this.log(`fetched hero id=${id}`)),
-    catchError(this.handleError<Story>(`getHero id=${id}`))
+  this.story =  this.getStoryDoc(id).snapshotChanges().map(
+    story => {
+      const data = story.payload.data() as Story;
+      data.id = story.payload.id;
+      return data;
+    }
   );
+  return this.story.pipe(
+    tap(_ => this.log(`fetched hero id=${id}`)),
+    catchError(this.handleError<Story>(`Hero : id=${id}`))
+  );
+}
+
+/** Get the firebase reference of the story  */
+getStoryDoc(id: string): AngularFirestoreDocument<Story> {
+  return this.db.doc<Story>('Story/' + id);
 }
 
 //////// Save methods //////////

@@ -22,6 +22,6 @@ export class StoryEditionHeaderComponent implements OnInit {
   };
 
   goToStoryTest = function () {
-    this.router.navigateByUrl('/test/'+this.story.id);
+    this.router.navigateByUrl('/test/' + this.story.id);
   };
 }

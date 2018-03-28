@@ -49,7 +49,7 @@ export class SliceCreationDialogComponent implements OnInit {
   }
 
   getSlices(id: string): void {
-    this.sliceService.getSlicesByStoryID(id)
+    this.sliceService.getSlicesOfStory(id)
       .subscribe(slices => this.slices = slices);
   }
 

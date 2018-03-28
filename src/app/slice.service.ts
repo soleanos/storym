@@ -6,6 +6,7 @@ const httpOptions = {
 };
 import { Injectable } from '@angular/core';
 import { Slice } from './slice';
+import { Story } from './Story';
 import { Choice } from './Choice';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -13,7 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-
+import { StoryService } from './story.service';
 
 /**
  * Ce service utilise FIREBASE.
@@ -27,49 +28,66 @@ export class SliceService {
     sliceDoc: AngularFirestoreDocument<Slice>;
     choiceCollection: AngularFirestoreCollection<Choice>;
 
+    storyCollection: AngularFirestoreCollection<Story>;
+    storyDoc: AngularFirestoreDocument<Story>;
+
     constructor(
       private http: HttpClient,
       private messageService: MessageService,
-      private db: AngularFirestore
+      private db: AngularFirestore,
+      private storyService: StoryService,
     ) {
-      this.sliceCollection = this.db.collection('Slice');
-      this.slices = this.sliceCollection.snapshotChanges().map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as Slice;
-            data.id = a.payload.doc.id;
-            console.log(data);
-            return data;
-        });
-      });
+   }
 
-
-    }
-
-
-  /**
+/**
    * Get all slices of one story
-   * @param storyId 
+   * @param storyId
    */
-  getSlicesByStoryID(storyId: string): any {
-    const storiesByIdCollection: AngularFirestoreCollection<Slice> =  this.db.collection<Slice>(
-      'Slice',
-      clause => clause.where('story', '==', storyId)
-    );
+  getSlicesOfStory(storyId: string): any {
+    this.storyDoc = this.storyService.getStoryDoc(storyId);
+    this.sliceCollection =  this.storyDoc.collection<Slice>('Slice');
 
-    this.storiesById = storiesByIdCollection.snapshotChanges().map(actions => {
+    this.slices = this.sliceCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Slice;
           data.id = a.payload.doc.id;
           console.log(data);
-        return data;
+          return data;
       });
     });
 
-    return this.storiesById.pipe(
+    console.log(this.slices);
+    return this.slices.pipe(
       tap(stories => this.log(`fetched stories`)),
       catchError(this.handleError('getStories', []))
     );
   }
+
+
+  // /**
+  //  * Get all slices of one story
+  //  * @param storyId
+  //  */
+  // getSlicesByStoryID(storyId: string): any {
+  //   const storiesByIdCollection: AngularFirestoreCollection<Slice> =  this.db.collection<Slice>(
+  //     'Slice',
+  //     clause => clause.where('story', '==', storyId)
+  //   );
+
+  //   this.storiesById = storiesByIdCollection.snapshotChanges().map(actions => {
+  //     return actions.map(a => {
+  //       const data = a.payload.doc.data() as Slice;
+  //         data.id = a.payload.doc.id;
+  //         console.log(data);
+  //       return data;
+  //     });
+  //   });
+
+  //   return this.storiesById.pipe(
+  //     tap(stories => this.log(`fetched stories`)),
+  //     catchError(this.handleError('getStories', []))
+  //   );
+  // }
 
 
 /** Get all slices  */
@@ -101,9 +119,6 @@ addSlice (slice: Slice): Observable<any> {
     tap((_: any) => this.log(`added slice w/ id=${slice.id}`)),
     catchError(this.handleError<Slice>('addSlice'))
   );
-
-  // this.choiceCollection = this.db.collection('Slice').doc(slice.id).collection('choices').add({});
- 
 }
 
 /** DELETE: delete the story from the server */
