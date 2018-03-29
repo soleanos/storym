@@ -89,20 +89,19 @@ export class SliceComponent implements OnInit {
       // Contrôle des choix du passage.
       slice.choices.forEach(choice => {
         const existingSlice = this.isSliceAlreadyExisting(choice.nextSliceTitle);
-        console.log(existingSlice);
-        if (existingSlice && existingSlice.level === 0) {
-          // Si jamais on souhaite interdire les boucles vers le passage racine, à décommenter :
-          // slice.choices = slice.choices.filter(h => h !== choice);
-
-          // Les boucles sont autorisée pour l'instant : on change l'id du
-          // prochain chapitre lié au choixà la main
-          choice.nextSliceId = existingSlice.id;
-          alert('Attention ! Vous avez un choix qui redirige vers le premier passage de l histoire');
-        }else if (existingSlice && existingSlice.level !== 0) {
+    
+        if (existingSlice && existingSlice.id == slice.id) {
           // On supprime le choix dans le cas ou il redirige vers le même passage.
           slice.choices = slice.choices.filter(h => h !== choice);
-          alert('Vous avez créer un choix lié au même chapitre ! Il a été supprimé.');
+          alert('Vous avez créer un choix lié au même chapitre ! Il va être supprimé.');
+        }else if(existingSlice){
+          if (existingSlice.level === 0) {
+            // On autorise les boucles vers le passage racine, mais envoie d'un message préventif.
+            alert('Attention ! Vous avez un choix qui redirige vers le premier passage de l histoire');
+          }
+          choice.nextSliceId = existingSlice.id;
         }
+      
       });
 
       // Mise à jour du passage
@@ -113,30 +112,6 @@ export class SliceComponent implements OnInit {
       }
   }
 
-  /**
-   * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
-   * avec pour titre y
-   * @param sliceText
-   */
-  createNextSlicesFromText(sliceText: String) {
-    this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
-    if (this.linkedSlicesUnformated) {
-      this.linkedSlicesUnformated.forEach(element => {
-        // On enleve les crochets
-        element = element.substr(1, element.length - 2);
-        // Si on a un pipe alors on coupe en deux
-        if (element.search(/[|]/g) !== -1) {
-          element.replace(/[\[]|[\]]/, '');
-          this.sliceStringArray = element.split('|');
-          this.sliceStringArray.forEach(sliceElement => {
-            sliceElement.trim();
-          });
-          const sliceId = this.db.createId();
-         this.createSlice(this.sliceStringArray[1], sliceId);
-        }
-      });
-    }
-  }
 
  /**
    * Crée un passage pour chaque choix sur passage.
@@ -150,10 +125,7 @@ export class SliceComponent implements OnInit {
         if (!this.isSliceAlreadyExisting(choice.nextSliceTitle)) {
           this.createSlice(choice.nextSliceTitle, choice.nextSliceId);
         }
-        // else if (existingSlice.level === 0 ) {
-        //   alert("Vous ne pouvez pas ")
-        //   this.choices = this.choices.filter(h => h !== choice);
-        // }
+     
       });
   }
 
