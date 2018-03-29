@@ -40,10 +40,11 @@ export class HomePanelComponent implements OnInit {
 
   createStory(title: string): void {
     title = title.trim();
+    console.log(title);
     if (!title) { return; }
     this.storyService.addStory({ title } as Story)
       .subscribe(story => {
-        this.stories.push(story);
+        console.log(story.id);
         this.storiesChange.emit(this.stories);
         this.createSlice(story.id);
       });
@@ -55,14 +56,10 @@ export class HomePanelComponent implements OnInit {
    *
    */
   createSlice(idStory: string): void {
-    const slice: Slice = new Slice();
-    // slice.setTitle("Debut de l'histoire");
-    // slice.setText('Double-cliquer pour éditer ce passage');
-    // slice.setStory(idStory);
     this.sliceService.addSlice(
-      { level : 0, rank: 0,  title: 'Debut', text: 'Double-cliquer pour éditer ce passage', story: idStory, choices : []}
+      { level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: idStory}
     ).subscribe(newSlice => {
-      console.log(newSlice.id);
+      console.log("nouveau chapitre " + newSlice.id);
     });
   }
 
