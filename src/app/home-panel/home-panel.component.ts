@@ -27,6 +27,9 @@ export class HomePanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Ouvre la popup de création d'histoire
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(StoryCreationDialogComponent, {
       width: '300px',
@@ -40,6 +43,10 @@ export class HomePanelComponent implements OnInit {
     });
   }
 
+  /**
+   * Crée une nouvelle histoire, avec chapitre racine
+   * @param title
+   */
   createStory(title: string): void {
     title = title.trim();
     if (!title) { return; }
@@ -59,9 +66,7 @@ export class HomePanelComponent implements OnInit {
   createSlice(storyId: string, sliceId: string): void {
     this.sliceService.addSlice(
       {id: sliceId, level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: storyId, choices : []}
-    ).subscribe(newSlice => {
-      console.log("nouveau chapitre " + newSlice.id);
-    });
+    );
   }
 
 }

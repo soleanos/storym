@@ -1,5 +1,3 @@
-
-
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/observable/fromPromise';
 const httpOptions = {
@@ -20,9 +18,9 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
  */
 @Injectable()
 export class StoryService {
-
   stories: Observable<any[]>;
   story: Observable<Story>;
+
   private storyCollection: AngularFirestoreCollection<Story>;
   private storyDoc: AngularFirestoreDocument<Story>;
 
@@ -34,6 +32,7 @@ export class StoryService {
       this.story = new Observable<Story>();
     }
 
+//////// Get methods //////////
 
 /** Get all stories  */
 getStories (): Observable<any[]> {
