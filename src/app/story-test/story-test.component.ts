@@ -32,8 +32,8 @@ export class StoryTestComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.getStory(id);
     this.getFirstSlice(id);
+    this.getStory(id);
     this.getSlices(id);
   }
 
@@ -60,24 +60,20 @@ export class StoryTestComponent implements OnInit {
     const slice = new Slice();
     this.sliceService.getSlicesOfStory(id)
       .subscribe(
-        slices => this.test(slices.find(item => item.level === 0)),
-        error => console.log("Error: ", error),
-        () => alert("Finit")
+        slices => this.addFirstSlice(slices.find(item => item.level === 0)),
       );
-      // this.getChoiceCollection(slice.id);
   }
 
-
-  test(slice :  Slice){
+  addFirstSlice(slice:  Slice) {
     this.slicesOfStory.push(slice);
-    this.getChoiceCollection(slice.id);
+    this.slice = slice;
   }
   /**
    * Récupère le passage correspondant au choix sur lequel on a cliqué
-   * @param sliceName
+   * @param sliceId
    */
-  getnextLinkedSlice(sliceName: String): any {
-     return this.slices.filter(x => x.id === sliceName)[0];
+  getnextLinkedSlice(sliceId: String): any {
+     return this.slices.filter(x => x.id === sliceId)[0];
   }
 
   /**
@@ -85,10 +81,9 @@ export class StoryTestComponent implements OnInit {
    * @param choice
    */
   addNextSliceToStory(choice: Choice) {
-    const nextSlice: Slice = this.getnextLinkedSlice(choice.nextSlice);
+    const nextSlice: Slice = this.getnextLinkedSlice(choice.nextSliceId);
     this.slicesOfStory.push(nextSlice);
     this.slice = nextSlice;
-    this.getChoiceCollection(this.slice.id);
   }
 
   /**
@@ -102,7 +97,7 @@ export class StoryTestComponent implements OnInit {
 
   /**
    * Echappe tous les caractères spéciaux d'une chaine de caractère.
-   * @param text 
+   * @param text
    */
   escapeRegExp(text): string {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
@@ -113,5 +108,9 @@ export class StoryTestComponent implements OnInit {
     //   this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
     // } catch (err) {}
   }
+
+
+
+
 
 }

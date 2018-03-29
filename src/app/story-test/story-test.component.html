@@ -9,7 +9,7 @@
             </mat-card-content>
           </mat-card>      
     </div>
-    <div  *ngFor="let choice of choices" layout="row" layout-align="center none" flex = "100">
+    <div  *ngFor="let choice of slice.choices" layout="row" layout-align="center none" flex = "100">
         <button flex = "100" mat-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>     
     </div>  
 </div>
