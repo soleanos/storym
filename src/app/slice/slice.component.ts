@@ -23,7 +23,6 @@ export class SliceComponent implements OnInit {
   story: string;
   id: string;
   level: number;
-  rank: number;
   choices: Choice[];
 
   linkedSlicesUnformated: String[];
@@ -41,7 +40,6 @@ export class SliceComponent implements OnInit {
     this.id = this.slice.id;
     this.story = this.slice.story;
     this.level = this.slice.level;
-    this.rank = this.slice.rank;
     this.choices = this.slice.choices;
   }
 
@@ -96,14 +94,12 @@ export class SliceComponent implements OnInit {
 
           // Les boucles sont autorisée pour l'instant : on change l'id du
           // prochain chapitre lié au choixà la main
-          console.log(choice.nextSliceId);
           choice.nextSliceId = existingSlice.id;
-          console.log(existingSlice.id);
-          console.log(choice.nextSliceId);
-          alert("Attention ! Vous avez un choix qui redirige vers le premier passage de l'histoire");
+          alert('Attention ! Vous avez un choix qui redirige vers le premier passage de l histoire');
         }else if (existingSlice && existingSlice.level !== 0) {
+          // On supprime le choix dans le cas ou il redirige vers le même passage.
           slice.choices = slice.choices.filter(h => h !== choice);
-          alert("Vous avez créer un choix lié au même chapitre ! Il a été supprimé.");
+          alert('Vous avez créer un choix lié au même chapitre ! Il a été supprimé.');
         }
       });
 
@@ -159,6 +155,10 @@ export class SliceComponent implements OnInit {
       });
   }
 
+  /**
+   * Retourne le passage si il éxiste déja.
+   * @param nextSlicetitle
+   */
   isSliceAlreadyExisting(nextSlicetitle: string): Slice {
     return this.slices.find(slice => slice.title === nextSlicetitle);
   }

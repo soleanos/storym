@@ -29,7 +29,7 @@ import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
 import { StoryTestComponent } from './story-test/story-test.component';
 import { SliceByLevelPipe } from './slice-by-level.pipe';
-import { SliceCreationDialogComponent } from './slice-creation-dialog/slice-creation-dialog.component';
+import { ChoiceCreationDialogComponent } from './choice-creation-dialog/choice-creation-dialog.component';
 import { SliceLinkPipe } from './slice-link.pipe';
 
 import { AngularFireModule } from 'angularfire2';
@@ -55,7 +55,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     StoryComponent,
     SliceByLevelPipe,
     StoryTestComponent,
-    SliceCreationDialogComponent,
+    ChoiceCreationDialogComponent,
     SliceLinkPipe
   ],
   imports: [
@@ -76,7 +76,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     AngularFirestoreModule
   ],
   providers: [StoryService, MessageService, SliceService, AngularFirestoreModule],
-  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent, SliceCreationDialogComponent],
+  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent, ChoiceCreationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit,Input} from '@angular/core';
+import {Component, Inject, OnInit, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Choice } from '../Choice';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -14,19 +14,19 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 
 
 @Component({
-  selector: 'app-slice-creation-dialog',
-  templateUrl: './slice-creation-dialog.component.html',
-  styleUrls: ['./slice-creation-dialog.component.css']
+  selector: 'app-choice-creation-dialog',
+  templateUrl: './choice-creation-dialog.component.html',
+  styleUrls: ['./choice-creation-dialog.component.css']
 })
-export class SliceCreationDialogComponent implements OnInit {
+export class ChoiceCreationDialogComponent implements OnInit {
   sliceCtrl: FormControl;
   filteredSlices: Observable<any[]>;
   choice: Choice;
   slices: Slice[];
   idStory: string;
-  
+
   constructor(
-    private sliceService: SliceService, public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
+    private sliceService: SliceService, public dialogRef: MatDialogRef<ChoiceCreationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Choice, private db: AngularFirestore
   ) {
     this.sliceCtrl = new FormControl();

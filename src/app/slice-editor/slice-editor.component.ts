@@ -4,7 +4,7 @@ import { Slice } from '../Slice';
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import { Choice } from '../Choice';
-import { SliceCreationDialogComponent } from '../slice-creation-dialog/slice-creation-dialog.component';
+import { ChoiceCreationDialogComponent } from '../choice-creation-dialog/choice-creation-dialog.component';
 
 @Component({
   selector: 'app-slice-editor',
@@ -51,7 +51,7 @@ export class SliceEditorComponent implements OnInit {
    * et gestion des actions après sa fermeture
    */
   openP(): void {
-    const dialogRef = this.dialog.open(SliceCreationDialogComponent, {
+    const dialogRef = this.dialog.open(ChoiceCreationDialogComponent, {
       width: '25%',
       data: {}
     });
