@@ -1,13 +1,12 @@
 
-import { Choice } from './Choice';
+import { Choice } from '../model/Choice';
 
 export class Slice {
-    id?: string;
+    id: string;
     title: string;
     text: string;
     story: string;
-    level?: number;
-    rank?: number;
+    level: number;
     choices?: Choice[];
     constructor() {
     }

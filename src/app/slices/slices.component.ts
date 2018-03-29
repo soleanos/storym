@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Slice } from '../Slice';
+import { Slice } from '../model/Slice';
 
 @Component({
   selector: 'app-slices',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input , Output, EventEmitter, ViewChild} from '@angular/core';
-import { Story } from '../story';
+import { Story } from '../model/Story';
 import {StoryService} from '../story.service';
 import {HomeHeaderComponent} from '../home-header/home-header.component';
 import {MatSidenav} from '@angular/material/sidenav';

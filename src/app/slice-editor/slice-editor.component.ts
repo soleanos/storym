@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Slice } from '../Slice';
+import { Slice } from '../model/Slice';
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import { Choice } from '../Choice';
+import { Choice } from '../model/Choice';
 import { ChoiceCreationDialogComponent } from '../choice-creation-dialog/choice-creation-dialog.component';
 
 @Component({

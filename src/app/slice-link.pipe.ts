@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform,OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Slice } from './Slice';
+import { Slice } from './model/Slice';
 
 @Pipe({
   name: 'sliceLink'

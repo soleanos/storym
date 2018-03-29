@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Story } from '../story';
+import { Story } from '../model/Story';
 import { StoryService } from '../story.service';
 import { SliceService } from '../slice.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Slice } from '../Slice';
-import { Choice } from '../Choice';
+import { Slice } from '../model/Slice';
+import { Choice } from '../model/Choice';
 
 
 @Component({

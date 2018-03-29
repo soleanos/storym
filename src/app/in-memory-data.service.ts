@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Story } from './story';
-import { Slice } from './Slice';
+import { Story } from './model/Story';
+import { Slice } from './model/Slice';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {

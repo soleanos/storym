@@ -5,14 +5,13 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 import { Injectable } from '@angular/core';
-import { Slice } from './slice';
-import { Story } from './Story';
-import { Choice } from './Choice';
+import { Slice } from './model/Slice';
+import { Story } from './model/Story';
+import { Choice } from './model/Choice';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { StoryService } from './story.service';
 

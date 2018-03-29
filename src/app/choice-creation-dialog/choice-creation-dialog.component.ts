@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Choice } from '../Choice';
+import { Choice } from '../model/Choice';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormControl} from '@angular/forms';
 import {SliceService} from '../slice.service';
-import { Slice } from '../Slice';
+import { Slice } from '../model/Slice';
 
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';

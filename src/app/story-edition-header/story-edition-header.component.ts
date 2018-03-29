@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Story } from '../story';
+import { Story } from '../model/Story';
 
 
 @Component({

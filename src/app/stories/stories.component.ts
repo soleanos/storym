@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Story } from '../story';
+import { Story } from '../model/Story';
 
 @Component({
   selector: 'app-stories',
