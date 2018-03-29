@@ -3,14 +3,14 @@ import { NgModule, Component} from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-import { MessageService } from './services/message.service';
-import { MessagesComponent } from './messages/messages.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CustomAngularMaterialModule} from './custom-angular-material.module';
-import {CustomCovalentModule} from './custom-covalent.module';
+
+import { CustomAngularMaterialModule} from './modules/custom-angular-material.module';
 
 import { AppComponent } from './app.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
@@ -20,21 +20,20 @@ import { StoryEditionComponent } from './story-edition/story-edition.component';
 import { SliceComponent } from './slice/slice.component';
 import { SliceEditorComponent } from './slice-editor/slice-editor.component';
 import { HomeComponent } from './home/home.component';
-import {StoryService} from './services/story.service';
-import {SliceService} from './services/slice.service';
 import { SlicesComponent } from './slices/slices.component';
 import { StoryCreationDialogComponent } from './story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryComponent } from './story/story.component';
 import { StoryTestComponent } from './story-test/story-test.component';
-import { SliceByLevelPipe } from './slice-by-level.pipe';
 import { ChoiceCreationDialogComponent } from './choice-creation-dialog/choice-creation-dialog.component';
-import { SliceLinkPipe } from './slice-link.pipe';
+import { MessagesComponent } from './messages/messages.component';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from '../environments/environment';
-import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { StoryService} from './services/story.service';
+import { SliceService} from './services/slice.service';
+import { MessageService } from './services/message.service';
+
+import { SliceByLevelPipe } from './pipes/slice-by-level.pipe';
+import { SliceLinkPipe } from './pipes/slice-link.pipe';
 
 @NgModule({
   declarations: [
@@ -62,12 +61,8 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // ),
     AngularFireModule.initializeApp(environment.firebaseConfig, 'angularfs'),
     AngularFireDatabaseModule,
-    // CustomCovalentModule,
     AngularDraggableModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

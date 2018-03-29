@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Slice} from './model/Slice';
+import {Slice} from '../model/Slice';
 @Pipe({
   name: 'sliceByLevel',
   pure: false
