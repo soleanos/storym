@@ -1,19 +1,16 @@
-
 import { catchError, map, tap } from 'rxjs/operators';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 import { Injectable } from '@angular/core';
-import { Slice } from './model/Slice';
-import { Story } from './model/Story';
-import { Choice } from './model/Choice';
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 import { MessageService } from './message.service';
-import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import { StoryService } from './story.service';
+import { StoryService } from '../services/story.service';
+
+import { Slice } from '../model/Slice';
+import { Story } from '../model/Story';
+import { Choice } from '../model/Choice';
 
 /**
  * Ce service utilise FIREBASE.
@@ -25,7 +22,6 @@ export class SliceService {
     slices: Observable<Slice[]>;
     choices: Observable<Choice[]>;
 
-
     sliceCollection: AngularFirestoreCollection<Slice>;
     choiceCollection: AngularFirestoreCollection<Choice>;
     storyCollection: AngularFirestoreCollection<Story>;
@@ -34,7 +30,6 @@ export class SliceService {
     sliceDoc: AngularFirestoreDocument<any>;
 
     constructor(
-      private http: HttpClient,
       private messageService: MessageService,
       private db: AngularFirestore,
       private storyService: StoryService,

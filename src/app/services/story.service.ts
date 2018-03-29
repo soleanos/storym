@@ -1,18 +1,13 @@
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/observable/fromPromise';
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 import { Injectable } from '@angular/core';
-import { Story } from './model/Story';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from './message.service';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
+import { MessageService } from './message.service';
 
+import { Story } from '../model/Story';
 /**
  * Ce service utilise FIREBASE.
  */
@@ -26,7 +21,6 @@ export class StoryService {
   private storyDoc: AngularFirestoreDocument<Story>;
 
   constructor(
-    private http: HttpClient,
     private messageService: MessageService,
     private db: AngularFirestore
    ) {

@@ -1,17 +1,16 @@
 import {Component, Inject, OnInit, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Choice } from '../model/Choice';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormControl} from '@angular/forms';
-import {SliceService} from '../slice.service';
-import { Slice } from '../model/Slice';
-
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
-
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
+import {SliceService} from '../services/slice.service';
+
+import { Choice } from '../model/Choice';
+import { Slice } from '../model/Slice';
 
 @Component({
   selector: 'app-choice-creation-dialog',

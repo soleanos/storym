@@ -3,8 +3,8 @@ import { Story } from '../model/Story';
 import { Slice } from '../model/Slice';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { StoryService } from '../story.service';
-import { SliceService } from '../slice.service';
+import { StoryService } from '../services/story.service';
+import { SliceService } from '../services/slice.service';
 
 
 @Component({
