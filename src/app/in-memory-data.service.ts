@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
         { level : 0, id : "10", title: 'Chapitre I',
          text: "Une nouvelle année commence pour vous à Poudlard ! Qu'allez vous faire ? ",
           story: "33", choices : [{nextSliceTitle:"Le rêve",nextSliceId:"qsdqsdqsdqs" ,
-          label:"Aller dormir"},{{nextSliceTitle:"La mer",nextSliceId:"qsdqsdqsdqs" ,label:"Aller nager"},]}
+          label:"Aller dormir"}, {nextSliceTitle: "La mer", nextSliceId:"qsdqsdqsdqs" , label:"Aller nager"}]}
       ];
     return {stories, slices};
   }

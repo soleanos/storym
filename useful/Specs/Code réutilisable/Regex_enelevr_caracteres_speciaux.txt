@@ -1,0 +1,7 @@
+ /**
+   * Echappe tous les caractères spéciaux d'une chaine de caractère.
+   * @param text
+   */
+  escapeRegExp(text): string {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+  }

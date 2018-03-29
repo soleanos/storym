@@ -37,12 +37,6 @@ export class StoryTestComponent implements OnInit {
     this.getSlices(id);
   }
 
-  getChoiceCollection(id: string): void {
-    console.log(id);
-    return this.sliceService.getChoicesOfSlice(id)
-      .subscribe(choices => this.choices = choices );
-  }
-
   /**
    * Récupère l'histoire correspondant à l'id passé en paramètre
    * @param id
@@ -61,9 +55,12 @@ export class StoryTestComponent implements OnInit {
     this.sliceService.getSlicesOfStory(id)
       .subscribe(
         slices => this.addFirstSlice(slices.find(item => item.level === 0)),
-      );
+    );
   }
-
+  /**
+   * Ajoute le première passage à l'histoire
+   * @param slice
+   */
   addFirstSlice(slice:  Slice) {
     this.slicesOfStory.push(slice);
     this.slice = slice;
@@ -73,6 +70,7 @@ export class StoryTestComponent implements OnInit {
    * @param sliceId
    */
   getnextLinkedSlice(sliceId: String): any {
+    console.log(sliceId);
      return this.slices.filter(x => x.id === sliceId)[0];
   }
 
@@ -95,22 +93,10 @@ export class StoryTestComponent implements OnInit {
       .subscribe(slices => this.slices = slices);
   }
 
-  /**
-   * Echappe tous les caractères spéciaux d'une chaine de caractère.
-   * @param text
-   */
-  escapeRegExp(text): string {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-  }
-
   scrollToBottom = () => {
     // try {
     //   this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
     // } catch (err) {}
   }
-
-
-
-
 
 }

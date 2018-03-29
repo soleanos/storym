@@ -43,12 +43,6 @@ export class SliceComponent implements OnInit {
     this.level = this.slice.level;
     this.rank = this.slice.rank;
     this.choices = this.slice.choices;
-    // this.getChoiceCollection(this.slice.id);
-  }
-
-  getChoiceCollection(id: string): void {
-    this.sliceService.getChoicesOfSlice(id)
-      .subscribe(choices => this.choices = choices);
   }
 
   /**
@@ -87,15 +81,38 @@ export class SliceComponent implements OnInit {
 
   /**
    * Met à jour le passage
-   * @param slice 
+   * @param slice
    */
   updateSlice(slice: Slice): void {
     if (slice) {
-    this.sliceService.updateSlice(slice)
-      .subscribe(sliceUpdated => {
-        this.slice = slice;
+
+      // Contrôle des choix du passage.
+      slice.choices.forEach(choice => {
+        const existingSlice = this.isSliceAlreadyExisting(choice.nextSliceTitle);
+        console.log(existingSlice);
+        if (existingSlice && existingSlice.level === 0) {
+          // Si jamais on souhaite interdire les boucles vers le passage racine, à décommenter :
+          // slice.choices = slice.choices.filter(h => h !== choice);
+
+          // Les boucles sont autorisée pour l'instant : on change l'id du
+          // prochain chapitre lié au choixà la main
+          console.log(choice.nextSliceId);
+          choice.nextSliceId = existingSlice.id;
+          console.log(existingSlice.id);
+          console.log(choice.nextSliceId);
+          alert("Attention ! Vous avez un choix qui redirige vers le premier passage de l'histoire");
+        }else if (existingSlice && existingSlice.level !== 0) {
+          slice.choices = slice.choices.filter(h => h !== choice);
+          alert("Vous avez créer un choix lié au même chapitre ! Il a été supprimé.");
+        }
       });
-    }
+
+      // Mise à jour du passage
+      this.sliceService.updateSlice(slice)
+        .subscribe(sliceUpdated => {
+          this.slice = slice;
+        });
+      }
   }
 
   /**
@@ -130,10 +147,20 @@ export class SliceComponent implements OnInit {
    */
   createNextSlicesFromChoices(choices: Choice[]) {
       this.choices.forEach(choice => {
-        // TODO chercher si le choix existe deja
-        console.log(this.slices);
-        this.createSlice(choice.nextSliceTitle, choice.nextSliceId);
+
+        // On ne crée pas le passage si il éxiste déja.
+        if (!this.isSliceAlreadyExisting(choice.nextSliceTitle)) {
+          this.createSlice(choice.nextSliceTitle, choice.nextSliceId);
+        }
+        // else if (existingSlice.level === 0 ) {
+        //   alert("Vous ne pouvez pas ")
+        //   this.choices = this.choices.filter(h => h !== choice);
+        // }
       });
+  }
+
+  isSliceAlreadyExisting(nextSlicetitle: string): Slice {
+    return this.slices.find(slice => slice.title === nextSlicetitle);
   }
 
 }
