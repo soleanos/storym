@@ -17,7 +17,6 @@ export class StoriesComponent implements OnInit {
   }
 
   changed(newValue) {
-    console.log('newValue', newValue);
     if ( newValue) {
       this.storiesChange.emit(newValue);
     }

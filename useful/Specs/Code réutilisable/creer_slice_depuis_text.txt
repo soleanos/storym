@@ -1,0 +1,24 @@
+ /**
+   * Crée un passage pour chaque pattern [x | y] trouvé dans le texte
+   * avec pour titre y
+   * @param sliceText
+   */
+  createNextSlicesFromText(sliceText: String) {
+    this.linkedSlicesUnformated =  sliceText.match(/(\[([^\]]|\]\[)*\])/g);
+    if (this.linkedSlicesUnformated) {
+      this.linkedSlicesUnformated.forEach(element => {
+        // On enleve les crochets
+        element = element.substr(1, element.length - 2);
+        // Si on a un pipe alors on coupe en deux
+        if (element.search(/[|]/g) !== -1) {
+          element.replace(/[\[]|[\]]/, '');
+          this.sliceStringArray = element.split('|');
+          this.sliceStringArray.forEach(sliceElement => {
+            sliceElement.trim();
+          });
+          const sliceId = this.db.createId();
+         this.createSlice(this.sliceStringArray[1], sliceId);
+        }
+      });
+    }
+  }
