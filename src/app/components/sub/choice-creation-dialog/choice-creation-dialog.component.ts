@@ -7,10 +7,10 @@ import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
-import {SliceService} from '../services/slice.service';
+import {SliceService} from '../../../services/slice.service';
 
-import { Choice } from '../model/Choice';
-import { Slice } from '../model/Slice';
+import { Choice } from '../../../model/Choice';
+import { Slice } from '../../../model/Slice';
 
 @Component({
   selector: 'app-choice-creation-dialog',

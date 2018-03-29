@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Slice } from '../model/Slice';
+import { Slice } from '../../../model/Slice';
 import {MatChipInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import { Choice } from '../model/Choice';
+import { Choice } from '../../../model/Choice';
 import { ChoiceCreationDialogComponent } from '../choice-creation-dialog/choice-creation-dialog.component';
 
 @Component({
@@ -37,14 +37,6 @@ export class SliceEditorComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  saveText(event: any) { // without type info
-     console.log(event.target.value );
-  }
-
-  addSliceTag(event: any) { // without type info
-    this.data.text += ' [Texte de lien | Titre unique du prochain passage]';
- }
 
  /**
    * Ouverture de la fenpetre modale avec paramètres

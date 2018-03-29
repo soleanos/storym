@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import {StoryService} from '../services/story.service';
+import {StoryService} from '../../../services/story.service';
 
-import { Story } from '../model/Story';
+import { Story } from '../../../model/Story';
 
 @Component({
   selector: 'app-story',

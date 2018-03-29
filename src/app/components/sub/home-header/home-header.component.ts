@@ -1,5 +1,5 @@
 import { Component, OnInit, Input,Output} from '@angular/core';
-import { Story } from '../model/Story';
+import { Story } from '../../../model/Story';
 import {MatSidenav} from '@angular/material/sidenav';
 import { viewParentEl } from '@angular/core/src/view/util';
 

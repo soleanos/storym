@@ -3,11 +3,11 @@ import { ViewChild, ElementRef } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
-import {SliceService} from '../services/slice.service';
+import {SliceService} from '../../../services/slice.service';
 import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
 
-import { Choice } from '../model/Choice';
-import { Slice } from '../model/Slice';
+import { Choice } from '../../../model/Choice';
+import { Slice } from '../../../model/Slice';
 
 @Component({
   selector: 'app-slice',

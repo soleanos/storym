@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Story } from '../model/Story';
-import { Slice } from '../model/Slice';
+import { Story } from '../../model/Story';
+import { Slice } from '../../model/Slice';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { StoryService } from '../services/story.service';
-import { SliceService } from '../services/slice.service';
+import { StoryService } from '../../services/story.service';
+import { SliceService } from '../../services/slice.service';
 
 
 @Component({

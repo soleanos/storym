@@ -1,10 +1,10 @@
 import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Story } from '../model/Story';
+import {Story } from '../../../model/Story';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {StoryService} from '../services/story.service';
-import {SliceService} from '../services/slice.service';
-import { Slice } from '../model/Slice';
+import {StoryService} from '../../../services/story.service';
+import {SliceService} from '../../../services/slice.service';
+import { Slice } from '../../../model/Slice';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 @Component({
