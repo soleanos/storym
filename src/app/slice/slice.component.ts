@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
 import {SliceService} from '../slice.service';
 import { Choice } from '../Choice';
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-slice',
@@ -26,13 +27,13 @@ export class SliceComponent implements OnInit {
   choices: Choice[];
 
   linkedSlicesUnformated: String[];
-  sliceStringArray: String[];
+  sliceStringArray: string[];
   @Input() slice: Slice;
 
   @Input() slices: Slice[];
   @Output() slicesChange = new EventEmitter<Slice[]>();
 
-  constructor(public dialog: MatDialog, private sliceService: SliceService) { }
+  constructor(public dialog: MatDialog, private sliceService: SliceService, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.text = this.slice.text;
@@ -42,7 +43,7 @@ export class SliceComponent implements OnInit {
     this.level = this.slice.level;
     this.rank = this.slice.rank;
     this.choices = this.slice.choices;
-    this.getChoiceCollection(this.slice.id);
+    // this.getChoiceCollection(this.slice.id);
   }
 
   getChoiceCollection(id: string): void {
@@ -73,11 +74,12 @@ export class SliceComponent implements OnInit {
    * @param title
    *
    */
-  createSlice(title: String): void {
+  createSlice(title: string, sliceId: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.sliceService.addSlice({title, story: this.story, text : 'Double cliquez pour éditer', level : this.level + 1, choices: new Array<Choice>()} as Slice)
-      .subscribe(slice => {
+    this.sliceService.addSlice({id : sliceId, title, story: this.story,
+       text : 'Double cliquez pour éditer', level : this.level + 1,
+        choices: new Array<Choice>()} as Slice).subscribe(slice => {
         this.slices.push(slice);
         this.slicesChange.emit(this.slices);
       });
@@ -114,7 +116,8 @@ export class SliceComponent implements OnInit {
           this.sliceStringArray.forEach(sliceElement => {
             sliceElement.trim();
           });
-         this.createSlice(this.sliceStringArray[1]);
+          const sliceId = this.db.createId();
+         this.createSlice(this.sliceStringArray[1], sliceId);
         }
       });
     }
@@ -127,28 +130,11 @@ export class SliceComponent implements OnInit {
    */
   createNextSlicesFromChoices(choices: Choice[]) {
       this.choices.forEach(choice => {
-        this.createSlice(choice.title);
+        // TODO chercher si le choix existe deja
+        console.log(this.slices);
+        this.createSlice(choice.nextSliceTitle, choice.nextSliceId);
       });
   }
 
-
-  // /**
-  //  * Met a jour le rank
-  //  */
-  // updateRank() {
-  //   this.calculRank(this.slice.level);
-  //   this.updateSlice(this.slice);
-  // }
-
-  // /**
-  //  * Calcul le rank en fonction du nombre de passage au niveau
-  //  * @param sliceLevel
-  //  */
-  // calculRank(sliceLevel: number) {
-  //   this.sliceService.searchSlicesByRank(sliceLevel)
-  //     .subscribe(slices => {
-  //       this.rank = slices.length + 1;
-  //     });
-  // }
 }
 

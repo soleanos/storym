@@ -53,7 +53,7 @@ export class SliceEditorComponent implements OnInit {
   openP(): void {
     const dialogRef = this.dialog.open(SliceCreationDialogComponent, {
       width: '25%',
-      data: {title : this.title, text : this.text}
+      data: {}
     });
     dialogRef.componentInstance.idStory = this.data.story;
 

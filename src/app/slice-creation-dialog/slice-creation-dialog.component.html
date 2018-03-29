@@ -4,7 +4,7 @@
   <font color="red">Si le passage lié au choix n'existe pas déja, il sera crée automatiquement </font> 
   <br>
   <mat-form-field>
-    <input matInput placeholder="Titre unique du passage à lier au choix" aria-label="Titre unique du choix" [matAutocomplete]="auto" [formControl]="sliceCtrl" [(ngModel)]="data.title">
+    <input matInput placeholder="Titre unique du passage à lier au choix" aria-label="Titre unique du choix" [matAutocomplete]="auto" [formControl]="sliceCtrl" [(ngModel)]="data.nextSliceTitle">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let slice of filteredSlices | async" [value]="slice.title">     
         <span>{{ slice.title }}</span> | 
@@ -13,11 +13,11 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-form-field>
-    <input placeholder="Texte du choix qui sera affiché à la fin du passage" matInput [(ngModel)]="data.text">
+    <input placeholder="Texte du choix qui sera affiché à la fin du passage" matInput [(ngModel)]="data.label">
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Retour</button>
-  <button mat-button *ngIf="data.title && data.text" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button *ngIf="data.nextSliceTitle && data.label" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

@@ -10,6 +10,9 @@ import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+
+
 @Component({
   selector: 'app-slice-creation-dialog',
   templateUrl: './slice-creation-dialog.component.html',
@@ -24,9 +27,10 @@ export class SliceCreationDialogComponent implements OnInit {
   
   constructor(
     private sliceService: SliceService, public dialogRef: MatDialogRef<SliceCreationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Choice
+    @Inject(MAT_DIALOG_DATA) public data: Choice, private db: AngularFirestore
   ) {
     this.sliceCtrl = new FormControl();
+    this.data.nextSliceId = this.db.createId();
    }
 
   ngOnInit() {

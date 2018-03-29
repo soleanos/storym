@@ -1,6 +1,7 @@
 export class Choice {
     id?: string;
-    nextSlice: string;
+    nextSliceId: string;
+    nextSliceTitle: string;
     label: string;
 
     constructor() {

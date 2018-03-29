@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {StoryService} from '../story.service';
 import {SliceService} from '../slice.service';
 import { Slice } from '../Slice';
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-home-panel',
@@ -18,7 +19,8 @@ export class HomePanelComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService) {
+  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
+    , private db: AngularFirestore) {
     this.story = new Story();
    }
 
@@ -40,13 +42,12 @@ export class HomePanelComponent implements OnInit {
 
   createStory(title: string): void {
     title = title.trim();
-    console.log(title);
     if (!title) { return; }
     this.storyService.addStory({ title } as Story)
       .subscribe(story => {
-        console.log(story.id);
         this.storiesChange.emit(this.stories);
-        this.createSlice(story.id);
+        const sliceId = this.db.createId();
+        this.createSlice(story.id, sliceId);
       });
   }
 
@@ -55,9 +56,9 @@ export class HomePanelComponent implements OnInit {
    * @param title
    *
    */
-  createSlice(idStory: string): void {
+  createSlice(storyId: string, sliceId: string): void {
     this.sliceService.addSlice(
-      { level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: idStory}
+      {id: sliceId, level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: storyId, choices : []}
     ).subscribe(newSlice => {
       console.log("nouveau chapitre " + newSlice.id);
     });
