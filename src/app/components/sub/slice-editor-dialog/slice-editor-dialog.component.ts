@@ -7,11 +7,11 @@ import { Choice } from '../../../model/Choice';
 import { ChoiceCreationDialogComponent } from '../choice-creation-dialog/choice-creation-dialog.component';
 
 @Component({
-  selector: 'app-slice-editor',
-  templateUrl: './slice-editor.component.html',
-  styleUrls: ['./slice-editor.component.css']
+  selector: 'app-slice-editor-dialog',
+  templateUrl: './slice-editor-dialog.component.html',
+  styleUrls: ['./slice-editor-dialog.component.css']
 })
-export class SliceEditorComponent implements OnInit {
+export class SliceEditorDialogComponent implements OnInit {
   title: string;
   text: string;
   visible = true;
@@ -29,7 +29,7 @@ export class SliceEditorComponent implements OnInit {
   }
 
   constructor(
-    public dialog: MatDialog, public dialogRef: MatDialogRef<SliceEditorComponent>,
+    public dialog: MatDialog, public dialogRef: MatDialogRef<SliceEditorDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: Slice
    ) {
      this.choices = this.data.choices;

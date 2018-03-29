@@ -18,7 +18,7 @@ import { HomePanelComponent } from './components/sub/home-panel/home-panel.compo
 import { StoryEditionHeaderComponent } from './components/sub/story-edition-header/story-edition-header.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { SliceComponent } from './components/sub/slice/slice.component';
-import { SliceEditorComponent } from './components/sub/slice-editor/slice-editor.component';
+import { SliceEditorDialogComponent } from './components/sub/slice-editor-dialog/slice-editor-dialog.component';
 import { HomeComponent } from './components/home/home.component';
 import { SlicesComponent } from './components/sub/slices/slices.component';
 import { StoryCreationDialogComponent } from './components/sub/story-creation-dialog/story-creation-dialog.component';
@@ -45,7 +45,7 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
     StoryEditionHeaderComponent,
     StoryEditionComponent,
     SliceComponent,
-    SliceEditorComponent,
+    SliceEditorDialogComponent,
     SlicesComponent,
     StoryCreationDialogComponent,
     StoriesComponent,
@@ -69,7 +69,7 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
     AngularFirestoreModule
   ],
   providers: [StoryService, MessageService, SliceService, AngularFirestoreModule],
-  entryComponents: [StoryCreationDialogComponent, SliceEditorComponent, ChoiceCreationDialogComponent],
+  entryComponents: [StoryCreationDialogComponent, SliceEditorDialogComponent, ChoiceCreationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

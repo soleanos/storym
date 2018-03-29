@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 import {SliceService} from '../../../services/slice.service';
-import {SliceEditorComponent} from '../slice-editor/slice-editor.component';
+import {SliceEditorDialogComponent} from '../slice-editor-dialog/slice-editor-dialog.component';
 
 import { Choice } from '../../../model/Choice';
 import { Slice } from '../../../model/Slice';
@@ -50,7 +50,7 @@ export class SliceComponent implements OnInit {
    * et gestion des actions après sa fermeture
    */
   openDialog(): void {
-    const dialogRef = this.dialog.open(SliceEditorComponent, {
+    const dialogRef = this.dialog.open(SliceEditorDialogComponent, {
       width: '100%',
       data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level,choices:this.choices}
     });
