@@ -27,10 +27,12 @@ import { StoryComponent } from './components/sub/story/story.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
 import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-dialog/choice-creation-dialog.component';
 import { MessagesComponent } from './components/sub/messages/messages.component';
+import { LoginComponent } from './components//login/login.component';
 
 import { StoryService} from './services/story.service';
 import { SliceService} from './services/slice.service';
 import { MessageService } from './services/message.service';
+import { AuthService } from './services/auth.service';
 
 import { SliceByLevelPipe } from './pipes/slice-by-level.pipe';
 import { SliceLinkPipe } from './pipes/slice-link.pipe';
@@ -53,7 +55,8 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
     SliceByLevelPipe,
     StoryTestComponent,
     ChoiceCreationDialogComponent,
-    SliceLinkPipe
+    SliceLinkPipe,
+    LoginComponent
   ],
   imports: [
     CustomAngularMaterialModule,
