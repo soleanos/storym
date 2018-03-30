@@ -1,5 +1,5 @@
-<mat-grid-list  cols="4" rowHeight="2:1">
-    <mat-grid-tile rowspan="1"*ngFor="let story of stories">     
-        <app-story [(stories)] = stories [story] = story ></app-story>
-    </mat-grid-tile>
-</mat-grid-list>
+<!-- <mat-grid-list  cols="4" rowHeight="30%"> -->
+<div class="wrapper">
+    <app-story *ngFor="let story of stories" [(stories)] = stories [story] = story ></app-story>
+</div>
+<!-- </mat-grid-list> -->

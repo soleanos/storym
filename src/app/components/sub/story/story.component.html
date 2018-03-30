@@ -4,7 +4,7 @@
       <mat-card-title>{{story.title}}</mat-card-title>
       <mat-card-subtitle *ngIf="story.subtitle" >{{story.subtitle}}</mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of the story"> -->
+    <img mat-card-image src="http://thecatapi.com/api/images/get?format=src&type=gif" alt="Photo of the story">
     <mat-card-content>
       <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
@@ -13,8 +13,8 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="edit(story.id)" >Editer</button>
-      <button mat-button >Publier</button>
+        <button mat-raised-button color="link"  (click)="edit(story.id)" >Editer</button>
+      <button mat-raised-button color="link" >Publier</button>
       <button mat-raised-button color="warn" (click)="delete(story)" >Supprimer</button>
     </mat-card-actions>
 </mat-card>

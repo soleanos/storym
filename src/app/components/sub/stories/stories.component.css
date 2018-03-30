@@ -1,4 +1,34 @@
-mat-card {
-    width: calc(100% - 70px);
-    height: calc(100% - 70px);
+.wrapper {
+    display: grid;
+}
+
+/* Phones */
+@media all 
+  and (min-device-width: 100px) 
+  and (max-device-width: 768px) {
+    .wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+}
+
+/* Tablets */
+@media all
+  and (min-device-width: 768px) 
+  and (max-device-width: 992px) {
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+}
+
+/* Desktops */
+@media all and (min-device-width: 992px) {
+    .wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
 }

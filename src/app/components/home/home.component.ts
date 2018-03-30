@@ -1,8 +1,13 @@
 import { Component, OnInit, Input , Output, EventEmitter, ViewChild} from '@angular/core';
-import { Story } from '../../model/Story';
-import {StoryService} from '../../services/story.service';
+import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 import {HomeHeaderComponent} from '../sub/home-header/home-header.component';
-import {MatSidenav} from '@angular/material/sidenav';
+import {StoryCreationDialogComponent} from '../sub/story-creation-dialog/story-creation-dialog.component';
+
+import {StoryService} from '../../services/story.service';
+
+import { Story } from '../../model/Story';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +16,7 @@ import {MatSidenav} from '@angular/material/sidenav';
 })
 export class HomeComponent implements OnInit {
   @Input() stories: Story[];
-  selectedStory: Story;
-  @ViewChild('sidenav') sidenav: MatSidenav;
 
-  onSelect(story: Story): void {
-    this.selectedStory = story;
-  }
   constructor(private storyService: StoryService) {
   }
 
@@ -26,12 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("==========Page home============");
     this.getStories();
-  }
-
-  close() {
-    this.sidenav.close();
   }
 
 }
