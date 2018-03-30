@@ -14,7 +14,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="link"  (click)="edit(story.id)" >Editer</button>
-      <button mat-raised-button color="link" >Publier</button>
+      <button mat-raised-button (click)="show = !show">{{show ? 'Publier' : 'Dépublier'}} </button>
       <button mat-raised-button color="warn" (click)="delete(story)" >Supprimer</button>
     </mat-card-actions>
 </mat-card>
