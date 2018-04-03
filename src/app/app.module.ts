@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularDraggableModule } from 'angular2-draggable';
@@ -33,9 +34,12 @@ import { StoryService} from './services/story.service';
 import { SliceService} from './services/slice.service';
 import { MessageService } from './services/message.service';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 import { SliceByLevelPipe } from './pipes/slice-by-level.pipe';
 import { SliceLinkPipe } from './pipes/slice-link.pipe';
+
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -69,9 +73,11 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
     AngularDraggableModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [StoryService, MessageService, SliceService, AngularFirestoreModule],
+  providers: [StoryService, MessageService, 
+    SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AuthGuard],
   entryComponents: [StoryCreationDialogComponent, SliceEditorDialogComponent, ChoiceCreationDialogComponent],
   bootstrap: [AppComponent]
 })

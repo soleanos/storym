@@ -10,10 +10,12 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 
 import { MessageService } from './message.service';
 
+import { Story } from '../model/Story';
+
+
 export interface User {
-    email: String;
-    uid?: String;
-    $key?: String;
+    email?: String;
+    id?: String;
     firstName?: String;
     lastName?: String;
     displayName?: String;
@@ -22,13 +24,14 @@ export interface User {
     dateCreated?: String;
     admin?: Boolean;
     providers?: any;
+    exist: Boolean;
 }
 
 export interface NewUserData {
     uid?: String;
     firstName?: String;
     lastName?: String;
-    email: String;
+    email?: String;
     photoURL?: String;
     displayName?: String;
     dateCreated?: String;
@@ -37,103 +40,123 @@ export interface NewUserData {
 @Injectable()
 
 export class UserService {
-    
-//     users: Observable<User[]>;
-//     user: Observable<User>;
+    users: Observable<User[]>;
+    user: Observable<User>;
 
-//     private userCollection: AngularFirestoreCollection<User>;
-//     private storyDoc: AngularFirestoreDocument<User>;
+    stories: Observable<any[]>;
+    story: Observable<Story>;
 
-//     constructor(private messageService: MessageService,
-//         private db: AngularFirestore) {
-//         this.initialize();
-//     }
+    private userCollection: AngularFirestoreCollection<User>;
+    private storyDoc: AngularFirestoreDocument<User>;
 
-//     private initialize(): void {
-//         this.userCollection = this.db.collection<User>('User');
-//     }
+    currentUser: ReplaySubject<any> = new ReplaySubject(1);
 
-//     //   Get the firebase reference of the story
-//     getUserDoc(id: string): AngularFirestoreDocument<User> {
-//         return this.db.doc<User>('Story/' + id);
-//     }
+    constructor(private messageService: MessageService,
+        private db: AngularFirestore) {
+        this.initialize();
+    }
 
-//     /** Get a story by ID  */
-//     getUser(id: string): Observable<User> {
-//     this.user =  this.getUserDoc(id).snapshotChanges().map(
-//       story => {
-//         const data = story.payload.data() as User;
-//         data.id = story.payload.id;
-//         return data;
-//       }
-//     );
-//     return this.user.pipe(
-//       tap(_ => this.log(`fetched story id=${id}`)),
-//       catchError(this.handleError<Story>(`Story : id=${id}`))
-//     );
-//   }
+    private initialize(): void {
+        this.user = new Observable<User>();
+        this.userCollection = this.db.collection<User>('User');
+    }
+
+    //   Get the firebase reference of the story
+    getUserDoc(id: string): AngularFirestoreDocument<User> {
+        return this.db.doc<User>('User/' + id);
+    }
+
+    /** Get a story by ID  */
+    getUser(id: string): Observable<any> {
+    this.user =  this.getUserDoc(id).snapshotChanges().map(
+        user => {
+            if (user.payload.exists) {
+                const data = user.payload.data() as User;
+                console.log(user);
+                data.id = user.payload.id;
+                return data;
+            }else {
+                const data: User = {exist: false};
+                data.exist = false;
+                return data;
+            }
+        });
+        return this.user.pipe(
+            tap(_ => this.log(`fetched user id=${id}`)),
+            catchError(this.handleError<User>(`User : id=${id}`))
+        );
+  }
+
+    loadCurrentUser(authData: any) {
+        this.getUser(authData.uid).subscribe((usrData: any) => {
+            this.currentUser.next(usrData);
+        });
+        return this.currentUser;
+    }
+
+    setUserAccount(authData: any) {
+        const providerData = authData.providerData; // [0];
+        console.log(authData.uid);
+        const userData: any = {
+            id: authData.uid
+            , email: authData.email
+            , lastLogin: moment().format()
+            , photoURL: authData.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
+            , displayName: authData.displayName
+        };
+
+        console.log(userData);
+        if (authData.firstName) {
+            userData.firstName = authData.firstName;
+        }
+        if (authData.lastName) {
+            userData.lastName = authData.lastName;
+        }
+
+        console.log(userData.id);
+        const usr = this.getUser(userData.uid);
+        const usr$ = usr.subscribe((user: any) => {
+            if (!user.exist || !user.dateCreated) {
+                userData.dateCreated = moment().format();
+                const usrDoc = this.getUserDoc(authData.uid).set(userData);
+            }else {
+                const usrDoc = this.getUserDoc(userData.uid);
+                return usrDoc.update(userData);
+            }
+            usr$.unsubscribe();
+        });
 
 
-//     loadCurrentUser(authData: any) {
-//         this.getUser(authData.uid).subscribe((usrData: any) => {
-//             this.logger.log('set currentUser', usrData);
-//             this.currentUser.next(usrData);
-//         });
-//         return this.currentUser;
-//     }
-
-//     makeProviderObj(providerData: Array<any>) {
-//         const ret = {};
-//         for (const item of providerData) {
-//             ret[item.providerId.replace('.com', '')] = item.uid;
-//         }
-//         console.log('makeProviderObj', ret);
-//         return ret;
-//     }
-
-//     setUserAccount(authData: any) {
-//         this.logger.log('set account', authData);
-
-//         const providerData = authData.auth.providerData; // [0];
-//         const userData: any = {
-//             uid: authData.uid
-//             , email: authData.auth.email
-//             // ,providerId: providerData.providerId
-//             , lastLogin: moment().format()
-//             // ,providerUid: providerData.uid
-//             , providers: this.makeProviderObj(authData.auth.providerData)
-//             , photoURL: authData.auth.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
-//             , displayName: authData.auth.displayName
-//         };
-
-//         /* Ended up not needing this, but it's handy to know...
-// 		let providerMap:any = {
-// 			'2': 'facebook'
-// 			,'3': 'google'
-// 			,'4': 'firebase'
-// 		};*/
+    }
 
 
-//         if (authData.auth.firstName) {
-//             userData.firstName = authData.auth.firstName;
-//         }
-//         if (authData.auth.lastName) {
-//             userData.lastName = authData.auth.lastName;
-//         }
+  //////// Gestion loggin error //////////
 
-//         const usr = this.getUser(userData.uid);
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
 
-//         const usr$ = usr.subscribe((user: any) => {
-//             this.logger.log('usr exists?', user.$exists(), usr);
-//             if (!user.$exists() || !user.dateCreated) {
-//                 this.logger.log('add dateCreated', moment().format());
-//                 userData.dateCreated = moment().format();
-//                 usr.set(userData);
-//             }
-//             usr$.unsubscribe();
-//         });
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
 
-//         return usr.update(userData);
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
 
-    // }
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add('StoryService: ' + message);
+  }
+
+
+
 }

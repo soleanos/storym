@@ -17,7 +17,6 @@ export class AuthService {
 
   constructor(private af: AngularFireAuth, private router: Router) {
     this.auth = af.authState;
-
     this.authenticated = this.auth.map( user => !!user && !user.isAnonymous);
     this.uid = this.auth.map(user => user.uid);
   }
