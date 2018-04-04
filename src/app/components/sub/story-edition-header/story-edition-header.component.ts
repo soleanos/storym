@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Story } from '../../../model/Story';
-
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-story-edition-header',
@@ -10,12 +10,16 @@ import { Story } from '../../../model/Story';
 })
 export class StoryEditionHeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   @Input() story: Story;
 
   ngOnInit() {
   }
+
+  disconnect = function () {
+    this.authService.signOut();
+  };
 
   goToHome = function () {
     this.router.navigateByUrl('/home');

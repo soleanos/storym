@@ -5,14 +5,28 @@
 }
 
 #fb {
-    background:#3B5998 url('/assets/facebook.svg') no-repeat 14px 6px;
-    background-size: 47px;
+    background:#3B5998 url('/assets/facebook.svg') no-repeat ;
+    background-size: 30px;
     color:#fff;
 }
 
 #google {
     border: 1px solid #95989A;
     background: #fff  url('/assets/google.svg') no-repeat 25px;
+    background-size: 25px;
+}
+
+#twitter {
+    background:rgb(35, 99, 240)  no-repeat ;
+    /* background:rgb(35, 99, 240) url('/assets/facebook.svg') no-repeat ; */
+    background-size: 30px;
+    color:#fff;
+}
+
+#github {
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #fff  url('/assets/google.svg') no-repeat 25px; */
     background-size: 25px;
 }
 
@@ -40,4 +54,22 @@
     #email {
         background: #ECECEC;
     }
+}
+
+mat-form-field {
+    width: 50%;
+}
+
+/* body {
+    background-color: rgb(129, 116, 116);
+} */
+
+.login mat-card {
+    width: 50%;
+}
+
+.login .logo {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
 }

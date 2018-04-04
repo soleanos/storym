@@ -9,26 +9,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user = {
-    email: '',
-    password: ''
-};
+  private email: string;
+  private password: string;
 
-  error: any;
   constructor(private authService: AuthService, private router: Router) {
-    // AngularFireAuthModule.call
-    //   this.AngularFireAuthModule.subscribe(auth => {
-    //   if (auth) {
-    //     this.router.navigateByUrl('/home');
-    //   
-    // });
-
   }
   
   signInWithTwitter() {
     this.authService.signInWithTwitter()
-    .then((res) => { 
-        this.router.navigate(['home'])
+    .then((res) => {
+        this.router.navigate(['home']);
       })
     .catch((err) => console.log(err));
   }
@@ -37,7 +27,7 @@ export class LoginComponent implements OnInit {
   signInWithFacebook() {
     this.authService.signInWithFacebook()
     .then((res) => {
-        this.router.navigate(['home'])
+        this.router.navigate(['home']);
       })
     .catch((err) => console.log(err));
   }
@@ -46,7 +36,7 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
     .then((res) => {
-        this.router.navigate(['home'])
+        this.router.navigate(['home']);
       })
     .catch((err) => console.log(err));
   }
@@ -54,7 +44,7 @@ export class LoginComponent implements OnInit {
   signInWithGithub() {
     this.authService.signInWithGithub()
     .then((res) => {
-        this.router.navigate(['home'])
+        this.router.navigate(['home']);
       })
     .catch((err) => console.log(err));
   }
