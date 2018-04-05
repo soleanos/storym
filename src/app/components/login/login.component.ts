@@ -18,46 +18,41 @@ export class LoginComponent implements OnInit {
   signInWithTwitter() {
     this.authService.signInWithTwitter()
     .then((res) => {
-        this.router.navigate(['home']);
-      })
-    .catch((err) => console.log(err));
+      this.router.navigateByUrl('/home');
+    }).catch((err) => console.log(err));
   }
 
 
   signInWithFacebook() {
     this.authService.signInWithFacebook()
     .then((res) => {
-        this.router.navigate(['home']);
-      })
-    .catch((err) => console.log(err));
+      this.router.navigateByUrl('/home');
+      }).catch((err) => console.log(err));
   }
 
 
   signInWithGoogle() {
     this.authService.signInWithGoogle()
     .then((res) => {
-        this.router.navigate(['home']);
-      })
-    .catch((err) => console.log(err));
+      this.router.navigateByUrl('/home');
+      }).catch((err) => console.log(err));
   }
 
   signInWithGithub() {
     this.authService.signInWithGithub()
     .then((res) => {
-        this.router.navigate(['home']);
-      })
-    .catch((err) => console.log(err));
+        this.router.navigateByUrl('/home');
+      }).catch((err) => console.log(err));
   }
 
   signInWithEmail() {
     if (this.email && this.password ) {
-    this.authService.signInWithMail(this.email, this.password)
-    .then((res) => {
-        console.log(res);
-        this.router.navigate(['home']);
-      })
-    .catch((err) => alert(err.message));
-    }else{
+      this.authService.signInWithMail(this.email, this.password)
+      .then((res) => {
+          console.log(res);
+          this.router.navigateByUrl('/home');
+        }).catch((err) => alert(err.message));
+    }else {
       alert("Veuillez saisir vos identifiants");
     }
   }

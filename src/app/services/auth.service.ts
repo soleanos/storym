@@ -63,7 +63,8 @@ export class AuthService {
   registerUser(email, password) {
     return this.af.auth.createUserWithEmailAndPassword(email, password).then((user) => {
       this.auth = user;
-      this.router.navigateByUrl('/home');
+      return user;
+      // this.router.navigateByUrl('/home');
     }).catch((error: any) => {
         if (error) {
           this.error = error;
@@ -72,5 +73,23 @@ export class AuthService {
       });
   }
 
+  sendConfirmationMail(email) {
+    return this.af.auth.sendSignInLinkToEmail(email, {url: 'www.storym.io'}).then((mail) => {
+      console.log(mail);
+    }).catch((error: any) => {
+        if (error) {
+          this.error = error;
+          console.log(this.error);
+        }
+      });
+  }
+
+  resetPassword(email) {
+
+  }
+
+  verifyrResetCode(email) {
+
+  }
 
 }

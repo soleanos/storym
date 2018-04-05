@@ -14,12 +14,12 @@
               <input placeholder="Password" matInput [(ngModel)]="password" required>
             </mat-form-field>
             <mat-form-field>
-                <input placeholder="Pseudonyme" matInput [(ngModel)]="pseudo" required>
+                <input placeholder="Nom d'auteur" matInput [(ngModel)]="displayName" required>
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
             <div layout="row" layout-align="center center">
-                <button mat-button  flex="50" (click)="signInWithEmail()"  id="mail" >S'inscrire</button>
+                <button mat-button  flex="50" (click)="register()"  id="mail" >S'inscrire</button>
             </div>
         </mat-card-actions>  
     </mat-card>
