@@ -2,13 +2,14 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Router } from '@angular/router';
 
 import {StoryService} from '../../../services/story.service';
 import {SliceService} from '../../../services/slice.service';
 
 import { Slice } from '../../../model/Slice';
 import {Story } from '../../../model/Story';
-
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home-header',
@@ -22,8 +23,8 @@ export class HomeHeaderComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
-    , private db: AngularFirestore
+  constructor(private router: Router,public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
+    , private db: AngularFirestore,private authService: AuthService
   ) {this.story = new Story(); }
 
   ngOnInit() {
@@ -70,5 +71,13 @@ export class HomeHeaderComponent implements OnInit {
       {id: sliceId, level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: storyId, choices : []}
     );
   }
+
+  manageAccount()  {
+    this.router.navigateByUrl('/account');
+  };
+
+  disconnect = function () {
+    this.authService.signOut();
+  };
 
 }

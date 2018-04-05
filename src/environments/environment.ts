@@ -6,17 +6,11 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    // apiKey: "AIzaSyAzpOOpVy2r6u3L5P3xqoY41Hz4-xfFQxc",
-    // authDomain: "myrots-860fd.firebaseapp.com",
-    // databaseURL: "https://myrots-860fd.firebaseio.com",
-    // projectId: "myrots-860fd",
-    // storageBucket: "myrots-860fd.appspot.com",
-    // messagingSenderId: "744045737856"
     apiKey: "AIzaSyDBpy2vxyXzfe-WIcZoKo881A4J9VUTNbs",
     authDomain: "storym-application.firebaseapp.com",
     databaseURL: "https://storym-application.firebaseio.com",
     projectId: "storym-application",
-    storageBucket: "",
+    storageBucket: "storym-application.appspot.com",
     messagingSenderId: "83464863131"
   }
 };

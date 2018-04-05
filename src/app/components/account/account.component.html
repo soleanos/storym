@@ -1,0 +1,32 @@
+<mat-progress-bar
+    [color]="color"
+    [mode]="mode"
+    [value]="progressBarValue">
+</mat-progress-bar>
+
+<section layout="column" flex layout-align="center center" class = "login" >
+  <mat-card layout="column"  layout-align="center center" class = "login">
+      <mat-toolbar layout="row" layout-align="center center">
+          <div layout="column" layout-align="center center">
+              <div >Mettre à jours mes informations</div>
+          </div>
+      </mat-toolbar>
+      <mat-card-content layout="column" layout-align="center center"> 
+        <div layout="row" layout-align="center center">
+          <img style="height: 400px; width: 400px;" src="{{imgsrc | async}}">
+        </div>
+        <div layout="row" layout-align="center center">
+          <button mat-raised-button color="primary" (click)="fileInput.click()">Changer ma photo</button>
+          <input #fileInput type="file" (change)="chooseFiles($event)" style="display:none;" />
+        </div>   
+        <mat-form-field >
+          <input placeholder="Nom d'auteur " matInput [(ngModel)]="email" required>
+        </mat-form-field>       
+      </mat-card-content>
+      <mat-card-actions>
+          <div layout="row" layout-align="center center">
+              <button mat-button  flex="50" (click)="enregistrer()"  id="mail" >Enregistrer</button>
+          </div>
+      </mat-card-actions>  
+  </mat-card>
+</section>

@@ -1,0 +1,111 @@
+/* others */
+@media all
+  and (min-device-width: 992px) {
+    .login mat-card {
+        width: 50%;
+    }
+}
+
+section { 
+    height: 100%;
+    background: url('/assets/account.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#fb {
+    border: 1px solid #3B5998;
+    background:#3B5998 url('/assets/facebook.jpg') no-repeat ;
+    background-size: 30px;
+    color:#fff;
+}
+
+#google {
+    border: 1px solid #95989A;
+    background: #fff  url('/assets/google.svg') no-repeat 25px;
+    background-size: 25px;
+}
+
+#twitter {
+    margin-top :1px;
+    border: 1px solid rgb(29, 161, 243);
+    background:rgb(29, 161, 243) url('/assets/twitter.svg') no-repeat ;
+    background-size: 35px;
+    color:#fff;
+}
+
+#github {
+    margin-top: 1px;
+    background: rgb(67, 70, 73)  url('/assets/github.jpg') no-repeat 25px;
+    background-size: 25px;
+}
+
+#mail {
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #ECECEC  url('/assets/email.svg') no-repeat 25px; */
+    background-size: 25px;
+}
+
+#inscription {
+    margin-top:5px;
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #ECECEC  url('/assets/email.svg') no-repeat 25px; */
+    background-size: 25px;
+}
+
+@media (max-width: 700px) {
+
+    .login mat-card {
+        width: 100%;
+    }
+
+    .login{
+       top: 10%;
+       height: 90% 
+    }
+
+    #page {
+        padding:1em;
+    }
+    #toolbar {
+        width:90%;
+        margin-left: -45%;
+    }
+    #fb {
+        background:#3B5998;
+    }
+
+    #google {
+        background: #fff;
+    }
+
+    #email {
+        background: #ECECEC;
+    }
+
+    #twitter{
+        background:rgb(29, 161, 243);
+    }
+
+    #github{
+        background: rgb(67, 70, 73) 
+    }
+}
+
+mat-form-field {
+    width: 50%;
+}
+
+.login .logo {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+mat-card-content{
+    display:flex
+}

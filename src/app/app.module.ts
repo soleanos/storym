@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 import { CustomAngularMaterialModule} from './modules/custom-angular-material.module';
 
@@ -41,6 +42,7 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
 
 import { AuthGuard } from './services/auth.guard';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     ChoiceCreationDialogComponent,
     SliceLinkPipe,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AccountComponent
   ],
   imports: [
     CustomAngularMaterialModule,
@@ -79,7 +82,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     AngularFireAuthModule,
   ],
   providers: [StoryService, MessageService, 
-    SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AuthGuard],
+    SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule,AngularFireStorage, AuthGuard],
   entryComponents: [StoryCreationDialogComponent, SliceEditorDialogComponent, ChoiceCreationDialogComponent],
   bootstrap: [AppComponent]
 })
