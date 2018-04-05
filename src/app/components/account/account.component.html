@@ -13,7 +13,7 @@
       </mat-toolbar>
       <mat-card-content layout="column" layout-align="center center"> 
         <div layout="row" layout-align="center center">
-          <img style="height: 400px; width: 400px;" src="{{imgsrc | async}}">
+          <!-- <img style="height: 400px; width: 400px;" [src]="imgsrc ? imgsrc | async : photoURL"> -->
         </div>
         <div layout="row" layout-align="center center">
           <button mat-raised-button color="primary" (click)="fileInput.click()">Changer ma photo</button>

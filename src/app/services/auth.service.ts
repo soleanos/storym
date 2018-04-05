@@ -13,7 +13,7 @@ export class AuthService {
     public authenticated: Observable<boolean>;
     public uid: Observable<string>;
     private error: any;
-
+    private currentUser: Observable<User>;
 
     constructor(private af: AngularFireAuth, private router: Router) {
       this.auth = af.authState;
@@ -81,6 +81,15 @@ export class AuthService {
         }
       });
   }
+
+  // getCurrentUser() {
+  //   this.af.auth.onAuthStateChanged(function(user) {
+  //     if (user) {
+  //       return user;
+  //     }
+  //   });
+    
+  // }
 
   resetPassword(email) {
 
