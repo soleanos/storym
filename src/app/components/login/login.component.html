@@ -1,25 +1,25 @@
   
 <section layout="column" flex layout-align="center center" class = "login" >
-    <mat-card layout="column" flex layout-align="center center" class = "login">
+    <mat-card layout="column"  layout-align="center center" class = "login">
         <mat-toolbar layout="row" layout-align="center center">
             <div layout="column" layout-align="center center">
-                <div>
-                    <mat-icon class="logo">home</mat-icon>
-                </div>
                 <div >Storym</div>
             </div>
         </mat-toolbar>
-        <mat-card-content >
-            <mat-form-field >
+        <mat-card-content layout="column" layout-align="center center">
+            <mat-form-field>
               <input placeholder="Email" matInput [(ngModel)]="email">
-            </mat-form-field>   <br>
+            </mat-form-field>   
             <mat-form-field>
               <input placeholder="Password" matInput [(ngModel)]="password">
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
             <div layout="row" layout-align="center center">
-                <button mat-button  flex="50">Se connecter par mail</button>
+                <button mat-button  flex="50" id="mail" >Se connecter par mail</button>
+            </div>
+            <div layout="row" layout-align="center center">
+                <button mat-button  flex="50" id="inscription" >Inscription</button>
             </div>
             <div layout="row" layout-align="center center">
               <p> Ou </p>

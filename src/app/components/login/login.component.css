@@ -1,7 +1,18 @@
-#lock {
-    width:40%;
-    margin: 1.5em auto 4em auto;
-    display:block;
+/* others */
+@media all
+  and (min-device-width: 992px) {
+    .login mat-card {
+        width: 50%;
+    }
+}
+
+section { 
+    height: 100%;
+    background: url('/assets/login.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #fb {
@@ -30,12 +41,32 @@
     background-size: 25px;
 }
 
-#email {
-    background: #ECECEC  url('/assets/email.svg') no-repeat 25px;
+#mail {
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #ECECEC  url('/assets/email.svg') no-repeat 25px; */
     background-size: 25px;
 }
 
-@media (max-width: 600px) {
+#inscription {
+    margin-top:5px;
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #ECECEC  url('/assets/email.svg') no-repeat 25px; */
+    background-size: 25px;
+}
+
+@media (max-width: 700px) {
+
+    .login mat-card {
+        width: 100%;
+    }
+
+    .login{
+       top: 10%;
+       height: 90% 
+    }
+
     #page {
         padding:1em;
     }
@@ -60,16 +91,12 @@ mat-form-field {
     width: 50%;
 }
 
-/* body {
-    background-color: rgb(129, 116, 116);
-} */
-
-.login mat-card {
-    width: 50%;
-}
-
 .login .logo {
     font-size: 48px;
     width: 48px;
     height: 48px;
+}
+
+mat-card-content{
+    display:flex
 }
