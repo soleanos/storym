@@ -24,7 +24,6 @@ export class RegistrationComponent implements OnInit {
     if (this.email && this.password && this.displayName) {
       this.authService.registerUser(this.email, this.password)
       .then((user: firebase.User) => {
-        console.log(user);
           user.updateProfile({displayName : this.displayName, photoURL : user.photoURL}).then(() => {
             this.router.navigateByUrl('/home');
           }).catch((err) => console.log(err));

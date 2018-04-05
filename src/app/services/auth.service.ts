@@ -61,10 +61,8 @@ export class AuthService {
   }
 
   registerUser(email, password) {
-    return this.af.auth.createUserWithEmailAndPassword(email, password).then((user) => {
-      this.auth = user;
+    return this.af.auth.createUserWithEmailAndPassword(email, password).then((user: firebase.User) => {
       return user;
-      // this.router.navigateByUrl('/home');
     }).catch((error: any) => {
         if (error) {
           this.error = error;
