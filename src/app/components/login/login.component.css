@@ -16,6 +16,7 @@ section {
 }
 
 #fb {
+    border: 1px solid #3B5998;
     background:#3B5998 url('/assets/facebook.svg') no-repeat ;
     background-size: 30px;
     color:#fff;
@@ -28,16 +29,19 @@ section {
 }
 
 #twitter {
-    background:rgb(35, 99, 240)  no-repeat ;
-    /* background:rgb(35, 99, 240) url('/assets/facebook.svg') no-repeat ; */
+    margin-top :1px;
+    /* background:rgb(35, 99, 240)  no-repeat ; */
+    border: 1px solid rgb(29, 161, 243);
+    background:rgb(29, 161, 243) url('/assets/twitter.svg') no-repeat ;
     background-size: 30px;
     color:#fff;
 }
 
 #github {
-    border: 1px solid rgb(83, 131, 111);
-    background: #fff no-repeat 25px;
-    /* background: #fff  url('/assets/google.svg') no-repeat 25px; */
+    margin-top: 1px;
+   
+    /* background: #fff no-repeat 25px; */
+    background: rgb(67, 70, 73)  url('/assets/gitHub.jpg') no-repeat 25px;
     background-size: 25px;
 }
 
@@ -84,6 +88,14 @@ section {
 
     #email {
         background: #ECECEC;
+    }
+
+    #twitter{
+        background:rgb(29, 161, 243);
+    }
+
+    #github{
+        background: rgb(67, 70, 73) 
     }
 }
 

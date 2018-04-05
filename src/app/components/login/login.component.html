@@ -8,15 +8,15 @@
         </mat-toolbar>
         <mat-card-content layout="column" layout-align="center center">
             <mat-form-field>
-              <input placeholder="Email" matInput [(ngModel)]="email">
+              <input placeholder="Email" matInput [(ngModel)]="email" required>
             </mat-form-field>   
             <mat-form-field>
-              <input placeholder="Password" matInput [(ngModel)]="password">
+              <input placeholder="Password" matInput [(ngModel)]="password" required>
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
             <div layout="row" layout-align="center center">
-                <button mat-button  flex="50" id="mail" >Se connecter par mail</button>
+                <button mat-button  flex="50" (click)="signInWithEmail()"  id="mail" >Se connecter par mail</button>
             </div>
             <div layout="row" layout-align="center center">
                 <button mat-button  flex="50" id="inscription" >Inscription</button>
@@ -31,7 +31,7 @@
             </div>
             <div layout="row" layout-align="center center">
                 <button mat-button flex="30" (click)="signInWithTwitter()" id="twitter" > Twitter </button><br>
-                <button mat-button flex="30" (click)="signInWithGithub()" id="github" > Github </button>
+                <button mat-button flex="30" (click)="signInWithGithub()" id="github" ><font color="white">Github </font> </button>
             </div>
         </mat-card-actions>  
     </mat-card>

@@ -9,51 +9,68 @@ import { User } from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  private auth: Observable<firebase.User>;
-  public authenticated: Observable<boolean>;
-  public uid: Observable<string>;
+    private auth: Observable<firebase.User>;
+    public authenticated: Observable<boolean>;
+    public uid: Observable<string>;
+    private error: any;
 
 
+    constructor(private af: AngularFireAuth, private router: Router) {
+      this.auth = af.authState;
+      this.authenticated = this.auth.map( user => !!user && !user.isAnonymous);
+      this.uid = this.auth.map(user => user.uid);
+    }
 
-  constructor(private af: AngularFireAuth, private router: Router) {
-    this.auth = af.authState;
-    this.authenticated = this.auth.map( user => !!user && !user.isAnonymous);
-    this.uid = this.auth.map(user => user.uid);
+    public getAuth(): Observable<firebase.User> {
+      return this.auth;
+    }
+
+    private signIn(provider: firebase.auth.AuthProvider): any {
+      return this.af.auth.signInWithPopup(provider)
+        // .catch(error => this.logger.error('ERROR @ AuthService#signIn() :', error));
+    }
+
+    public signInAnonymously(): any {
+      return this.af.auth.signInAnonymously();
+        // .catch(error => this.logger.error('ERROR @ AuthService#signInAnonymously() :', error));
+    }
+
+    public signInWithGithub(): any {
+      return this.signIn(new firebase.auth.GithubAuthProvider());
+    }
+
+    public signInWithGoogle(): any {
+      return this.signIn(new firebase.auth.GoogleAuthProvider());
+    }
+
+    public signInWithTwitter(): any {
+      return this.signIn(new firebase.auth.TwitterAuthProvider());
+    }
+
+    public signInWithFacebook(): any {
+      return this.signIn(new firebase.auth.FacebookAuthProvider());
+    }
+
+    public signOut= (): any => {
+      this.af.auth.signOut();
+      this.router.navigateByUrl('/login');
   }
 
-  public getAuth(): Observable<firebase.User> {
-    return this.auth;
+   public signInWithMail(email, password) {
+    return this.af.auth.signInWithEmailAndPassword(email, password);
   }
 
-  private signIn(provider: firebase.auth.AuthProvider): any {
-    return this.af.auth.signInWithPopup(provider)
-      // .catch(error => this.logger.error('ERROR @ AuthService#signIn() :', error));
+  registerUser(email, password) {
+    return this.af.auth.createUserWithEmailAndPassword(email, password).then((user) => {
+      this.auth = user;
+      this.router.navigateByUrl('/home');
+    }).catch((error: any) => {
+        if (error) {
+          this.error = error;
+          console.log(this.error);
+        }
+      });
   }
 
-  public signInAnonymously(): any {
-    return this.af.auth.signInAnonymously();
-      // .catch(error => this.logger.error('ERROR @ AuthService#signInAnonymously() :', error));
-  }
-
-  public signInWithGithub(): any {
-    return this.signIn(new firebase.auth.GithubAuthProvider());
-  }
-
-  public signInWithGoogle(): any {
-    return this.signIn(new firebase.auth.GoogleAuthProvider());
-  }
-
-  public signInWithTwitter(): any {
-    return this.signIn(new firebase.auth.TwitterAuthProvider());
-  }
-
-  public signInWithFacebook(): any {
-    return this.signIn(new firebase.auth.FacebookAuthProvider());
-  }
-
-  public signOut= (): any => {
-    this.af.auth.signOut();
-    this.router.navigateByUrl('/login');
-}
 
 }

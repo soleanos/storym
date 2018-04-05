@@ -49,15 +49,18 @@ export class LoginComponent implements OnInit {
     .catch((err) => console.log(err));
   }
 
-  // signInWithEmail() {
-
-  //   this.authService.signInRegular(this.user.email, this.user.password)
-  //     .then((res) => {
-  //       console.log(res);
-  //       this.router.navigate(['dashboard']);
-  //     })
-  //     .catch((err) => console.log('error: ' + err));
-  // }
+  signInWithEmail() {
+    if (this.email && this.password ) {
+    this.authService.signInWithMail(this.email, this.password)
+    .then((res) => {
+        console.log(res);
+        this.router.navigate(['home']);
+      })
+    .catch((err) => alert(err.message));
+    }else{
+      alert("Veuillez saisir vos identifiants");
+    }
+  }
 
 
   ngOnInit() {
