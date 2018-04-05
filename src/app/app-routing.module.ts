@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent,  canActivate: [AuthGuard]},
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent }
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent}
 ];
 
 @NgModule({

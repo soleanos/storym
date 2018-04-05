@@ -7,18 +7,12 @@ import 'rxjs/add/operator/take';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router, private authService: AuthService) {
-
-     }
+    constructor(private router: Router, private authService: AuthService) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.authService.getAuth().map((auth) => {
             if (!auth) {
-                const queryParams: any = {};
-                if (state.url !== '/') {
-                    queryParams.returnUrl = state.url;
-                }
-                this.router.navigate(['/login'], { queryParams: queryParams });
+                this.router.navigateByUrl('/login');
                 return false;
             }
             return true;

@@ -1,0 +1,26 @@
+  
+<section layout="column" flex layout-align="center center" class = "login" >
+    <mat-card layout="column"  layout-align="center center" class = "login">
+        <mat-toolbar layout="row" layout-align="center center">
+            <div layout="column" layout-align="center center">
+                <div >Inscription</div>
+            </div>
+        </mat-toolbar>
+        <mat-card-content layout="column" layout-align="center center">
+            <mat-form-field>
+              <input placeholder="Email" matInput [(ngModel)]="email" required>
+            </mat-form-field>   
+            <mat-form-field>
+              <input placeholder="Password" matInput [(ngModel)]="password" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input placeholder="Pseudonyme" matInput [(ngModel)]="pseudo" required>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <div layout="row" layout-align="center center">
+                <button mat-button  flex="50" (click)="signInWithEmail()"  id="mail" >S'inscrire</button>
+            </div>
+        </mat-card-actions>  
+    </mat-card>
+</section>

@@ -28,7 +28,7 @@ import { StoryComponent } from './components/sub/story/story.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
 import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-dialog/choice-creation-dialog.component';
 import { MessagesComponent } from './components/sub/messages/messages.component';
-import { LoginComponent } from './components//login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { StoryService} from './services/story.service';
 import { SliceService} from './services/slice.service';
@@ -40,6 +40,7 @@ import { SliceByLevelPipe } from './pipes/slice-by-level.pipe';
 import { SliceLinkPipe } from './pipes/slice-link.pipe';
 
 import { AuthGuard } from './services/auth.guard';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AuthGuard } from './services/auth.guard';
     StoryTestComponent,
     ChoiceCreationDialogComponent,
     SliceLinkPipe,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     CustomAngularMaterialModule,
@@ -74,7 +76,7 @@ import { AuthGuard } from './services/auth.guard';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [StoryService, MessageService, 
     SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AuthGuard],

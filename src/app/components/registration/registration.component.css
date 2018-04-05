@@ -68,31 +68,9 @@ section {
        height: 90% 
     }
 
-    #page {
-        padding:1em;
-    }
     #toolbar {
         width:90%;
         margin-left: -45%;
-    }
-    #fb {
-        background:#3B5998;
-    }
-
-    #google {
-        background: #fff;
-    }
-
-    #email {
-        background: #ECECEC;
-    }
-
-    #twitter{
-        background:rgb(29, 161, 243);
-    }
-
-    #github{
-        background: rgb(67, 70, 73) 
     }
 }
 
