@@ -58,7 +58,9 @@ export class HomeHeaderComponent implements OnInit {
   createStory(title: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.storyService.addStory({ title, cover : 'http://thecatapi.com/api/images/get?format=src&type=gif' } as Story)
+    this.storyService.addStory({ title,
+      cover : 'http://thecatapi.com/api/images/get?format=src&type=gif',
+      author: this.user.uid } as Story)
       .subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();

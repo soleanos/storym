@@ -6,4 +6,5 @@ export class Story {
     slices?: Slice[];
     cover?: string;
     abstract?: string;
+    author?: string;
   }
