@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DomSanitizer } from '@angular/platform-browser';
 import {StoryService} from '../../../services/story.service';
-
+import * as firebase from 'firebase/app';
 import { Story } from '../../../model/Story';
+import { SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-story',
@@ -11,13 +12,17 @@ import { Story } from '../../../model/Story';
   styleUrls: ['./story.component.css']
 })
 export class StoryComponent implements OnInit {
-
+  @Input() user: firebase.User;
   @Input() story: Story;
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
-  constructor(private storyService: StoryService,private router: Router) { }
+  imageAuthor: SafeStyle;
+  constructor(private storyService: StoryService, private router: Router, private sanitization: DomSanitizer) {
+
+  }
 
   ngOnInit() {
+    this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.user.photoURL})`);
   }
 
   edit(storyId: string): void {

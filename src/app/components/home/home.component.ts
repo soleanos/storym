@@ -5,7 +5,7 @@ import { UserService } from '../../services/user.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {HomeHeaderComponent} from '../sub/home-header/home-header.component';
 import {StoryCreationDialogComponent} from '../sub/story-creation-dialog/story-creation-dialog.component';
-
+import * as firebase from 'firebase/app';
 import {StoryService} from '../../services/story.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -18,10 +18,17 @@ import { Story } from '../../model/Story';
 })
 export class HomeComponent implements OnInit {
   @Input() stories: Story[];
+  user: firebase.User;
 
+  constructor(private storyService: StoryService, authservice: AuthService, private userService: UserService, private af: AngularFireAuth) {
+    authservice.getAuth().subscribe(user => this.actionsAfterGettingUser(user));
+  }
 
-  constructor(private storyService: StoryService, authservice: AuthService, userservice: UserService, private af: AngularFireAuth) {
-    authservice.getAuth().subscribe(story => userservice.setUserAccount(af.auth.currentUser));
+  actionsAfterGettingUser(user: firebase.User) {
+    // userservice.setUserAccount(af.auth.currentUser)
+    this.userService.setUserAccount(user);
+    this.user = user;
+    console.log(user);
   }
 
   getStories(): void {

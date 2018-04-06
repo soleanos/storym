@@ -1,15 +1,17 @@
 import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
+import * as firebase from 'firebase/app';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Router } from '@angular/router';
 
+import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
+
 import {StoryService} from '../../../services/story.service';
 import {SliceService} from '../../../services/slice.service';
+import { AuthService } from '../../../services/auth.service';
 
 import { Slice } from '../../../model/Slice';
 import {Story } from '../../../model/Story';
-import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home-header',
@@ -20,10 +22,11 @@ export class HomeHeaderComponent implements OnInit {
   story: Story;
   slice: Slice;
   title: string;
+  @Input() user: firebase.User;
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(private router: Router,public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
+  constructor(private router: Router, public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
     , private db: AngularFirestore, private authService: AuthService
   ) {
     this.story = new Story();

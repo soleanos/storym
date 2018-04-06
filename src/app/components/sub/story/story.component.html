@@ -1,6 +1,6 @@
 <mat-card *ngIf="story">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div *ngIf="user" mat-card-avatar class="example-header-image" [style.background-image]="imageAuthor"></div>
       <mat-card-title>{{story.title}}</mat-card-title>
       <mat-card-subtitle *ngIf="story.subtitle" >{{story.subtitle}}</mat-card-subtitle>
     </mat-card-header>
