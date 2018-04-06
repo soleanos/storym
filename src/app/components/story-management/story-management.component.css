@@ -1,0 +1,70 @@
+/* others */
+@media all
+  and (min-device-width: 992px) {
+    .account mat-card {
+        width: 45%;
+        height:95%;
+    }
+
+    img{
+        height:50%;
+        width:50%;
+    }
+}
+
+section { 
+    height: 100%;
+    background: url('/assets/story-edit.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+#inscription {
+    margin-top:5px;
+    border: 1px solid rgb(83, 131, 111);
+    background: #fff no-repeat 25px;
+    /* background: #ECECEC  url('/assets/email.svg') no-repeat 25px; */
+    background-size: 25px;
+}
+
+@media (max-width: 700px) {
+    .account mat-card {
+        width: 100%;
+    }
+    .account{
+       top: 10%;
+       height: 90% 
+    }
+    #toolbar {
+        width:90%;
+        margin-left: -45%;
+    }
+    
+    img{
+        height:35%;
+        width:35%;
+    }
+}
+
+mat-form-field {
+    width: 50%;
+    margin-top : 2%;
+}
+
+.login .logo {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+mat-card-content{
+    display:flex
+}
+
+changePictureButton{
+    margin-top:1%;
+}

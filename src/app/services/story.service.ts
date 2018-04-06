@@ -73,6 +73,7 @@ export class StoryService {
 
   /** POST Add a new story */
   addStory (story: Story): Observable<any> {
+    console.log(story);
     story.id = this.db.createId();
     return  Observable.fromPromise(this.storyCollection.add(story))
     .pipe(
@@ -92,6 +93,7 @@ export class StoryService {
 
   /** PUT: update the story on the server */
   updateStory (story: Story ): Observable<any> {
+    this.storyCollection = this.db.collection<Story>('Story');
     return Observable.fromPromise(this.storyCollection.doc(story.id).update(story)).pipe(
       tap(_ => this.log(`updated story id=${story.id}`)),
       catchError(this.handleError<any>('updateHero'))

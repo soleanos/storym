@@ -2,14 +2,17 @@
 <mat-toolbar>
     <span flex ="90">         
         <button mat-icon-button (click)="disconnect()">
-                <mat-icon aria-label="Example icon-button with a heart icon">input</mat-icon>
+                <mat-icon aria-label="Bouton pour se déconnecter">input</mat-icon>
         </button>      
         <button mat-icon-button (click)="goToHome()">
-            <mat-icon aria-label="Example icon-button with a heart icon">home</mat-icon>
+            <mat-icon aria-label="Pourton pour retourner à l'acceuil">home</mat-icon>
         </button>   
         <button mat-icon-button (click)="goToStoryTest()">
-            <mat-icon aria-label="Example icon-button with a heart icon">play_circle_outline</mat-icon>
+            <mat-icon aria-label="Bouton pour tester l'histoire">play_circle_outline</mat-icon>
         </button>
+        <button mat-icon-button (click)="goToStoryManagement()">
+                <mat-icon aria-label="Bouton pour modifier les paramètres de l'histoire">create</mat-icon>
+        </button>  
     </span>
     <h2>{{ story?.title | uppercase }} </h2>
 </mat-toolbar>

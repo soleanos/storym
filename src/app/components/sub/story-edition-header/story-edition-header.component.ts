@@ -28,4 +28,8 @@ export class StoryEditionHeaderComponent implements OnInit {
   goToStoryTest = function () {
     this.router.navigateByUrl('/test/' + this.story.id);
   };
+
+  goToStoryManagement = function () {
+    this.router.navigateByUrl('/story-edit/' + this.story.id);
+  };
 }

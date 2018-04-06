@@ -5,6 +5,6 @@
   </mat-sidenav>
   <mat-sidenav-content >
     <app-home-header  [stories] = stories></app-home-header>
-    <app-stories [(stories)] = stories ></app-stories>
+    <app-stories *ngIf="stories" [(stories)] = stories ></app-stories>
   </mat-sidenav-content>
 </mat-sidenav-container>

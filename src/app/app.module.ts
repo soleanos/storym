@@ -43,6 +43,7 @@ import { SliceLinkPipe } from './pipes/slice-link.pipe';
 import { AuthGuard } from './services/auth.guard';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AccountComponent } from './components/account/account.component';
+import { StoryManagementComponent } from './components/story-management/story-management.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AccountComponent } from './components/account/account.component';
     SliceLinkPipe,
     LoginComponent,
     RegistrationComponent,
-    AccountComponent
+    AccountComponent,
+    StoryManagementComponent
   ],
   imports: [
     CustomAngularMaterialModule,

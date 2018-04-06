@@ -24,8 +24,10 @@ export class HomeHeaderComponent implements OnInit {
   @Output() storiesChange = new EventEmitter<Story[]>();
 
   constructor(private router: Router,public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
-    , private db: AngularFirestore,private authService: AuthService
-  ) {this.story = new Story(); }
+    , private db: AngularFirestore, private authService: AuthService
+  ) {
+    this.story = new Story();
+  }
 
   ngOnInit() {
   }
@@ -53,7 +55,7 @@ export class HomeHeaderComponent implements OnInit {
   createStory(title: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.storyService.addStory({ title } as Story)
+    this.storyService.addStory({ title, cover : 'http://thecatapi.com/api/images/get?format=src&type=gif' } as Story)
       .subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();
@@ -74,7 +76,7 @@ export class HomeHeaderComponent implements OnInit {
 
   manageAccount()  {
     this.router.navigateByUrl('/account');
-  };
+  }
 
   disconnect = function () {
     this.authService.signOut();

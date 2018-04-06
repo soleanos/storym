@@ -20,9 +20,9 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  edit(storyId : string) : void{
+  edit(storyId: string): void {
     this.router.navigateByUrl('/story/' + storyId);
-  };
+  }
 
   delete(story: Story): void {
     this.stories = this.stories.filter(h => h !== story);

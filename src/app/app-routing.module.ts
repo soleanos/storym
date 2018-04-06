@@ -11,6 +11,7 @@ import { StoryTestComponent } from './components/story-test/story-test.component
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AccountComponent } from './components/account/account.component';
+import { StoryManagementComponent } from './components/story-management/story-management.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,8 @@ const routes: Routes = [
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
-  { path: 'register', component: RegistrationComponent}
-
+  { path: 'register', component: RegistrationComponent},
+  { path: 'story-edit/:id', component: StoryManagementComponent}
 ];
 
 @NgModule({
