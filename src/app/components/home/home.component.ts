@@ -25,10 +25,8 @@ export class HomeComponent implements OnInit {
   }
 
   actionsAfterGettingUser(user: firebase.User) {
-    // userservice.setUserAccount(af.auth.currentUser)
     this.userService.setUserAccount(user);
     this.user = user;
-    console.log(user);
   }
 
   getStories(): void {

@@ -96,7 +96,6 @@ export class UserService {
 
     setUserAccount(authData: any) {
         const providerData = authData.providerData; // [0];
-        console.log(authData.uid);
         const userData: any = {
             id: authData.uid
             , email: authData.email
@@ -105,7 +104,6 @@ export class UserService {
             , displayName: authData.displayName
         };
 
-        console.log(userData);
         if (authData.firstName) {
             userData.firstName = authData.firstName;
         }
@@ -113,7 +111,6 @@ export class UserService {
             userData.lastName = authData.lastName;
         }
 
-        console.log(userData.id);
         const usr = this.getUser(userData.uid);
         const usr$ = usr.subscribe((user: any) => {
             if (!user.exist || !user.dateCreated) {
