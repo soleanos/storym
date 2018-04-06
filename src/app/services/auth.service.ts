@@ -26,7 +26,7 @@ export class AuthService {
     }
 
     private signIn(provider: firebase.auth.AuthProvider): any {
-      return this.af.auth.signInWithPopup(provider)
+      return this.af.auth.signInWithPopup(provider);
         // .catch(error => this.logger.error('ERROR @ AuthService#signIn() :', error));
     }
 
@@ -81,15 +81,6 @@ export class AuthService {
         }
       });
   }
-
-  // getCurrentUser() {
-  //   this.af.auth.onAuthStateChanged(function(user) {
-  //     if (user) {
-  //       return user;
-  //     }
-  //   });
-    
-  // }
 
   resetPassword(email) {
 
