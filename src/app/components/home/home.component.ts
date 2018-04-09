@@ -29,8 +29,13 @@ export class HomeComponent implements OnInit {
     this.user = user;
   }
 
+  // getStories(): void {
+  //   this.storyService.getStories()
+  //   .subscribe(stories => this.stories = stories);
+  // }
+
   getStories(): void {
-    this.storyService.getStories()
+    this.storyService.getStoriesOfAuthor(this.user.uid)
     .subscribe(stories => this.stories = stories);
   }
 

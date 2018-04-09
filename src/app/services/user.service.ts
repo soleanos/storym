@@ -72,12 +72,11 @@ export class UserService {
         user => {
             if (user.payload.exists) {
                 const data = user.payload.data() as User;
-                console.log(user);
                 data.id = user.payload.id;
+                data.exist = true;
                 return data;
             }else {
                 const data: User = {exist: false};
-                data.exist = false;
                 return data;
             }
         });
@@ -98,8 +97,34 @@ export class UserService {
         const providerData = authData.providerData; // [0];
         const userData: any = {
             id: authData.uid
+            // , email: authData.email
+            // , lastLogin: moment().format()
+            // , photoURL: authData.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
+            , displayName: authData.displayName
+        };
+
+        // if (authData.firstName) {
+        //     userData.firstName = authData.firstName;
+        // }
+        // if (authData.lastName) {
+        //     userData.lastName = authData.lastName;
+        // }
+
+        const usr = this.getUser(authData.uid);
+        const usr$ = usr.subscribe((user: any) => {
+            if (!user.exist || !user.dateCreated) {
+                userData.dateCreated = moment().format();
+                userData.levelAccount = 1;
+                const usrDoc = this.getUserDoc(authData.uid).set(userData);
+            }
+            usr$.unsubscribe();
+        });
+    }
+
+    updateUserAccount(authData: any) {
+        const userData: any = {
+            id: authData.uid
             , email: authData.email
-            , lastLogin: moment().format()
             , photoURL: authData.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
             , displayName: authData.displayName
         };
@@ -111,21 +136,33 @@ export class UserService {
             userData.lastName = authData.lastName;
         }
 
-        const usr = this.getUser(userData.uid);
+        console.log(authData.uid);
+        const usr = this.getUser(authData.uid);
         const usr$ = usr.subscribe((user: any) => {
-            if (!user.exist || !user.dateCreated) {
-                userData.dateCreated = moment().format();
-                const usrDoc = this.getUserDoc(authData.uid).set(userData);
-            }else {
+            if (user.exist && user.dateCreated) {
+                userData.levelAccount = user.levelAccount;
+                userData.lastLogin = user.lastLogin;
                 const usrDoc = this.getUserDoc(userData.uid);
                 return usrDoc.update(userData);
             }
             usr$.unsubscribe();
         });
-
-
     }
 
+    // setUserLastLogin(authData: any) {
+    //     const providerData = authData.providerData; // [0];
+
+    //     const usr = this.getUser(authData.uid);
+    //     const usr$ = usr.subscribe((user: any) => {
+ 
+    //         if (user.exist || user.dateCreated) {
+  
+    //             const usrDoc = this.getUserDoc(authData.uid).set({});
+    //         }
+           
+    //         usr$.unsubscribe();
+    //     });
+    // }
 
   //////// Gestion loggin error //////////
 

@@ -54,6 +54,24 @@ export class StoryService {
       );
   }
 
+   /** Get all stories of specified id  */
+   getStoriesOfAuthor (idAuthor: string): Observable<any[]> {
+    this.storyCollection = this.db.collection<Story>('Story',
+     clause => clause.where('author', '==', idAuthor));
+    this.stories = this.storyCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Story;
+          data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+    return this.stories
+      .pipe(
+        tap(stories => this.log(`fetched stories`)),
+        catchError(this.handleError('getStories', []))
+      );
+  }
+
   /** Get a story by ID  */
   getStory(id: string): Observable<Story> {
     this.story =  this.getStoryDoc(id).snapshotChanges().map(
@@ -73,7 +91,6 @@ export class StoryService {
 
   /** POST Add a new story */
   addStory (story: Story): Observable<any> {
-    console.log(story);
     story.id = this.db.createId();
     return  Observable.fromPromise(this.storyCollection.add(story))
     .pipe(

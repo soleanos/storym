@@ -65,6 +65,7 @@ export class AccountComponent implements OnInit {
           });
         }
         user.updateProfile({displayName : userUpdated.displayName, photoURL : userUpdated.photoURL}).then(() => {
+          // this.userService.updateUserAccount(user);
           this.router.navigateByUrl('/home');
         }).catch((err) => console.log(err));
       }
