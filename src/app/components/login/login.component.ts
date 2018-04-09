@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   private email: string;
   private password: string;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router
+    , private userService: UserService) {
   }
   
   signInWithTwitter() {
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
   signInWithFacebook() {
     this.authService.signInWithFacebook()
     .then((res) => {
+      console.log(res);
+      this.userService.setUserAccount(res.user);
       this.router.navigateByUrl('/home');
       }).catch((err) => console.log(err));
   }

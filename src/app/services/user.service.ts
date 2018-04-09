@@ -63,6 +63,8 @@ export class UserService {
 
     //   Get the firebase reference of the story
     getUserDoc(id: string): AngularFirestoreDocument<User> {
+        console.log('User/' + id);
+        
         return this.db.doc<User>('User/' + id);
     }
 
@@ -99,22 +101,16 @@ export class UserService {
             id: authData.uid
             // , email: authData.email
             // , lastLogin: moment().format()
-            // , photoURL: authData.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
+            , photoURL: authData.photoURL || 'http://simpleicon.com/wp-content/uploads/user1.png'
             , displayName: authData.displayName
         };
-
-        // if (authData.firstName) {
-        //     userData.firstName = authData.firstName;
-        // }
-        // if (authData.lastName) {
-        //     userData.lastName = authData.lastName;
-        // }
 
         const usr = this.getUser(authData.uid);
         const usr$ = usr.subscribe((user: any) => {
             if (!user.exist || !user.dateCreated) {
                 userData.dateCreated = moment().format();
                 userData.levelAccount = 1;
+                console.log("cration")
                 const usrDoc = this.getUserDoc(authData.uid).set(userData);
             }
             usr$.unsubscribe();
@@ -136,14 +132,13 @@ export class UserService {
             userData.lastName = authData.lastName;
         }
 
-        console.log(authData.uid);
         const usr = this.getUser(authData.uid);
         const usr$ = usr.subscribe((user: any) => {
             if (user.exist && user.dateCreated) {
                 userData.levelAccount = user.levelAccount;
-                userData.lastLogin = user.lastLogin;
-                const usrDoc = this.getUserDoc(userData.uid);
-                return usrDoc.update(userData);
+                // userData.lastLogin = user.lastLogin;
+
+                return this.getUserDoc(authData.uid).update(userData);
             }
             usr$.unsubscribe();
         });
