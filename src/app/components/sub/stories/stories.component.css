@@ -2,8 +2,6 @@
     display: grid;
 }
 
-
-
 /* Phones */
 @media all 
   and (min-width: 100px) 
