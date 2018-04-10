@@ -20,9 +20,11 @@
           <button mat-raised-button  (click)="fileInput.click()">Changer ma photo</button>
           <input #fileInput type="file" (change)="chooseFiles($event)" style="display:none;" />
         </div>   
-        <mat-form-field >
-          <input placeholder="Nom d'auteur " matInput [(ngModel)]="displayName" required>
-        </mat-form-field>       
+        <div class = "name" layout="row" layout-align="center center">
+            <mat-form-field >
+            <input placeholder="Nom d'auteur " matInput [(ngModel)]="displayName" required>
+            </mat-form-field>  
+        </div>     
       </mat-card-content>
       <mat-card-actions>
           <div layout="row" layout-align="center center">

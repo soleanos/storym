@@ -24,23 +24,23 @@ section {
     background-size: 25px;
 }
 
-@media (max-width: 700px) {
+.name{
+    margin-top: 20px;;
+    width:100%
+}
 
+@media (max-width: 700px) {
     .login mat-card {
         width: 100%;
     }
-
     .login{
        top: 10%;
        height: 90% 
     }
-
-   
     #toolbar {
         width:90%;
         margin-left: -45%;
     }
-
 }
 
 mat-form-field {
