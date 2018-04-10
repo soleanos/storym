@@ -63,8 +63,6 @@ export class UserService {
 
     //   Get the firebase reference of the story
     getUserDoc(id: string): AngularFirestoreDocument<User> {
-        console.log('User/' + id);
-        
         return this.db.doc<User>('User/' + id);
     }
 

@@ -1,0 +1,12 @@
+
+.title-center {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mat-toolbar-row{
+    height:30px;
+}
+

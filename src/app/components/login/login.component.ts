@@ -16,10 +16,11 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router
     , private userService: UserService) {
   }
-  
+
   signInWithTwitter() {
     this.authService.signInWithTwitter()
     .then((res) => {
+      this.userService.setUserAccount(res.user);
       this.router.navigateByUrl('/home');
     }).catch((err) => console.log(err));
   }
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.authService.signInWithGoogle()
     .then((res) => {
+      this.userService.setUserAccount(res.user);
       this.router.navigateByUrl('/home');
       }).catch((err) => console.log(err));
   }
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
   signInWithGithub() {
     this.authService.signInWithGithub()
     .then((res) => {
+        this.userService.setUserAccount(res.user);
         this.router.navigateByUrl('/home');
       }).catch((err) => console.log(err));
   }
@@ -52,7 +55,7 @@ export class LoginComponent implements OnInit {
     if (this.email && this.password ) {
       this.authService.signInWithMail(this.email, this.password)
       .then((res) => {
-          console.log(res);
+          this.userService.setUserAccount(res.user);
           this.router.navigateByUrl('/home');
         }).catch((err) => alert(err.message));
     }else {
