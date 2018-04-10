@@ -7,7 +7,16 @@
 background-size: cover;
 }
 
-mat-card {
+mat-card {  
+    padding:1;
     grid-column: 1;
     grid-row: 1;
+}
+
+.title{
+    padding:1px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

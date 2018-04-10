@@ -1,7 +1,7 @@
 <mat-card *ngIf="story">
     <mat-card-header>
       <div *ngIf="user" mat-card-avatar class="example-header-image" [style.background-image]="imageAuthor"></div>
-      <mat-card-title>{{story.title}}</mat-card-title>
+      <mat-card-title class = "title">{{story.title}}</mat-card-title>
       <mat-card-subtitle *ngIf="story.subtitle" >{{story.subtitle}}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{story.cover}}" alt="Photo of the story">
