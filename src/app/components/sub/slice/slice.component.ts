@@ -52,7 +52,8 @@ export class SliceComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorDialogComponent, {
       width: '100%',
-      data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level,choices:this.choices}
+      height: '70%',
+      data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level, choices: this.choices}
     });
 
     dialogRef.afterClosed().subscribe(slice => {
@@ -64,7 +65,7 @@ export class SliceComponent implements OnInit {
   }
 
   /**
-   * Crée un nouveau passage et l'ajoute à la liste des passages 
+   * Crée un nouveau passage et l'ajoute à la liste des passages
    * @param title
    *
    */
@@ -89,19 +90,19 @@ export class SliceComponent implements OnInit {
       // Contrôle des choix du passage.
       slice.choices.forEach(choice => {
         const existingSlice = this.isSliceAlreadyExisting(choice.nextSliceTitle);
-    
-        if (existingSlice && existingSlice.id == slice.id) {
+
+        if (existingSlice && existingSlice.id === slice.id) {
           // On supprime le choix dans le cas ou il redirige vers le même passage.
           slice.choices = slice.choices.filter(h => h !== choice);
           alert('Vous avez créer un choix lié au même chapitre ! Il va être supprimé.');
-        }else if(existingSlice){
+        }else if (existingSlice) {
           if (existingSlice.level === 0) {
             // On autorise les boucles vers le passage racine, mais envoie d'un message préventif.
             alert('Attention ! Vous avez un choix qui redirige vers le premier passage de l histoire');
           }
           choice.nextSliceId = existingSlice.id;
         }
-      
+
       });
 
       // Mise à jour du passage
@@ -125,7 +126,7 @@ export class SliceComponent implements OnInit {
         if (!this.isSliceAlreadyExisting(choice.nextSliceTitle)) {
           this.createSlice(choice.nextSliceTitle, choice.nextSliceId);
         }
-     
+
       });
   }
 

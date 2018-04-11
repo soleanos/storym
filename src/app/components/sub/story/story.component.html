@@ -1,4 +1,4 @@
-<mat-card *ngIf="story">
+<mat-card *ngIf="story" layout="column" layout-align="center center">
     <mat-card-header>
       <div *ngIf="user" mat-card-avatar class="example-header-image" [style.background-image]="imageAuthor"></div>
       <mat-card-title class = "title">{{story.title}}</mat-card-title>
@@ -11,8 +11,10 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="link"  (click)="edit(story.id)" >Editer</button>
-      <button mat-raised-button (click)="show = !show">{{show ? 'Publier' : 'Dépublier'}} </button>
-      <button mat-raised-button color="warn" (click)="delete(story)" >Supprimer</button>
+      <div layout="row" layout-align="center center">
+      <button mat-raised-button flex="30" color="link"  (click)="edit(story.id)" >Editer</button>
+      <button mat-raised-button flex="30" (click)="show = !show">{{show ? 'Publier' : 'Dépublier'}} </button>
+      <button mat-raised-button flex="30" color="warn" (click)="delete(story)" >Supprimer</button>
+      </div>
     </mat-card-actions>
 </mat-card>

@@ -1,3 +1,10 @@
 mat-form-field {
     width: 100%;
 }
+
+
+.mat-dialog-container {
+    width: 77%;
+    height: 77%;
+  }
+  

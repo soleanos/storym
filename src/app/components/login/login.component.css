@@ -64,17 +64,13 @@ section {
     }
 
     .login{
-       top: 10%;
-       height: 90% 
+       height: 100% 
     }
 
     #page {
         padding:1em;
     }
-    #toolbar {
-        width:90%;
-        margin-left: -45%;
-    }
+   
     #fb {
         background:#3B5998;
     }

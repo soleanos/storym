@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Rédiger un nouveau passage de l'histoire </h1>
-<div mat-dialog-content>   
+<div mat-dialog-content layout="column" layout-align="center center">   
   <mat-form-field>
     <input matInput [(ngModel)]="data.title" placeholder="Titre">
   </mat-form-field>
@@ -20,9 +20,8 @@
   
 </mat-chip-list>
 
-<div mat-dialog-actions>
+<div mat-dialog-actions layout="row" layout-align="center center" >
   <button  mat-raised-button color="accent" (click) = "openP()" >Ajouter un choix</button>
    <!-- <button mat-button >Retour</button> -->
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-
 </div>
