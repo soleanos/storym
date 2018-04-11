@@ -8,7 +8,8 @@
   <!-- <mat-form-field >
     <textarea rows = "10" matInput [(ngModel)]="data.text" placeholder="texte" ></textarea>
   </mat-form-field> -->
-  <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="data.text"></app-ngx-editor>
+  <app-ngx-editor [placeholder]="'Enter text here...'" [config]="editorConfig" [spellcheck]="true" [(ngModel)]="data.text"></app-ngx-editor>
+  <br>
   <!-- (keyup)="saveText($event)" -->
 </div>
 

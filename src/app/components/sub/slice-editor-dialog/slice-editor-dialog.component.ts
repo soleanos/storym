@@ -20,6 +20,28 @@ export class SliceEditorDialogComponent implements OnInit {
   addOnBlur = true;
   choices: Choice[];
 
+  editorConfig = {
+    "editable": true,
+    "spellcheck": true,
+    "height": "200px",
+    "minHeight": "0",
+    "width": "auto",
+    "minWidth": "0",
+    "translate": "yes",
+    "enableToolbar": true,
+    "showToolbar": true,
+    "placeholder": "Enter text here...",
+    "imageEndPoint": "",
+    "toolbar": [
+        ["bold", "italic", "underline", "strikeThrough", "superscript", "subscript"],
+        ["fontName", "fontSize", "color"],
+        ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "indent", "outdent"],
+        ["cut", "copy", "delete", "removeFormat", "undo", "redo"],
+        ["paragraph", "blockquote", "removeBlockquote", "horizontalLine", "orderedList", "unorderedList"],
+        ["link", "unlink", "image"],
+    ]
+  }
+
   remove(choice: Choice): void {
     const index = this.choices.indexOf(choice);
 
