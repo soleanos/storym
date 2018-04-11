@@ -44,7 +44,7 @@ export class SliceEditorDialogComponent implements OnInit {
    */
   openP(): void {
     const dialogRef = this.dialog.open(ChoiceCreationDialogComponent, {
-      width: '100%',
+      // width: '100%',
       data: {}
     });
     dialogRef.componentInstance.idStory = this.data.story;

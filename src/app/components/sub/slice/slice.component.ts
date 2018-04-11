@@ -51,8 +51,8 @@ export class SliceComponent implements OnInit {
    */
   openDialog(): void {
     const dialogRef = this.dialog.open(SliceEditorDialogComponent, {
-      width: '100%',
-      height: '70%',
+      // width: '100%',
+      // height: '75%',
       data: {title : this.title, text : this.text, id : this.id, story : this.story, level : this.level, choices: this.choices}
     });
 

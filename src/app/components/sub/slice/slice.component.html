@@ -1,4 +1,4 @@
 <div (dblclick)="openDialog()"  ngDraggable  class = "slice" > 
   <b>{{slice.title}} </b> <br>
-  <i>{{slice.text}} .. </i>
+  <i>{{slice.text | htmlToPlaintext}} .. </i>
 </div>

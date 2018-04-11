@@ -47,6 +47,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AccountComponent } from './components/account/account.component';
 import { StoryManagementComponent } from './components/story-management/story-management.component';
 
+import { NgxEditorModule } from 'ngx-editor';
+import { HtmlToPlaintextPipe } from './pipes/html-to-plaintext.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +73,8 @@ import { StoryManagementComponent } from './components/story-management/story-ma
     RegistrationComponent,
     AccountComponent,
     StoryManagementComponent,
-    ComfirmDialogComponent
+    ComfirmDialogComponent,
+    HtmlToPlaintextPipe
   ],
   imports: [
     CustomAngularMaterialModule,
@@ -85,8 +89,9 @@ import { StoryManagementComponent } from './components/story-management/story-ma
     ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgxEditorModule 
   ],
-  providers: [StoryService, MessageService, 
+  providers: [StoryService, MessageService, NgxEditorModule ,
     SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AngularFireStorage, AuthGuard],
   entryComponents: [ComfirmDialogComponent, StoryCreationDialogComponent,
                      SliceEditorDialogComponent, ChoiceCreationDialogComponent],
