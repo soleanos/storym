@@ -31,6 +31,8 @@ import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-
 import { MessagesComponent } from './components/sub/messages/messages.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { ComfirmDialogComponent } from './components/sub/confirm-dialog/confirm-dialog.component';
+
 import { StoryService} from './services/story.service';
 import { SliceService} from './services/slice.service';
 import { MessageService } from './services/message.service';
@@ -67,7 +69,8 @@ import { StoryManagementComponent } from './components/story-management/story-ma
     LoginComponent,
     RegistrationComponent,
     AccountComponent,
-    StoryManagementComponent
+    StoryManagementComponent,
+    ComfirmDialogComponent
   ],
   imports: [
     CustomAngularMaterialModule,
@@ -84,8 +87,9 @@ import { StoryManagementComponent } from './components/story-management/story-ma
     AngularFireAuthModule,
   ],
   providers: [StoryService, MessageService, 
-    SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule,AngularFireStorage, AuthGuard],
-  entryComponents: [StoryCreationDialogComponent, SliceEditorDialogComponent, ChoiceCreationDialogComponent],
+    SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AngularFireStorage, AuthGuard],
+  entryComponents: [ComfirmDialogComponent, StoryCreationDialogComponent,
+                     SliceEditorDialogComponent, ChoiceCreationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

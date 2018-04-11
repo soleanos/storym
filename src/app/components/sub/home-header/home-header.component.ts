@@ -60,8 +60,8 @@ export class HomeHeaderComponent implements OnInit {
     if (!title) { return; }
     this.storyService.addStory({ title,
       cover : 'http://thecatapi.com/api/images/get?format=src&type=gif',
-      author: this.user.uid } as Story)
-      .subscribe(story => {
+      author: this.user.uid,
+      published : false} as Story).subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();
         this.createSlice(story.id, sliceId);
