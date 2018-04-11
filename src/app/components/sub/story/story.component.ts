@@ -29,16 +29,28 @@ export class StoryComponent implements OnInit {
     this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.user.photoURL})`);
   }
 
+  /**
+   * Redirige vers la page d'édition de l'histoire
+   * @param storyId
+   */
   edit(storyId: string): void {
     this.router.navigateByUrl('/story/' + storyId);
   }
 
+  /**
+   * Supprime l'histoire
+   * @param story
+   */
   delete(story: Story): void {
     this.stories = this.stories.filter(h => h !== story);
     this.storyService.deleteStory(story).subscribe();
     this.storiesChange.emit(this.stories);
   }
 
+  /**
+   * Change le statut de la publification de l'histoire
+   * @param story
+   */
   updatePublication(story: Story): void {
     this.story.published = !this.story.published;
     this.storyService.updateStory(story).subscribe();
@@ -49,9 +61,9 @@ export class StoryComponent implements OnInit {
    * Ouvre la popup de confirmation publication/dépublication
    */
   openPublicationDialog(story: Story): void {
-    let text = 'Etes vous sûr de vouloir publier votre histoire ? Elle ne sera plus accessible aux lecteurs.';
+    let text = 'Etes vous sûr de vouloir publier votre histoire ? Elle sera désormais accessible aux lecteurs.';
     if (this.story.published) {
-      text = 'Etes vous sûr de vouloir dépublier votre histoire ? Elle sera désormais accessible aux lecteurs.';
+      text = 'Etes vous sûr de vouloir dépublier votre histoire ? Elle ne sera plus accessible aux lecteurs.';
     }
 
     const dialogRef = this.dialog.open(ComfirmDialogComponent, {
