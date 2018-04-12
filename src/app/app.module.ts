@@ -49,6 +49,7 @@ import { StoryManagementComponent } from './components/story-management/story-ma
 
 import { NgxEditorModule } from 'ngx-editor';
 import { HtmlToPlaintextPipe } from './pipes/html-to-plaintext.pipe';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { HtmlToPlaintextPipe } from './pipes/html-to-plaintext.pipe';
     AccountComponent,
     StoryManagementComponent,
     ComfirmDialogComponent,
-    HtmlToPlaintextPipe
+    HtmlToPlaintextPipe,
+    SafeHtmlPipe
   ],
   imports: [
     CustomAngularMaterialModule,

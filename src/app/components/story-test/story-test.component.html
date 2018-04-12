@@ -4,7 +4,7 @@
         <!-- <h2>{{ story.title | uppercase }} </h2> -->
         <mat-card flex = "100"  >
             <mat-card-title>{{slice.title}} </mat-card-title>
-            <mat-card-content [innerHTML]="slice.text">
+            <mat-card-content [innerHTML]="slice.text | safeHtml">
                 <!-- <div [innerHTML]="post.body"></div>              -->
             </mat-card-content>
           </mat-card>      

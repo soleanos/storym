@@ -52,7 +52,8 @@ export class HomePanelComponent implements OnInit {
   createStory(title: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.storyService.addStory({ title, cover : 'http://thecatapi.com/api/images/get?format=src&type=gif' } as Story)
+    this.storyService.addStory({ title,
+      cover : 'https://firebasestorage.googleapis.com/v0/b/storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5' } as Story)
       .subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();

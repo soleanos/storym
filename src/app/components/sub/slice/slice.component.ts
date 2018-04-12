@@ -95,7 +95,7 @@ export class SliceComponent implements OnInit {
           // On supprime le choix dans le cas ou il redirige vers le même passage.
           slice.choices = slice.choices.filter(h => h !== choice);
           alert('Vous avez créer un choix lié au même chapitre ! Il va être supprimé.');
-        }else if (existingSlice) {
+        } else if (existingSlice) {
           if (existingSlice.level === 0) {
             // On autorise les boucles vers le passage racine, mais envoie d'un message préventif.
             alert('Attention ! Vous avez un choix qui redirige vers le premier passage de l histoire');
