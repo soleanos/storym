@@ -21,7 +21,8 @@ export class StoryComponent implements OnInit {
   imageAuthor: SafeStyle;
 
   constructor(public dialog: MatDialog,
-    private storyService: StoryService, private router: Router, private sanitization: DomSanitizer) {
+    private storyService: StoryService, private router: Router,
+    private sanitization: DomSanitizer) {
 
   }
 

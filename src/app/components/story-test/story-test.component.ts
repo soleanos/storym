@@ -70,7 +70,6 @@ export class StoryTestComponent implements OnInit {
    * @param sliceId
    */
   getnextLinkedSlice(sliceId: String): any {
-    console.log(sliceId);
      return this.slices.filter(x => x.id === sliceId)[0];
   }
 
