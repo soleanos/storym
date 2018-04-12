@@ -16,31 +16,39 @@ export class SliceEditorDialogComponent implements OnInit {
   text: string;
   visible = true;
   selectable = true;
-  removable=  true;
+  removable =  true;
   addOnBlur = true;
   choices: Choice[];
 
+  /* // Valeurs possibles de la toolbar
+
+  ["bold", "italic", "underline", "strikeThrough", "superscript", "subscript"],
+  ["fontName", "fontSize", "color"],
+  ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "indent", "outdent"],
+  ["cut", "copy", "delete", "removeFormat", "undo", "redo"],
+  ["paragraph", "blockquote", "removeBlockquote", "horizontalLine", "orderedList", "unorderedList"],
+  ["link", "unlink", "image"] */
+
   editorConfig = {
-    "editable": true,
-    "spellcheck": true,
-    "height": "200px",
-    "minHeight": "0",
-    "width": "auto",
-    "minWidth": "0",
-    "translate": "yes",
-    "enableToolbar": true,
-    "showToolbar": true,
-    "placeholder": "Enter text here...",
-    "imageEndPoint": "",
-    "toolbar": [
-        ["bold", "italic", "underline", "strikeThrough", "superscript", "subscript"],
-        ["fontName", "fontSize", "color"],
-        ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "indent", "outdent"],
-        ["cut", "copy", "delete", "removeFormat", "undo", "redo"],
-        ["paragraph", "blockquote", "removeBlockquote", "horizontalLine", "orderedList", "unorderedList"],
-        ["link", "unlink", "image"],
+    'editable': true,
+    'spellcheck': true,
+    'height': '200px',
+    'minHeight': '0',
+    'width': 'auto',
+    'minWidth': '0',
+    'translate': 'yes',
+    'enableToolbar': true,
+    'showToolbar': true,
+    'placeholder': 'Saisissez votre texte ici',
+    'imageEndPoint': '',
+    'toolbar': [
+        ['bold', 'italic', 'underline', 'strikeThrough', 'image'],
+        ['fontName', 'fontSize', 'color'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'indent', 'outdent'],
+        ['removeFormat', 'undo', 'redo'],
+        ['paragraph', 'blockquote', 'removeBlockquote', 'horizontalLine', 'orderedList', 'unorderedList']
     ]
-  }
+  };
 
   remove(choice: Choice): void {
     const index = this.choices.indexOf(choice);
