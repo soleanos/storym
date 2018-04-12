@@ -12,6 +12,16 @@
     background-size: 100%;
 }  */
 
+
+#colorCircle{
+    border-radius:50%; 
+    position : absolute;
+    top:15%;
+    left:5%;
+    width:21px;
+    height:20px;
+  }
+
 .slice{
     margin: 0 auto;
     white-space: nowrap;

@@ -1,4 +1,5 @@
 <div (dblclick)="openDialog()"  ngDraggable  class = "slice" > 
+  <div id="colorCircle" [style.background] = "slice.color"></div>
   <b>{{slice.title}} </b> <br>
   <i>{{slice.text | htmlToPlaintext}} .. </i>
 </div>
