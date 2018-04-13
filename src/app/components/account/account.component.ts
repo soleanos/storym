@@ -18,6 +18,7 @@ export class AccountComponent implements OnInit {
   title = 'app';
   selectedFiles: FileList;
   file: File;
+  imageUpdated: string;
   imgsrc: Observable<string>;
   color = 'primary';
   mode = 'determinate';
@@ -43,7 +44,9 @@ export class AccountComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     const uniqkey = 'pic' + Math.floor(Math.random() * 1000000);
     const uploadTask = this.storage.upload('/profilPicture/' + uniqkey, file);
-    this.imgsrc = uploadTask.downloadURL();
+    uploadTask.downloadURL().subscribe(src => {
+      this.imageUpdated = src;
+    });
     uploadTask.percentageChanges().subscribe((value) => {
       this.progressBarValue = value.toFixed(2);
     });
@@ -59,10 +62,8 @@ export class AccountComponent implements OnInit {
   saveUserInfos() {
     this.authService.getAuth().subscribe(user => {
         const userUpdated = {displayName : this.displayName, photoURL : user.photoURL};
-        if (this.imgsrc) {
-          this.imgsrc.subscribe(src => {
-            userUpdated.photoURL = src;
-          });
+        if (this.imageUpdated) {
+            userUpdated.photoURL = this.imageUpdated;
         }
         user.updateProfile({displayName : userUpdated.displayName, photoURL : userUpdated.photoURL}).then(() => {
           this.userService.updateUserAccount(user);

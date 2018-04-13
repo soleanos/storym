@@ -40,7 +40,7 @@ export class SliceEditorDialogComponent implements OnInit {
     'enableToolbar': true,
     'showToolbar': true,
     'placeholder': 'Saisissez votre texte ici',
-    'imageEndPoint': '',
+    'imageEndPoint': 'https://firebasestorage.googleapis.com/v0/b/storym-application.appspot.com/o?name=profilPicture/',
     'toolbar': [
         ['bold', 'italic', 'underline', 'strikeThrough', 'image'],
         ['fontName', 'fontSize', 'color'],
