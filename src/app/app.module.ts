@@ -20,7 +20,7 @@ import { StoryEditionHeaderComponent } from './components/sub/story-edition-head
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { SliceComponent } from './components/sub/slice/slice.component';
 import { SliceEditorDialogComponent } from './components/sub/slice-editor-dialog/slice-editor-dialog.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeAuthorComponent } from './components/home-author/home-author.component';
 import { SlicesComponent } from './components/sub/slices/slices.component';
 import { StoryCreationDialogComponent } from './components/sub/story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './components/sub/stories/stories.component';
@@ -53,7 +53,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeAuthorComponent,
     MessagesComponent,
     HomeHeaderComponent,
     StoryEditionHeaderComponent,

@@ -11,9 +11,9 @@ import * as firebase from 'firebase/app';
 })
 export class RegistrationComponent implements OnInit {
 
-  private email: string;
-  private password: string;
-  private displayName: string;
+  email: string;
+  password: string;
+  displayName: string;
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService) { }
 

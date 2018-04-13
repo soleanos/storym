@@ -12,11 +12,12 @@ import { AuthService } from '../../services/auth.service';
 import { Story } from '../../model/Story';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home-author',
+  templateUrl: './home-author.component.html',
+  styleUrls: ['./home-author.component.css']
 })
-export class HomeComponent implements OnInit {
+
+export class HomeAuthorComponent implements OnInit {
   @Input() stories: Story[];
   user: firebase.User;
 

@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private nextPage: string;
-  private email: string;
-  private password: string;
+  nextPage: string;
+  email: string;
+  password: string;
 
   constructor(private authService: AuthService, private router: Router
     , private userService: UserService, private route: ActivatedRoute) {

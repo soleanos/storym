@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './services/auth.guard';
 
-import { HomeComponent } from './components/home/home.component';
+import { HomeAuthorComponent } from './components/home-author/home-author.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,7 +15,7 @@ import { StoryManagementComponent } from './components/story-management/story-ma
 
 const routes: Routes = [
   { path: '', redirectTo: 'home/author', pathMatch: 'full' },
-  { path: 'home/author', component: HomeComponent,  canActivate: [AuthGuard]},
+  { path: 'home/author', component: HomeAuthorComponent,  canActivate: [AuthGuard]},
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
   { path: 'login/:nextPage', component: LoginComponent },

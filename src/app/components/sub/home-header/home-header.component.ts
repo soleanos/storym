@@ -41,7 +41,7 @@ export class HomeHeaderComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(StoryCreationDialogComponent, {
       width: '300px',
-      data: {title : this.title}
+      // data: {title : this.title}
     });
 
     dialogRef.afterClosed().subscribe(StoryTitle => {
