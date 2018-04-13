@@ -64,7 +64,7 @@ export class HomeHeaderComponent implements OnInit {
       'https://firebasestorage.googleapis.com/v0/b/' +
       'storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
       author: this.user.uid,
-      published : false} as Story).subscribe(story => {
+      status : 1} as Story).subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();
         this.createSlice(story.id, sliceId);

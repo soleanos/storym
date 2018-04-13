@@ -7,5 +7,7 @@ export class Story {
     cover?: string;
     abstract?: string;
     author?: string;
-    published?: boolean;
+    reports?: Array<string>;
+    status?: number;
+    langage?: string;
   }

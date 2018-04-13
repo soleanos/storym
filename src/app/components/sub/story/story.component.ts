@@ -19,15 +19,32 @@ export class StoryComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
   imageAuthor: SafeStyle;
+  published: boolean;
+  reported: boolean;
 
   constructor(public dialog: MatDialog,
     private storyService: StoryService, private router: Router,
     private sanitization: DomSanitizer) {
-
   }
 
   ngOnInit() {
     this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.user.photoURL})`);
+    this.reported = false;
+
+    console.log(this.story.status);
+
+    if (this.story.status === 1) {
+      this.published = true;
+    } else {
+      this.published = false;
+    }
+
+    console.log(this.published);
+
+    if (this.story.status === 3) {
+      this.reported = true;
+    }
+
   }
 
   /**
@@ -49,12 +66,22 @@ export class StoryComponent implements OnInit {
   }
 
   /**
+   * 1 => dépublié
+   * 2 => publié
+   * 3 => Suspendue
    * Change le statut de la publification de l'histoire
    * @param story
    */
   updatePublication(story: Story): void {
-    this.story.published = !this.story.published;
+    if (story.status === 2) {
+      story.status = 1;
+      this.published = true;
+    } else if (this.story.status === 1) {
+      story.status = 2;
+      this.published = false;
+    }
     this.storyService.updateStory(story).subscribe();
+    this.story = story;
     this.storiesChange.emit(this.stories);
   }
 
@@ -63,7 +90,8 @@ export class StoryComponent implements OnInit {
    */
   openPublicationDialog(story: Story): void {
     let text = 'Etes vous sûr de vouloir publier votre histoire ? Elle sera désormais accessible aux lecteurs.';
-    if (this.story.published) {
+    console.log(this.story.status);
+    if (this.story.status = 2) {
       text = 'Etes vous sûr de vouloir dépublier votre histoire ? Elle ne sera plus accessible aux lecteurs.';
     }
 
