@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithTwitter()
     .then((res) => {
       this.userService.setUserAccount(res.user);
-      this.router.navigateByUrl('/home/' + this.nextPage + '/');
+      this.router.navigateByUrl('/home/' + this.nextPage);
     }).catch((err) => console.log(err));
   }
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     .then((res) => {
       console.log(res);
       this.userService.setUserAccount(res.user);
-      this.router.navigateByUrl('/home/' + this.nextPage + '/');
+      this.router.navigateByUrl('/home/' + this.nextPage);
       }).catch((err) => console.log(err));
   }
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithGoogle()
     .then((res) => {
       this.userService.setUserAccount(res.user);
-      this.router.navigateByUrl('/home/' + this.nextPage + '/');
+      this.router.navigateByUrl('/home/' + this.nextPage);
       }).catch((err) => console.log(err));
   }
 
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithGithub()
     .then((res) => {
         this.userService.setUserAccount(res.user);
-        this.router.navigateByUrl('/home/' + this.nextPage + '/');
+        this.router.navigateByUrl('/home/' + this.nextPage);
       }).catch((err) => console.log(err));
   }
 
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       this.authService.signInWithMail(this.email, this.password)
       .then((res) => {
           this.userService.setUserAccount(res.user);
-          this.router.navigateByUrl('/home/' + this.nextPage + '/');
+          this.router.navigateByUrl('/home/' + this.nextPage);
         }).catch((err) => alert(err.message));
     } else {
       alert('Veuillez saisir vos identifiants');

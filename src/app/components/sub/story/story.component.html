@@ -13,7 +13,7 @@
     <mat-card-actions>
       <div layout="row" layout-align="center center">
       <button mat-raised-button flex="30" color="link"  (click)="edit(story.id)" >Editer</button>
-      <button mat-raised-button flex="30" (click)="openPublicationDialog(story)">{{story.published ? 'Dépublier' : 'Publier'}} </button>
+      <button mat-raised-button flex="30" (click)="openPublicationDialog(story)">{{published ? 'Dépublier' : 'Publier'}} </button>
       <button mat-raised-button flex="30" color="warn" (click)="openDeleteDialog(story)" >Supprimer</button>
       </div>
     </mat-card-actions>

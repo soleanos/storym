@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './services/auth.guard';
-// import { AuthGuard } from './services/auth.service';
 
 import { HomeComponent } from './components/home/home.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
@@ -15,8 +14,8 @@ import { StoryManagementComponent } from './components/story-management/story-ma
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home/author/', pathMatch: 'full' },
-  { path: 'home/author/', component: HomeComponent,  canActivate: [AuthGuard]},
+  { path: '', redirectTo: 'home/author', pathMatch: 'full' },
+  { path: 'home/author', component: HomeComponent,  canActivate: [AuthGuard]},
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
   { path: 'login/:nextPage', component: LoginComponent },

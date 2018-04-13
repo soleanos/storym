@@ -22,7 +22,7 @@ export class StoryEditionHeaderComponent implements OnInit {
   };
 
   goToHome = function () {
-    this.router.navigateByUrl('/home/author/');
+    this.router.navigateByUrl('/home/author');
   };
 
   goToStoryTest = function () {

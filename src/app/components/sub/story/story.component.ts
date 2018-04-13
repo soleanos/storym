@@ -30,21 +30,14 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
     this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.user.photoURL})`);
     this.reported = false;
+    this.published = false
 
-    console.log(this.story.status);
-
-    if (this.story.status === 1) {
+    if (this.story.status === 2) {
       this.published = true;
-    } else {
-      this.published = false;
-    }
-
-    console.log(this.published);
-
+    } 
     if (this.story.status === 3) {
       this.reported = true;
     }
-
   }
 
   /**
@@ -75,10 +68,10 @@ export class StoryComponent implements OnInit {
   updatePublication(story: Story): void {
     if (story.status === 2) {
       story.status = 1;
-      this.published = true;
+      this.published = false;
     } else if (this.story.status === 1) {
       story.status = 2;
-      this.published = false;
+      this.published = true;
     }
     this.storyService.updateStory(story).subscribe();
     this.story = story;
@@ -90,8 +83,7 @@ export class StoryComponent implements OnInit {
    */
   openPublicationDialog(story: Story): void {
     let text = 'Etes vous sûr de vouloir publier votre histoire ? Elle sera désormais accessible aux lecteurs.';
-    console.log(this.story.status);
-    if (this.story.status = 2) {
+    if (this.story.status == 2) {
       text = 'Etes vous sûr de vouloir dépublier votre histoire ? Elle ne sera plus accessible aux lecteurs.';
     }
 
