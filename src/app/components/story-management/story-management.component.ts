@@ -68,7 +68,7 @@ export class StoryManagementComponent implements OnInit {
 
   saveStoryInfos() {
     this.storyService.updateStory(this.story);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home/author/');
   }
 
 

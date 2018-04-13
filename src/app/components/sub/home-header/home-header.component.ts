@@ -60,7 +60,9 @@ export class HomeHeaderComponent implements OnInit {
     if (!title) { return; }
     this.storyService.addStory({ title,
       // cover : 'http://thecatapi.com/api/images/get?format=src&type=gif',
-      cover : 'https://firebasestorage.googleapis.com/v0/b/storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
+      cover :
+      'https://firebasestorage.googleapis.com/v0/b/' +
+      'storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
       author: this.user.uid,
       published : false} as Story).subscribe(story => {
         this.storiesChange.emit(this.stories);

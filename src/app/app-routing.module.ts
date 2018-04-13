@@ -15,10 +15,11 @@ import { StoryManagementComponent } from './components/story-management/story-ma
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent,  canActivate: [AuthGuard]},
+  { path: '', redirectTo: 'home/author/', pathMatch: 'full' },
+  { path: 'home/author/', component: HomeComponent,  canActivate: [AuthGuard]},
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
+  { path: 'login/:nextPage', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
   { path: 'register', component: RegistrationComponent},

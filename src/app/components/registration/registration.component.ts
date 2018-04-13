@@ -25,13 +25,13 @@ export class RegistrationComponent implements OnInit {
       this.authService.registerUser(this.email, this.password)
       .then((user: firebase.User) => {
           user.updateProfile({displayName : this.displayName, photoURL : user.photoURL}).then(() => {
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/home/author');
           }).catch((err) => console.log(err));
           // this.authService.sendConfirmationMail(this.email);
         })
       .catch((err) => console.log(err));
-    }else {
-      alert("Veuillez saisir les données attendues");
+    } else {
+      alert('Veuillez saisir les données attendues');
     }
   }
 

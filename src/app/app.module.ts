@@ -16,7 +16,6 @@ import { CustomAngularMaterialModule} from './modules/custom-angular-material.mo
 
 import { AppComponent } from './app.component';
 import { HomeHeaderComponent } from './components/sub/home-header/home-header.component';
-import { HomePanelComponent } from './components/sub/home-panel/home-panel.component';
 import { StoryEditionHeaderComponent } from './components/sub/story-edition-header/story-edition-header.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { SliceComponent } from './components/sub/slice/slice.component';
@@ -57,7 +56,6 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HomeComponent,
     MessagesComponent,
     HomeHeaderComponent,
-    HomePanelComponent,
     StoryEditionHeaderComponent,
     StoryEditionComponent,
     SliceComponent,
@@ -91,7 +89,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    NgxEditorModule 
+    NgxEditorModule
   ],
   providers: [StoryService, MessageService, NgxEditorModule ,
     SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AngularFireStorage, AuthGuard],

@@ -51,9 +51,9 @@ export class AuthService {
       return this.signIn(new firebase.auth.FacebookAuthProvider());
     }
 
-    public signOut= (): any => {
+    public signOut = (): any => {
       this.af.auth.signOut();
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/login/');
   }
 
    public signInWithMail(email, password) {
