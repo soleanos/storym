@@ -29,6 +29,7 @@ import { StoryTestComponent } from './components/story-test/story-test.component
 import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-dialog/choice-creation-dialog.component';
 import { MessagesComponent } from './components/sub/messages/messages.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { ComfirmDialogComponent } from './components/sub/confirm-dialog/confirm-dialog.component';
 
@@ -73,6 +74,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     AccountComponent,
     StoryManagementComponent,
     ComfirmDialogComponent,
+    HomeComponent,
     HtmlToPlaintextPipe,
     SafeHtmlPipe
   ],

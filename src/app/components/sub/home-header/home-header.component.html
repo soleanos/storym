@@ -7,16 +7,16 @@
 
     <mat-toolbar-row>
         <span class="title-center" flex ="90" >{{stories?.length}} Histoire(s)</span>
-        <button (click)="openDialog() " mat-icon-button color="black">
+        <button title = "Créer une nouvelle histoire"  (click)="openDialog() " mat-icon-button color="black">
             <mat-icon aria-label="Bouton ajout d'histoire">add</mat-icon>
         </button>
         <!-- <button (click)="changeColors() " mat-icon-button color="black">
                 <mat-icon aria-label="bouton gestion compte">invert_colors</mat-icon>
         </button> -->
-        <button (click)="manageAccount() " mat-icon-button color="black">
+        <button title = "Gêrer mon compte" (click)="manageAccount() " mat-icon-button color="black">
             <mat-icon aria-label="bouton gestion compte">person</mat-icon>
         </button>
-        <button (click)="disconnect() " mat-icon-button color="black">
+        <button title = "Se déconnecter"  (click)="disconnect() " mat-icon-button color="black">
             <mat-icon aria-label="Bouton déconnexion">input</mat-icon>
         </button>
 </mat-toolbar-row>

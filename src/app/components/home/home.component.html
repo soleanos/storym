@@ -1,0 +1,86 @@
+  
+<section layout="column" flex layout-align="center center" class = "login" >
+    <mat-card layout="column"  layout-align="center center" class = "login">
+        <mat-toolbar layout="row" layout-align="center center">
+            <div layout="column" layout-align="center center">
+                <div >Storym</div>
+            </div>
+        </mat-toolbar>
+        <mat-card-content layout="column" layout-align="center center">
+            <mat-tab-group>
+                <mat-tab label="Acceuil">
+                  <h1>Bienvenue sur Storym.io !! </h1>
+                  <p> 
+                      Créez et partagez facilement des histoires dont le contenu change selons les choix qui sont fait par le lecteur.     
+                  </p>
+                </mat-tab>
+                <mat-tab label="Contact">
+                  <h1>@Storym</h1>
+                  <p>...</p>
+                </mat-tab>
+                <mat-tab label="Mentions légales">
+                        <h1>@Mentions</h1>
+                        <p>...</p>
+                    </mat-tab>
+                <mat-tab label="Comment ça marche ?">        
+                    <h2>Pour rédiger votre histoire, quelques étapes à suivre :</h2>
+                        
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+                            
+                        <mat-step [stepControl]="firstFormGroup"> 
+                            <ng-template matStepLabel>Créer l'histoire</ng-template>
+                            <div layout="row" layout-align="center center">
+                                <p>
+                                Créer votre histoire, en lui donnant un titre <br> <br>
+                                <img src="/assets/creer_histoire.gif" alt="Smiley face"  height="300" width="600">     
+                            </p>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <button mat-button matStepperNext>Etape suivante</button>
+                            </div>
+                        </mat-step>
+
+                        <mat-step [stepControl]="secondFormGroup">
+                            <ng-template matStepLabel>Editer l'histoire</ng-template>
+                            <div layout="row" layout-align="center center">
+                                <p>
+                                    Modifiez votre premier passage : <br> <br>
+                                    <b>Double cliquez</b> sur le passage, symbolisé par un postit afin d'ouvrir l'éditeur. <br>
+                                    Une fois ceci fait, vous pouvez <b>modifier</b> le titre et le texte qui sera affiché dans le passage. <br>
+                                    Enfin, vous pouvez <b>ajouter des choix</b> qui permettent de lier les passages les uns au autre. <br>
+                                    Pour chaque choix, on <b>choisie le titre unique</b> choisie le titre unique du passage auquels il conduira, <br>
+                                    et le texte qui sera affiché au lecteur dans le bouton du choix. <br><br><br>
+                                    <img src="/assets/editer_histoire.gif" alt="Smiley face"  height="300" width="600"> 
+                                </p>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                    <button flex="30" mat-button matStepperPrevious>Etape précédente</button>
+                                    <button flex="30" mat-button matStepperNext>Etape suivante</button>  
+                            </div>
+                        </mat-step>
+
+                        <mat-step>
+                        <ng-template matStepLabel>Tester !</ng-template>
+                            <div layout="row" layout-align="center center">
+                            <p>
+                                Plus qu'a tester !  <br> <br>
+                                <img src="/assets/tester.gif" alt="Smiley face"  height="300" width="600"> 
+                            </p>
+                            </div>
+                        <div layout="row" layout-align="center center">
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                        </mat-step>
+                    </mat-horizontal-stepper>                                                
+                </mat-tab>             
+            </mat-tab-group>              
+        </mat-card-content>
+        <mat-card-actions>
+            <div layout="row" layout-align="center center">
+                <!-- <button mat-button flex="30" (click)="signInWithTwitter()" id="twitter" > Lire </button><br> -->
+                <button mat-button flex="30" (click)="goToAuthorHome()" id="github" ><font color="white">Ecrire </font> </button>
+            </div>
+        </mat-card-actions>  
+    </mat-card>
+</section>

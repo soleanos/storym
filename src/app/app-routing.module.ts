@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AccountComponent } from './components/account/account.component';
 import { StoryManagementComponent } from './components/story-management/story-management.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login/:nextPage', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegistrationComponent},
   { path: 'story-edit/:id', component: StoryManagementComponent}
 ];
