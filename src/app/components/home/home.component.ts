@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  
   goToAuthorHome = function () {
     this.router.navigateByUrl('/home/author');
   };

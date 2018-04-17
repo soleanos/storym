@@ -15,7 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home/author', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home/author', component: HomeAuthorComponent,  canActivate: [AuthGuard]},
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
