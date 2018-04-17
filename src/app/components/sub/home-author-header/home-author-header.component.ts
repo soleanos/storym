@@ -14,11 +14,11 @@ import { Slice } from '../../../model/Slice';
 import {Story } from '../../../model/Story';
 
 @Component({
-  selector: 'app-home-header',
-  templateUrl: './home-header.component.html',
-  styleUrls: ['./home-header.component.css']
+  selector: 'app-author-home-header',
+  templateUrl: './home-author-header.component.html',
+  styleUrls: ['./home-author-header.component.css']
 })
-export class HomeHeaderComponent implements OnInit {
+export class HomeAuthorHeaderComponent implements OnInit {
   story: Story;
   slice: Slice;
   title: string;

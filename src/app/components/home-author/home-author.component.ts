@@ -3,7 +3,7 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { UserService } from '../../services/user.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import {HomeHeaderComponent} from '../sub/home-header/home-header.component';
+import {HomeAuthorHeaderComponent} from '../sub/home-author-header/home-author-header.component';
 import {StoryCreationDialogComponent} from '../sub/story-creation-dialog/story-creation-dialog.component';
 import * as firebase from 'firebase/app';
 import {StoryService} from '../../services/story.service';

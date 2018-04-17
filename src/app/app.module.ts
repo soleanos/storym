@@ -15,7 +15,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { CustomAngularMaterialModule} from './modules/custom-angular-material.module';
 
 import { AppComponent } from './app.component';
-import { HomeHeaderComponent } from './components/sub/home-header/home-header.component';
+import { HomeAuthorHeaderComponent } from './components/sub/home-author-header/home-author-header.component';
 import { StoryEditionHeaderComponent } from './components/sub/story-edition-header/story-edition-header.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { SliceComponent } from './components/sub/slice/slice.component';
@@ -56,7 +56,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     AppComponent,
     HomeAuthorComponent,
     MessagesComponent,
-    HomeHeaderComponent,
+    HomeAuthorHeaderComponent,
     StoryEditionHeaderComponent,
     StoryEditionComponent,
     SliceComponent,
