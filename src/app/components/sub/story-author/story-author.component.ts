@@ -9,11 +9,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ComfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'app-story',
-  templateUrl: './story.component.html',
-  styleUrls: ['./story.component.css']
+  selector: 'app-story-author',
+  templateUrl: './story-author.component.html',
+  styleUrls: ['./story-author.component.css']
 })
-export class StoryComponent implements OnInit {
+export class StoryAuthorComponent implements OnInit {
   @Input() user: firebase.User;
   @Input() story: Story;
   @Input() stories: Story[];
@@ -83,7 +83,7 @@ export class StoryComponent implements OnInit {
    */
   openPublicationDialog(story: Story): void {
     let text = 'Etes vous sûr de vouloir publier votre histoire ? Elle sera désormais accessible aux lecteurs.';
-    if (this.story.status == 2) {
+    if (this.story.status === 2) {
       text = 'Etes vous sûr de vouloir dépublier votre histoire ? Elle ne sera plus accessible aux lecteurs.';
     }
 

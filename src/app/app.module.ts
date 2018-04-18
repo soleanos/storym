@@ -24,8 +24,8 @@ import { HomeAuthorComponent } from './components/home-author/home-author.compon
 import { HomeReaderComponent } from './components/home-reader/home-reader.component';
 import { SlicesComponent } from './components/sub/slices/slices.component';
 import { StoryCreationDialogComponent } from './components/sub/story-creation-dialog/story-creation-dialog.component';
-import { StoriesComponent } from './components/sub/stories/stories.component';
-import { StoryComponent } from './components/sub/story/story.component';
+import { StoriesAuthorComponent } from './components/sub/stories-author/stories-author.component';
+import { StoryAuthorComponent } from './components/sub/story-author/story-author.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
 import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-dialog/choice-creation-dialog.component';
 import { MessagesComponent } from './components/sub/messages/messages.component';
@@ -65,8 +65,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     SliceEditorDialogComponent,
     SlicesComponent,
     StoryCreationDialogComponent,
-    StoriesComponent,
-    StoryComponent,
+    StoriesAuthorComponent,
+    StoryAuthorComponent,
     SliceByLevelPipe,
     StoryTestComponent,
     ChoiceCreationDialogComponent,

@@ -3,11 +3,11 @@ import { Story } from '../../../model/Story';
 import * as firebase from 'firebase/app';
 
 @Component({
-  selector: 'app-stories',
-  templateUrl: './stories.component.html',
-  styleUrls: ['./stories.component.css']
+  selector: 'app-stories-author',
+  templateUrl: './stories-author.component.html',
+  styleUrls: ['./stories-author.component.css']
 })
-export class StoriesComponent implements OnInit {
+export class StoriesAuthorComponent implements OnInit {
 
   @Input() stories: Story[];
   @Input() user: firebase.User;
