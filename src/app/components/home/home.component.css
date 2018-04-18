@@ -23,8 +23,8 @@ section {
 
 #reader {
     margin-top :1px;
-    border: 1px solid rgb(29, 161, 243);
-    background:rgb(29, 161, 243)  no-repeat ;
+    border: 1px solid rgb(92, 173, 142);
+    background:rgb(92, 173, 142)  no-repeat ;
     background-size: 35px;
     color:#fff;
 }
@@ -44,7 +44,7 @@ section {
     }
 
     #reader{
-        background:rgb(29, 161, 243);
+        background:rgb(92, 173, 142);
     }
 
     #author{
@@ -57,7 +57,7 @@ section {
 }
 
 footer{
-  height: 5%;
+  height: 2%;
   /* margin-top: -50px; */
 }
 

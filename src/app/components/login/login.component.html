@@ -1,11 +1,20 @@
   
 <section layout="column" flex layout-align="center center" class = "login" >
     <mat-card layout="column"  layout-align="center center" class = "login">
-        <mat-toolbar layout="row" layout-align="center center">
-            <div layout="column" layout-align="center center">
-                <div >Storym</div>
-            </div>
-        </mat-toolbar>
+            <mat-toolbar>
+                    <mat-toolbar-row >
+                        <span class="title-center"> 
+                            <b>Storym</b> 
+                        </span>
+                    </mat-toolbar-row>
+                    <mat-toolbar-row>
+                        <span class="title-center" >
+                                <button title = "Retourner à l'accueil"  mat-icon-button (click)="goToHome()">
+                                    <mat-icon aria-label="Bouton pour retourner à l'acceuil">home</mat-icon>
+                                </button>     
+                        </span>
+                </mat-toolbar-row>
+            </mat-toolbar>
         <mat-card-content layout="column" layout-align="center center">
             <mat-form-field>
               <input placeholder="Email" matInput [(ngModel)]="email" required>

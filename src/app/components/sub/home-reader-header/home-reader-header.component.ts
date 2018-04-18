@@ -35,52 +35,9 @@ export class HomeReaderHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * Ouvre la popup de création d'histoire
-   */
-  openDialog(): void {
-    const dialogRef = this.dialog.open(StoryCreationDialogComponent, {
-      width: '300px',
-      // data: {title : this.title}
-    });
-
-    dialogRef.afterClosed().subscribe(StoryTitle => {
-      if ( StoryTitle) {
-        this.createStory(StoryTitle);
-      }
-    });
-  }
-
-  /**
-   * Crée une nouvelle histoire, avec chapitre racine
-   * @param title
-   */
-  createStory(title: string): void {
-    title = title.trim();
-    if (!title) { return; }
-    this.storyService.addStory({ title,
-      // cover : 'http://thecatapi.com/api/images/get?format=src&type=gif',
-      cover :
-      'https://firebasestorage.googleapis.com/v0/b/' +
-      'storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
-      author: this.user.uid,
-      status : 1} as Story).subscribe(story => {
-        this.storiesChange.emit(this.stories);
-        const sliceId = this.db.createId();
-        this.createSlice(story.id, sliceId);
-      });
-  }
-
-  /**
-   * Crée un nouveau passage et l'ajoute à la liste des passages
-   * @param title
-   *
-   */
-  createSlice(storyId: string, sliceId: string): void {
-    this.sliceService.addSlice(
-      {id: sliceId, level : 0, title: 'Début', text: 'Double-cliquer pour éditer ce passage', story: storyId, choices : []}
-    );
-  }
+  goToHome = function () {
+    this.router.navigateByUrl('/home');
+  };
 
   manageAccount()  {
     this.router.navigateByUrl('/account');

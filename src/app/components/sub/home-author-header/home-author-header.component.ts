@@ -86,6 +86,10 @@ export class HomeAuthorHeaderComponent implements OnInit {
     this.router.navigateByUrl('/account');
   }
 
+  goToHome()  {
+    this.router.navigateByUrl('/home');
+  }
+
   disconnect = function () {
     this.authService.signOut();
   };
