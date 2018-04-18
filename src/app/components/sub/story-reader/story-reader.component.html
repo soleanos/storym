@@ -1,0 +1,19 @@
+<mat-card *ngIf="story" layout="column" layout-align="center center">
+    <mat-card-header>
+      <div *ngIf="user" mat-card-avatar class="example-header-image" [style.background-image]="imageAuthor"></div>
+      <mat-card-title class = "title">{{story.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="story.subtitle" >{{story.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img  class="cover"mat-card-image src="{{story.cover}}" alt="Photo of the story">
+    <mat-card-content>
+      <p>
+        {{story.abstract}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div layout="row" layout-align="center center">
+      <button mat-raised-button flex="30" color="link"  (click)="read(story.id)" >Lire</button>
+      <!-- <button mat-raised-button flex="30" color="warn" (click)="openDeleteDialog(story)" >Supprimer</button> -->
+      </div>
+    </mat-card-actions>
+</mat-card>

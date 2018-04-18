@@ -13,6 +13,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AccountComponent } from './components/account/account.component';
 import { StoryManagementComponent } from './components/story-management/story-management.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReadComponent } from './components/read/read.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegistrationComponent},
-  { path: 'story-edit/:id', component: StoryManagementComponent}
+  { path: 'story-edit/:id', component: StoryManagementComponent},
+  { path: 'read/:id', component: ReadComponent}
 ];
 
 @NgModule({

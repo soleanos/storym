@@ -1,0 +1,24 @@
+.example-card {
+    max-width: 200px;
+  }
+  
+.example-header-image {
+background-size: cover;
+}
+
+.cover{
+   height: 250px; 
+}
+mat-card {  
+    padding:1;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.title{
+    padding:1px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

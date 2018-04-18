@@ -26,7 +26,10 @@ import { SlicesComponent } from './components/sub/slices/slices.component';
 import { StoryCreationDialogComponent } from './components/sub/story-creation-dialog/story-creation-dialog.component';
 import { StoriesAuthorComponent } from './components/sub/stories-author/stories-author.component';
 import { StoryAuthorComponent } from './components/sub/story-author/story-author.component';
+import { StoriesReaderComponent } from './components/sub/stories-reader/stories-reader.component';
+import { StoryReaderComponent } from './components/sub/story-reader/story-reader.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
+import { ReadComponent } from './components/read/read.component';
 import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-dialog/choice-creation-dialog.component';
 import { MessagesComponent } from './components/sub/messages/messages.component';
 import { LoginComponent } from './components/login/login.component';
@@ -79,6 +82,9 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HomeComponent,
     HomeReaderComponent,
     HomeReaderHeaderComponent,
+    StoryReaderComponent,
+    StoriesReaderComponent,
+    ReadComponent,
     HtmlToPlaintextPipe,
     SafeHtmlPipe
   ],
