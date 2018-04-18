@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   goToAuthorHome = function () {
     this.router.navigateByUrl('/home/author');
   };
-
+  goToReaderHome = function () {
+    this.router.navigateByUrl('/home/reader');
+  };
 
 }

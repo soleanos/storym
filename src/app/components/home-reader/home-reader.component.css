@@ -1,0 +1,19 @@
+
+  .mat-sidenav {
+    background: rgb(58, 57, 57);
+    /* width: 20%; */
+  }
+
+  .mat-sidenav-content {
+    background: rgb(41, 40, 40);
+  }
+  
+  .mat-sidenav-container{
+      display: block;
+      height: 100%;
+  }
+
+
+  :host{
+    background: rgb(58, 57, 57);
+  }

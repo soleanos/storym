@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './services/auth.guard';
 
+import { HomeReaderComponent } from './components/home-reader/home-reader.component';
 import { HomeAuthorComponent } from './components/home-author/home-author.component';
 import { StoryEditionComponent } from './components/story-edition/story-edition.component';
 import { StoryTestComponent } from './components/story-test/story-test.component';
@@ -17,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home/author', component: HomeAuthorComponent,  canActivate: [AuthGuard]},
+  { path: 'home/reader', component: HomeReaderComponent },
   { path: 'story/:id', component: StoryEditionComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: StoryTestComponent, canActivate: [AuthGuard] },
   { path: 'login/:nextPage', component: LoginComponent },

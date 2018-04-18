@@ -21,6 +21,7 @@ import { StoryEditionComponent } from './components/story-edition/story-edition.
 import { SliceComponent } from './components/sub/slice/slice.component';
 import { SliceEditorDialogComponent } from './components/sub/slice-editor-dialog/slice-editor-dialog.component';
 import { HomeAuthorComponent } from './components/home-author/home-author.component';
+import { HomeReaderComponent } from './components/home-reader/home-reader.component';
 import { SlicesComponent } from './components/sub/slices/slices.component';
 import { StoryCreationDialogComponent } from './components/sub/story-creation-dialog/story-creation-dialog.component';
 import { StoriesComponent } from './components/sub/stories/stories.component';
@@ -30,6 +31,7 @@ import { ChoiceCreationDialogComponent } from './components/sub/choice-creation-
 import { MessagesComponent } from './components/sub/messages/messages.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { HomeReaderHeaderComponent } from './components/sub/home-reader-header/home-reader-header.component';
 
 import { ComfirmDialogComponent } from './components/sub/confirm-dialog/confirm-dialog.component';
 
@@ -75,6 +77,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     StoryManagementComponent,
     ComfirmDialogComponent,
     HomeComponent,
+    HomeReaderComponent,
+    HomeReaderHeaderComponent,
     HtmlToPlaintextPipe,
     SafeHtmlPipe
   ],

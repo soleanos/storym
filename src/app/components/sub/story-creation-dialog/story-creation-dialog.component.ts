@@ -10,7 +10,7 @@ import { Story } from '../../../model/Story';
 })
 export class StoryCreationDialogComponent implements OnInit {
 
-  title ='';
+  title = '';
   constructor(
     public dialogRef: MatDialogRef<StoryCreationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Story

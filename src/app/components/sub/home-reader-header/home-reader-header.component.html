@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <mat-toolbar-row *ngIf="user">
+        <span class="title-center"> 
+            <b>{{user.displayName}}</b> 
+        </span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+        <!-- <span class="title-center" flex ="90" >{{stories?.length}} Histoire(s)</span> -->
+
+        <!-- <button (click)="changeColors() " mat-icon-button color="black">
+                <mat-icon aria-label="bouton gestion compte">invert_colors</mat-icon>
+        </button> -->
+        <!-- <button title = "Gêrer mon compte" (click)="manageAccount() " mat-icon-button color="black">
+            <mat-icon aria-label="bouton gestion compte">person</mat-icon>
+        </button>
+        <button title = "Se déconnecter"  (click)="disconnect() " mat-icon-button color="black">
+            <mat-icon aria-label="Bouton déconnexion">input</mat-icon>
+        </button> -->
+</mat-toolbar-row>
+</mat-toolbar>
