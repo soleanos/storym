@@ -17,52 +17,44 @@
                 <mat-tab label="Comment ça marche ?">        
                     <!-- <h2>Pour rédiger votre histoire, quelques étapes à suivre :</h2> -->
                         
-                    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-                            
-                        <mat-step [stepControl]="firstFormGroup"> 
+                    <mat-horizontal-stepper  #stepper="matHorizontalStepper">
+              
+                        <mat-step class="title-center"> 
                             <ng-template matStepLabel>Créer l'histoire</ng-template>
-                            <div layout="row" layout-align="center center">
-                                <p>
-                                Créer votre histoire, en lui donnant un titre <br> <br>
-                                <img src="/assets/creer_histoire.gif" alt="Smiley face"  height="300" width="600">     
-                            </p>
-                            </div>
-                            <div layout="row" layout-align="center center">
-                                <button mat-button matStepperNext>Etape suivante</button>
-                            </div>
+  
+                                <div  layout="row" layout-align="center center">Créez votre histoire en lui donnant un titre </div>
+                                <br> 
+                                <span layout="row" layout-align="center center">
+                                    <img src="/assets/creer_histoire.gif" alt="Smiley face"  height="300" width="600">     
+                                </span>
                         </mat-step>
 
-                        <mat-step [stepControl]="secondFormGroup">
+                        <mat-step class="title-center">
                             <ng-template matStepLabel>Editer l'histoire</ng-template>
                             <div layout="row" layout-align="center center">
-                                <p>
-                                    Modifiez votre premier passage : <br> <br>
-                                    <b>Double cliquez</b> sur le passage, symbolisé par un postit afin d'ouvrir l'éditeur. <br>
-                                    Une fois ceci fait, vous pouvez <b>modifier</b> le titre et le texte qui sera affiché dans le passage. <br>
-                                    Enfin, vous pouvez <b>ajouter des choix</b> qui permettent de lier les passages les uns au autre. <br>
-                                    Pour chaque choix, on <b>choisie le titre unique</b> du passage auquels il conduira,
-                                    et le texte qui sera affiché au lecteur dans le bouton du choix. <br><br><br>
-                                    <img src="/assets/editer_histoire.gif" alt="Smiley face"  height="300" width="600"> 
+                                <p>Modifiez votre premier passage :  <br>
+                                <b>Double cliquez</b> sur le passage, symbolisé par un postit afin d'ouvrir l'éditeur. <br>
+                                Une fois ceci fait, vous pouvez <b>modifier</b> le titre et le texte qui sera affiché dans le passage. <br>
+                                Enfin, vous pouvez <b>ajouter des choix</b> qui permettent de lier les passages les uns au autre. <br>
+                                Pour chaque choix, on <b>choisie le titre unique</b> du passage auquels il conduira<br>
+                                et le texte qui sera affiché au lecteur dans le bouton du choix. <br>
                                 </p>
                             </div>
-                            <div layout="row" layout-align="center center">
-                                    <button flex="30" mat-button matStepperPrevious>Etape précédente</button>
-                                    <button flex="30" mat-button matStepperNext>Etape suivante</button>  
-                            </div>
+                            <span layout="row" layout-align="center center">
+                                <img src="/assets/editer_histoire.gif" alt="Smiley face"  height="300" width="600"> 
+                            </span>
+                           
                         </mat-step>
 
-                        <mat-step>
-                        <ng-template matStepLabel>Tester !</ng-template>
+                        <mat-step class="title-center">
+                            <ng-template matStepLabel>Tester !</ng-template>
                             <div layout="row" layout-align="center center">
-                            <p>
-                                Plus qu'a tester !  <br> <br>
-                                <img src="/assets/tester.gif" alt="Smiley face"  height="300" width="600"> 
-                            </p>
+                                Plus qu'a tester !  
                             </div>
-                        <div layout="row" layout-align="center center">
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
-                        </div>
+                            <br> 
+                            <span layout="row" layout-align="center center">
+                                <img src="/assets/tester.gif" alt="Smiley face"  height="300" width="600"> 
+                            </span>
                         </mat-step>
                     </mat-horizontal-stepper>                                                
                 </mat-tab>          
@@ -77,11 +69,18 @@
     </mat-card>
 </section>
 
-<footer>
-    <span flex ="80" >Copyright@2018 Storym - Tous droits réservés </span>
-    <span style = "left:0%">
-        <a href="#">Contact</a>
-        <a href="#">Informations légales</a>
-        <a href="#">CGU</a>
-    </span>
-</footer>
+
+
+<mat-toolbar>
+    <mat-toolbar-row>
+            <span class="title-center" > Copyright@2018 Storym - Tous droits réservés </span > 
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <span class="title-center" >     
+            <a href="contact" >Contact</a> 
+            <a href="infos">Informations légales</a>
+            <a href="cgu" >CGU</a>
+        </span>
+    </mat-toolbar-row> 
+</mat-toolbar>
+

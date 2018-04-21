@@ -38,7 +38,7 @@ section {
 
 @media (max-width: 700px) {
 
-    .login mat-card {
+    .content mat-card {
         width: 100%;
         height:90%
     }
@@ -69,6 +69,22 @@ mat-card{
     margin-bottom:1%;
 }
 
+
+.title-center {
+    font-size: 12px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mat-toolbar-row{
+    height:20px;
+}
+
+.mat-toolbar{
+    height:40px;
+}
 
 
   
