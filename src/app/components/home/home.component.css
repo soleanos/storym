@@ -1,8 +1,4 @@
 
-/* mat-tab-group{
-    width:100%;
-} */
-
 /* others */
 @media all
   and (min-device-width: 992px) {
@@ -20,8 +16,7 @@ section {
     background-size: cover;
 }
 
-
-#reader {
+#readerButton {
     margin-top :1px;
     border: 1px solid rgb(92, 173, 142);
     background:rgb(92, 173, 142)  no-repeat ;
@@ -29,46 +24,26 @@ section {
     color:#fff;
 }
 
-#author {
+#authorButton {
     margin-top: 1px;
     background: rgb(67, 70, 73)  no-repeat 25px;
     background-size: 25px;
 }
 
-
 @media (max-width: 700px) {
-
-    .content mat-card {
+    mat-card {
         width: 100%;
         height:90%
+    } 
+    .img{
+        display:none;
     }
-
-    #reader{
-        background:rgb(92, 173, 142);
-    }
-
-    #author{
-        background: rgb(67, 70, 73) 
-    }
-}
-
-#content{
-    /* min-height: 100%; */
 }
 
 footer{
   height: 2%;
-  /* margin-top: -50px; */
+  margin-top: -50px;
 }
-
-#content-inside {
-    padding: 0px;
-}
-
-mat-card{
-    margin-bottom:1%;
-}
-
 
 .title-center {
     font-size: 12px;
@@ -79,12 +54,15 @@ mat-card{
 }
 
 .mat-toolbar-row{
-    height:20px;
+    height:18px;
 }
 
 .mat-toolbar{
     height:40px;
 }
 
+.mat-toolbar-multiple-rows{
+    min-height: 0px;
+}
 
   

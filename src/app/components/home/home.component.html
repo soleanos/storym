@@ -24,7 +24,7 @@
   
                                 <div  layout="row" layout-align="center center">Créez votre histoire en lui donnant un titre </div>
                                 <br> 
-                                <span layout="row" layout-align="center center">
+                                <span class = "img" layout="row" layout-align="center center">
                                     <img src="/assets/creer_histoire.gif" alt="Smiley face"  height="300" width="600">     
                                 </span>
                         </mat-step>
@@ -40,7 +40,7 @@
                                 et le texte qui sera affiché au lecteur dans le bouton du choix. <br>
                                 </p>
                             </div>
-                            <span layout="row" layout-align="center center">
+                            <span class = "img" layout="row" layout-align="center center">
                                 <img src="/assets/editer_histoire.gif" alt="Smiley face"  height="300" width="600"> 
                             </span>
                            
@@ -52,7 +52,7 @@
                                 Plus qu'a tester !  
                             </div>
                             <br> 
-                            <span layout="row" layout-align="center center">
+                            <span class = "img" layout="row" layout-align="center center">
                                 <img src="/assets/tester.gif" alt="Smiley face"  height="300" width="600"> 
                             </span>
                         </mat-step>
@@ -62,8 +62,8 @@
         </mat-card-content>
         <mat-card-actions>
             <div layout="row" layout-align="center center">
-                <button mat-button flex="30" (click)="goToReaderHome()" id="reader" > Lire </button><br>
-                <button mat-button flex="30" (click)="goToAuthorHome()" id="author" ><font color="white">Ecrire </font> </button>
+                <button mat-button flex="30" (click)="goToReaderHome()" id="readerButton" > Lire </button><br>
+                <button mat-button flex="30" (click)="goToAuthorHome()" id="authorButton" ><font color="white">Ecrire </font> </button>
             </div>
         </mat-card-actions>  
     </mat-card>
@@ -83,4 +83,5 @@
         </span>
     </mat-toolbar-row> 
 </mat-toolbar>
+
 
