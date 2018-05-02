@@ -1,26 +1,20 @@
-/* .slice{
-    word-wrap:break-word;
-    display:inline-block;
-    text-overflow: ellipsis;
-    height: 150px;
-    overflow: hidden;
-    padding: 1%;
-    padding-top:3%;
-    margin:0; /* If you want no margin */
-    /* background: url('/assets/postit.jpg'); 
-    background-repeat: no-repeat;
-    background-size: 100%;
-}  */
-
-
-#colorCircle{
+/* #colorCircle{
     border-radius:50%; 
     position : absolute;
     top:15%;
     left:5%;
     width:21px;
     height:20px;
-  }
+} */
+
+#colorCircle{
+    border-radius:50%; 
+    position : absolute;
+    top:14%;
+    left:44%;
+    width:30px;
+    height:28px;
+}
 
 .slice{
     margin: 0 auto;
