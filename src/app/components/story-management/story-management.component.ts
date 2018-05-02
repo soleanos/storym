@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Story } from '../../model/Story';
+
 import { StoryService } from '../../services/story.service';
+import { CategoryService } from '../../services/category.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { Story } from '../../model/Story';
+import {Category } from '../../model/Category';
 
 
 @Component({
@@ -21,17 +25,20 @@ export class StoryManagementComponent implements OnInit {
   mode = 'determinate';
   progressBarValue;
   photoURL: string;
+  categories: Array<Category>;
 
   constructor(
     private route: ActivatedRoute,
     private storyService: StoryService,
     private storage: AngularFireStorage,
-    private router: Router
+    private router: Router,
+    private categoryService: CategoryService
   ) {  }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getStory(id);
+    this.getCategories();
   }
 
    /**
@@ -41,6 +48,11 @@ export class StoryManagementComponent implements OnInit {
   getStory(id: string): void {
     this.storyService.getStory(id)
       .subscribe(story => this.fillFieldByStory(story));
+  }
+
+  getCategories(): void {
+    this.categoryService.getCategories()
+    .subscribe(categories => this.categories = categories);
   }
 
   fillFieldByStory(story: Story) {

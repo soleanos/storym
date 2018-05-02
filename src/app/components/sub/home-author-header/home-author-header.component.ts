@@ -29,9 +29,14 @@ export class HomeAuthorHeaderComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(private router: Router,
-    public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
-    , private db: AngularFirestore, private authService: AuthService, private categoryService: CategoryService
+  constructor(
+    private router: Router,
+    public dialog: MatDialog, 
+    private storyService: StoryService, 
+    private sliceService: SliceService, 
+    private db: AngularFirestore, 
+    private authService: AuthService, 
+    private categoryService: CategoryService
   ) {
     this.story = new Story();
   }

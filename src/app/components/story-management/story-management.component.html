@@ -28,6 +28,15 @@
             <input placeholder="Titre de l'histoire" matInput [(ngModel)]="story.title" required>
             </mat-form-field>   
         </div>
+
+        <mat-form-field>
+            <mat-select placeholder="Catégorie" [(ngModel)]="story.category" name="Catégories">
+              <mat-option *ngFor="let category of categories" [value]="category.label">
+                {{category.label}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field style = "width:100%">
                 <textarea  rows = "5" matInput [(ngModel)]="story.abstract" placeholder="Résumé de l'histoire" ></textarea>
         </mat-form-field>    
