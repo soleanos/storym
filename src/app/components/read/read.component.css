@@ -1,2 +1,24 @@
-.boutons{display:block}
+.button{
+    margin-bottom:1%;
+    margin-top:1%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .list{display:block}
+
+.mat-card{
+    margin-bottom:2%;
+    margin-top:2%;
+    margin-left:auto;
+    margin-right:auto;
+    width: 60%;
+}
+
+
+.back{
+    background-color: rgb(201, 201, 201);
+    background-size: cover;
+    overflow:auto; 
+    padding:10px;
+}

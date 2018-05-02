@@ -28,7 +28,7 @@ export class StoryAuthorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.user.photoURL})`);
+    this.imageAuthor = this.sanitization.bypassSecurityTrustStyle(`url(${this.story.authorPicture})`);
     this.reported = false;
     this.published = false;
 
