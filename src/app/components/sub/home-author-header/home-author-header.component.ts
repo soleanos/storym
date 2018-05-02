@@ -3,7 +3,7 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 import * as firebase from 'firebase/app';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Router } from '@angular/router';
-import { Moment } from 'moment';
+import * as moment from 'moment';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 
 import {StoryService} from '../../../services/story.service';
@@ -58,6 +58,7 @@ export class HomeAuthorHeaderComponent implements OnInit {
    */
   createStory(title: string): void {
     title = title.trim();
+    const date = moment().format('L');
     if (!title) { return; }
     this.storyService.addStory({ title,
       // cover : 'http://thecatapi.com/api/images/get?format=src&type=gif',
@@ -67,7 +68,7 @@ export class HomeAuthorHeaderComponent implements OnInit {
       author: this.user.uid,
       authorPicture : this.user.photoURL,
       authorName : this.user.displayName,
-      creationDate: new Date(Date.now()),
+      creationDate: date,
       status : 1} as Story).subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();
