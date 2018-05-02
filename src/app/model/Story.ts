@@ -10,4 +10,6 @@ export class Story {
     reports?: Array<string>;
     status?: number;
     langage?: string;
+    authorPicture?: string;
+    authorName?: string;
   }
