@@ -9,9 +9,11 @@ import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creat
 import {StoryService} from '../../../services/story.service';
 import {SliceService} from '../../../services/slice.service';
 import { AuthService } from '../../../services/auth.service';
+import { CategoryService } from '../../../services/category.service';
 
 import { Slice } from '../../../model/Slice';
 import {Story } from '../../../model/Story';
+import {Category } from '../../../model/Category';
 
 @Component({
   selector: 'app-author-home-header',
@@ -22,32 +24,41 @@ export class HomeAuthorHeaderComponent implements OnInit {
   story: Story;
   slice: Slice;
   title: string;
+  categories: Array<Category>
   @Input() user: firebase.User;
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
   constructor(private router: Router,
     public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
-    , private db: AngularFirestore, private authService: AuthService
+    , private db: AngularFirestore, private authService: AuthService, private categoryService: CategoryService
   ) {
     this.story = new Story();
   }
 
   ngOnInit() {
+    this.getCategories();
   }
+
+  getCategories(): void {
+    this.categoryService.getCategories()
+    .subscribe(categories => this.categories = categories);
+  }
+
 
   /**
    * Ouvre la popup de création d'histoire
    */
   openDialog(): void {
+    console.log(this.categories)
     const dialogRef = this.dialog.open(StoryCreationDialogComponent, {
       width: '300px',
-      // data: {title : this.title}
+      data: {categories : this.categories}
     });
 
-    dialogRef.afterClosed().subscribe(StoryTitle => {
-      if ( StoryTitle) {
-        this.createStory(StoryTitle);
+    dialogRef.afterClosed().subscribe(data => {
+      if ( data.title) {
+        this.createStory(data);
       }
     });
   }
@@ -56,8 +67,8 @@ export class HomeAuthorHeaderComponent implements OnInit {
    * Crée une nouvelle histoire, avec chapitre racine
    * @param title
    */
-  createStory(title: string): void {
-    title = title.trim();
+  createStory(data: any): void {
+    const title = data.title.trim();
     const date = moment().format('L');
     if (!title) { return; }
     this.storyService.addStory({ title,
@@ -66,6 +77,7 @@ export class HomeAuthorHeaderComponent implements OnInit {
       'https://firebasestorage.googleapis.com/v0/b/' +
       'storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
       author: this.user.uid,
+      category:data.categorySelected,
       authorPicture : this.user.photoURL,
       authorName : this.user.displayName,
       creationDate: date,

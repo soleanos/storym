@@ -3,11 +3,21 @@
 <div mat-dialog-content>
   <p>Quel titre souhaitez-vous choisir pour votre histoire ? </p>
   <mat-form-field>
-    <input matInput [(ngModel)]="title">
+    <input matInput [(ngModel)]="data.title">
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Catégorie" [(ngModel)]="data.categorySelected" name="Catégories">
+      <mat-option *ngFor="let category of data.categories" [value]="category.label">
+        {{category.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    
+  
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Retour</button>
-  <button mat-button [mat-dialog-close]="title" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

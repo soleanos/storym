@@ -37,7 +37,7 @@ export class CategoryService {
   //////// Get methods //////////
 
   /** Get all stories  */
-  getStories (): Observable<any[]> {
+  getCategories (): Observable<any[]> {
     this.categoryCollection = this.db.collection<Category>('Category');
     this.categories = this.categoryCollection.snapshotChanges().map(actions => {
       return actions.map(a => {

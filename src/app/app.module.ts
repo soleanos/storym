@@ -43,6 +43,7 @@ import { SliceService} from './services/slice.service';
 import { MessageService } from './services/message.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { CategoryService } from './services/category.service';
 
 import { SliceByLevelPipe } from './pipes/slice-by-level.pipe';
 import { SliceLinkPipe } from './pipes/slice-link.pipe';
@@ -103,7 +104,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     AngularFireAuthModule,
     NgxEditorModule
   ],
-  providers: [StoryService, MessageService, NgxEditorModule ,
+  providers: [StoryService, MessageService, NgxEditorModule , CategoryService,
     SliceService, AuthService, UserService, AngularFirestoreModule, AngularFireAuthModule, AngularFireStorage, AuthGuard],
   entryComponents: [ComfirmDialogComponent, StoryCreationDialogComponent,
                      SliceEditorDialogComponent, ChoiceCreationDialogComponent],
