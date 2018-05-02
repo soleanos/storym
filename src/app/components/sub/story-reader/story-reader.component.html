@@ -1,9 +1,20 @@
 <mat-card *ngIf="story" layout="column" layout-align="center center">
-    <mat-card-header>
+    <!-- <mat-card-header>
       <div *ngIf="user" mat-card-avatar class="example-header-image" [style.background-image]="imageAuthor"></div>
-      <mat-card-title class = "title">{{story.title}}</mat-card-title>
+      <mat-card-title class = "title">{{story.authorName}}</mat-card-title>
       <mat-card-subtitle *ngIf="story.subtitle" >{{story.subtitle}}</mat-card-subtitle>
-    </mat-card-header>
+    </mat-card-header> -->
+    <div class = "title">
+      <b>
+        {{story.title}}
+      </b>
+    </div>
+   
+    <mat-card-header>
+        <div mat-card-avatar class="image-author" [style.background-image]="imageAuthor"></div>
+        <mat-card-title>Auteur : {{story.authorName}}</mat-card-title>
+        <mat-card-subtitle>Date de création : N/A </mat-card-subtitle>
+      </mat-card-header>
     <img  class="cover"mat-card-image src="{{story.cover}}" alt="Photo of the story">
     <mat-card-content>
       <p>

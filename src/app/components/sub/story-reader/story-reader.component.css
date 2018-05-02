@@ -2,13 +2,16 @@
     max-width: 200px;
   }
   
-.example-header-image {
-background-size: cover;
+.image-author {
+    margin-top:16px;
+    margin-left:16px;
+    background-size: cover;
 }
 
 .cover{
    height: 250px; 
 }
+
 mat-card {  
     padding:1;
     grid-column: 1;
@@ -16,9 +19,6 @@ mat-card {
 }
 
 .title{
-    padding:1px;
-    margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-top:1%;
+    text-align: center;
 }
