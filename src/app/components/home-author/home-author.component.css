@@ -14,6 +14,10 @@
   }
 
 
-  :host{
-    background: rgb(58, 57, 57);
+  .back{
+    background-color: rgb(150, 119, 119);
+    background-size: cover;
+    overflow:auto; 
+    padding:10px;
+    height:100%;
   }
