@@ -13,7 +13,7 @@
     <mat-card-header>
         <div mat-card-avatar class="image-author" [style.background-image]="imageAuthor"></div>
         <mat-card-title>Auteur : {{story.authorName}}</mat-card-title>
-        <mat-card-subtitle>Date de création : N/A </mat-card-subtitle>
+        <mat-card-subtitle>Date de création : {{story.creationDate}} </mat-card-subtitle>
       </mat-card-header>
     <img  class="cover"mat-card-image src="{{story.cover}}" alt="Photo of the story">
     <mat-card-content>

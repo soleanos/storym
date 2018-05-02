@@ -3,7 +3,7 @@ import { AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument
 import * as firebase from 'firebase/app';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Router } from '@angular/router';
-
+import { Moment } from 'moment';
 import {StoryCreationDialogComponent} from '../story-creation-dialog/story-creation-dialog.component';
 
 import {StoryService} from '../../../services/story.service';
@@ -26,7 +26,8 @@ export class HomeAuthorHeaderComponent implements OnInit {
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
-  constructor(private router: Router, public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
+  constructor(private router: Router,
+    public dialog: MatDialog, private storyService: StoryService, private sliceService: SliceService
     , private db: AngularFirestore, private authService: AuthService
   ) {
     this.story = new Story();
@@ -66,6 +67,7 @@ export class HomeAuthorHeaderComponent implements OnInit {
       author: this.user.uid,
       authorPicture : this.user.photoURL,
       authorName : this.user.displayName,
+      creationDate: new Date(Date.now()),
       status : 1} as Story).subscribe(story => {
         this.storiesChange.emit(this.stories);
         const sliceId = this.db.createId();
