@@ -1,8 +1,4 @@
 .button{
-    /* margin-bottom:10px;
-    margin-top:10px;
-    margin-left:auto;
-    margin-right:auto; */
     margin:5px;
     border-radius: 4px;
     border-width: 1px;
@@ -13,8 +9,6 @@
     height: 100%;
 }
 
-.list{display:block}
-
 .mat-card{
     margin-bottom:2%;
     margin-top:2%;
@@ -22,7 +16,6 @@
     margin-right:auto;
     width: 60%;
 }
-
 
 .back{
     background-color: rgba(211, 211, 211, 0.7);
@@ -34,4 +27,10 @@
 .button-group{
     height: 40px;
     text-align: center;
+}
+
+@media (max-width: 700px) {
+    .mat-card {
+       width: 100%;
+    } 
 }

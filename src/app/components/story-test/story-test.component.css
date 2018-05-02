@@ -1,0 +1,36 @@
+.button{
+    margin:5px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #161616;
+    color: #131414;
+    background-color: white ;
+    height: 100%;
+}
+
+.mat-card{
+    margin-bottom:2%;
+    margin-top:2%;
+    margin-left:auto;
+    margin-right:auto;
+    width: 60%;
+}
+
+.back{
+    background-color: rgba(211, 211, 211, 0.7);
+    background-size: cover;
+    overflow:auto; 
+    padding:10px;
+}
+
+.button-group{
+    height: 40px;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .mat-card {
+       width: 100%;
+    } 
+}

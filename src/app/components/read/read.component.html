@@ -1,22 +1,11 @@
 
 <div class = "back "*ngIf="story" layout-fill layout="column" layout-align="center none">
-    <!-- <div class = "list" *ngFor="let slice of slicesOfStory" layout="row" layout-align="center none" flex = "100"> -->
-        <!-- <h2>{{ story.title | uppercase }} </h2> -->
-        <mat-card  *ngFor="let slice of slicesOfStory" layout="row" >
-            <mat-card-title>{{slice.title}} </mat-card-title>
-            <mat-card-content [innerHTML]="slice.text | safeHtml">          
-            </mat-card-content>
-          </mat-card>      
-    <!-- </div> -->
-<!--     <div *ngFor="let choice of slice.choices" layout="row" layout-align="center center" flex = "100">
- <button *ngFor="let choice of slice.choices" mat-raised-button class = "button" mat-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>      -->
-<!--     </div>  
-    
- -->
-
+    <mat-card  *ngFor="let slice of slicesOfStory" layout="row" >
+       <mat-card-title>{{slice.title}} </mat-card-title>
+       <mat-card-content [innerHTML]="slice.text | safeHtml">          
+       </mat-card-content>
+    </mat-card>        
     <div class = "button-group">
         <button class = "button"  *ngFor="let choice of slice.choices"  ion-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>     
-        <!-- <button color="dark" outline class = "button"  *ngFor="let choice of slice.choices"  ion-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>      -->
     </div>
-
 </div>
