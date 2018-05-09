@@ -75,7 +75,7 @@ export class UserService {
                 data.id = user.payload.id;
                 data.exist = true;
                 return data;
-            }else {
+            } else {
                 const data: User = {exist: false};
                 return data;
             }
@@ -86,6 +86,10 @@ export class UserService {
         );
   }
 
+  /**
+   *Charger les informations de l'utilisateur actuel
+   * @param authData
+   */
     loadCurrentUser(authData: any) {
         this.getUser(authData.uid).subscribe((usrData: any) => {
             this.currentUser.next(usrData);
@@ -93,6 +97,10 @@ export class UserService {
         return this.currentUser;
     }
 
+    /**
+     * Alimenter les informations de l'utilisateur
+     * @param authData
+     */
     setUserAccount(authData: any) {
         const providerData = authData.providerData; // [0];
         const userData: any = {
@@ -108,13 +116,16 @@ export class UserService {
             if (!user.exist || !user.dateCreated) {
                 userData.dateCreated = moment().format();
                 userData.levelAccount = 1;
-                console.log("cration")
                 const usrDoc = this.getUserDoc(authData.uid).set(userData);
             }
             usr$.unsubscribe();
         });
     }
 
+    /**
+     * Mettre à jour les informations de l'utilisateur
+     * @param authData
+     */
     updateUserAccount(authData: any) {
         const userData: any = {
             id: authData.uid
@@ -142,21 +153,6 @@ export class UserService {
         });
     }
 
-    // setUserLastLogin(authData: any) {
-    //     const providerData = authData.providerData; // [0];
-
-    //     const usr = this.getUser(authData.uid);
-    //     const usr$ = usr.subscribe((user: any) => {
- 
-    //         if (user.exist || user.dateCreated) {
-  
-    //             const usrDoc = this.getUserDoc(authData.uid).set({});
-    //         }
-           
-    //         usr$.unsubscribe();
-    //     });
-    // }
-
   //////// Gestion loggin error //////////
 
   /**
@@ -183,7 +179,5 @@ export class UserService {
   private log(message: string) {
     this.messageService.add('StoryService: ' + message);
   }
-
-
 
 }

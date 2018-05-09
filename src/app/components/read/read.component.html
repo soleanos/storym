@@ -1,11 +1,13 @@
 
 <div class = "back "*ngIf="story" layout-fill layout="column" layout-align="center none">
-    <mat-card  *ngFor="let slice of slicesOfStory" layout="row" >
-       <mat-card-title>{{slice.title}} </mat-card-title>
-       <mat-card-content [innerHTML]="slice.text | safeHtml">          
-       </mat-card-content>
-    </mat-card>        
-    <div class = "button-group">
-        <button class = "button"  *ngFor="let choice of slice.choices"  ion-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>     
+    <div  class = "page">
+        <mat-card  *ngFor="let slice of slicesOfStory" layout="row" >
+        <mat-card-title>{{slice.title}} </mat-card-title>
+        <mat-card-content [innerHTML]="slice.text | safeHtml">          
+        </mat-card-content>
+        </mat-card>        
+        <div class = "button-group">
+            <button class = "button"  *ngFor="let choice of slice.choices"  ion-button (click)="addNextSliceToStory(choice)" >{{choice.label}}</button>     
+        </div>
     </div>
 </div>

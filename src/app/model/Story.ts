@@ -13,5 +13,5 @@ export class Story {
     authorPicture?: string;
     authorName?: string;
     creationDate?: string;
-    category?:string;
+    category?: string;
   }

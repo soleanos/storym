@@ -24,18 +24,18 @@ export class HomeAuthorHeaderComponent implements OnInit {
   story: Story;
   slice: Slice;
   title: string;
-  categories: Array<Category>
+  categories: Array<Category>;
   @Input() user: firebase.User;
   @Input() stories: Story[];
   @Output() storiesChange = new EventEmitter<Story[]>();
 
   constructor(
     private router: Router,
-    public dialog: MatDialog, 
-    private storyService: StoryService, 
-    private sliceService: SliceService, 
-    private db: AngularFirestore, 
-    private authService: AuthService, 
+    public dialog: MatDialog,
+    private storyService: StoryService,
+    private sliceService: SliceService,
+    private db: AngularFirestore,
+    private authService: AuthService,
     private categoryService: CategoryService
   ) {
     this.story = new Story();
@@ -55,7 +55,6 @@ export class HomeAuthorHeaderComponent implements OnInit {
    * Ouvre la popup de création d'histoire
    */
   openDialog(): void {
-    console.log(this.categories)
     const dialogRef = this.dialog.open(StoryCreationDialogComponent, {
       width: '300px',
       data: {categories : this.categories}
@@ -82,7 +81,7 @@ export class HomeAuthorHeaderComponent implements OnInit {
       'https://firebasestorage.googleapis.com/v0/b/' +
       'storym-application.appspot.com/o/appliPictures%2FF100010157.jpg?alt=media&token=071e17e8-d2b2-4408-85fe-ceea264592b5',
       author: this.user.uid,
-      category:data.categorySelected,
+      category: data.categorySelected,
       authorPicture : this.user.photoURL,
       authorName : this.user.displayName,
       creationDate: date,
@@ -104,14 +103,23 @@ export class HomeAuthorHeaderComponent implements OnInit {
     );
   }
 
+  /**
+   * Redirige vers la page de gestion de compte
+   */
   manageAccount()  {
     this.router.navigateByUrl('/account');
   }
 
+  /**
+   * Retourne à l'acceil
+   */
   goToHome()  {
     this.router.navigateByUrl('/home');
   }
 
+  /**
+   * Déconnexion
+   */
   disconnect = function () {
     this.authService.signOut();
   };

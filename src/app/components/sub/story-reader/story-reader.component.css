@@ -13,6 +13,7 @@
 }
 
 mat-card {  
+    height:480px;
     padding:1;
     grid-column: 1;
     grid-row: 1;
@@ -21,4 +22,8 @@ mat-card {
 .title{
     margin-top:1%;
     text-align: center;
+}
+
+mat-card-content{
+    text-overflow: ellipsis;
 }

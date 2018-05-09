@@ -8,12 +8,19 @@
 } */
 
 #colorCircle{
-    border-radius:50%; 
+    /* border-radius:50%; 
     position : absolute;
     top:14%;
     left:44%;
     width:30px;
-    height:28px;
+    height:28px; */
+
+    border-radius: 50%;
+    position: absolute;
+    top: 13%;
+    left: 45%;
+    width: 23px;
+    height: 21px;
 }
 
 .slice{
